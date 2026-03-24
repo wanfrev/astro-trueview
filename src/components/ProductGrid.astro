@@ -1,0 +1,57 @@
+---
+const products = [
+  { name: 'Pure Protein', brand: 'Optimum', status: 'pass', color: 'text-green-500' },
+  { name: 'Daily Greens', brand: 'Vitality', status: 'fail', color: 'text-red-500' },
+  { name: 'Omega 3', brand: 'FishOil Co', status: 'pass', color: 'text-green-500' },
+  { name: 'Pre-Workout', brand: 'EnergyX', status: 'fail', color: 'text-red-500' },
+  { name: 'Magnesium', brand: 'Purely', status: 'pass', color: 'text-green-500' },
+  { name: 'Vitamin D3', brand: 'Solar', status: 'pass', color: 'text-green-500' },
+  { name: 'Creatine', brand: 'Bulk', status: 'fail', color: 'text-red-500' },
+  { name: 'BCAA', brand: 'Amino', status: 'pass', color: 'text-green-500' },
+];
+---
+
+<section class="py-24 px-6 md:px-20 bg-white/[0.02]">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tight max-w-2xl">
+        We show you the science behind <br />
+        <span class="text-gray-500 italic">the marketing.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <div class="group relative bg-[#121212] border border-white/5 rounded-3xl p-6 transition-all hover:bg-[#1a1a1a] hover:border-white/10 overflow-hidden">
+          <div class="absolute top-4 right-4 flex items-center gap-1.5">
+            <div class={`w-2 h-2 rounded-full ${product.status === 'pass' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]'}`}></div>
+            <span class={`text-[10px] font-bold uppercase tracking-widest ${product.status === 'pass' ? 'text-green-500' : 'text-red-500'}`}>
+              {product.status}
+            </span>
+          </div>
+
+          <div class="aspect-square w-full bg-white/5 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div class="w-16 h-24 border-2 border-white/10 rounded-lg opacity-20"></div>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-white text-lg">{product.name}</h3>
+            <p class="text-gray-500 text-sm">{product.brand}</p>
+          </div>
+
+          <div class="mt-6">
+            <button class="w-full py-3 bg-white/5 hover:bg-white text-white hover:text-black rounded-xl text-xs font-bold transition-all border border-white/10">
+              View lab results
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-20 flex justify-center">
+      <button class="text-gray-400 border-b border-gray-400 pb-1 hover:text-white hover:border-white transition-all text-sm font-medium">
+        Browse more products
+      </button>
+    </div>
+  </div>
+</section>

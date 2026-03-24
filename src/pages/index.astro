@@ -1,11 +1,29 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import TheFails from '../components/TheFails.astro';
+import LabTesting from '../components/LabTesting.astro';
+import GoodAndBad from '../components/GoodAndBad.astro';
+import Features from '../components/Features.vue';
+import WaitTheresMore from '../components/WaitTheresMore.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import FinalSearch from '../components/FinalSearch.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Trueview | Science over Opinion">
+	<Navbar />
+
+	<main>
+		<Hero />
+		<Stats />
+		<TheFails />
+		<LabTesting />
+		<GoodAndBad />
+		<Features client:load />
+		<WaitTheresMore />
+		<ProductGrid />
+		<FinalSearch />
+	</main>
 </Layout>
