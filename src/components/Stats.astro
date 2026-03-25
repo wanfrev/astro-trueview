@@ -11,20 +11,20 @@ const cards = [
 ];
 ---
 
-<section class="section-shell py-24 md:py-28">
+<section class="section-shell py-16 md:py-28">
   <div aria-hidden="true" class="absolute inset-0 -z-10 overflow-hidden">
     <div class="absolute left-[45%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-purple-900/20 blur-[160px]"></div>
     <div class="absolute right-[10%] top-[18%] h-[320px] w-[320px] rounded-full bg-blue-900/12 blur-[150px]"></div>
   </div>
 
-  <div class="max-w-[1320px] mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,560px)] items-center">
-    <h2 class="max-w-[620px] text-5xl md:text-[48px] font-bold leading-[1.06] tracking-[-0.03em]">
+  <div class="max-w-[1320px] mx-auto grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,560px)] items-center">
+    <h2 class="max-w-[620px] text-3xl sm:text-4xl md:text-[48px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] text-center md:text-left">
       We have lab tested many
       products and what we have
       found is <span class="text-[#ff5b58]">alarming</span>
     </h2>
 
-    <div class="grid grid-cols-2 gap-5 md:gap-6">
+    <div class="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6">
       {cards.map((card) => (
         <img src={card.src} alt={card.alt} class="block w-full h-auto" />
       ))}

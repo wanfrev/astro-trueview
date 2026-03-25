@@ -1,43 +1,48 @@
 ---
 import Phones from '../assets/phones.png';
+import Stars from '../assets/stars.png';
 ---
 
-<section class="section-shell py-24 md:py-28">
-  
-
-  <div class="max-w-330 mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] gap-8 md:gap-10 items-center">
-    <div class="relative z-10 max-w-155">
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[11px] uppercase tracking-wide text-gray-200">
+<section class="section-shell py-16 md:py-28">
+  <div class="max-w-330 mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] gap-12 md:gap-10 items-center">
+    <div class="relative z-10 max-w-155 text-center md:text-left">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-gray-200">
         <span class="inline-block h-2.5 w-2.5 rounded-full bg-linear-to-r from-trueview-blue to-trueview-red"></span>
         #1 trusted source for lab-tested supplements
       </span>
 
-      <h2 class="mt-7 text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+      <h2 class="mt-6 md:mt-7 text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.06] md:leading-[1.02] tracking-[-0.03em] md:tracking-[-0.035em]">
         Supplements don’t regulate
         <br />
         themselves, <span class="text-trueview-red">so we do!</span>
       </h2>
 
-      <p class="mt-8 text-gray-400 text-xl leading-relaxed">
+      <p class="mt-6 md:mt-8 text-gray-400 text-base sm:text-lg md:text-xl leading-[1.55] max-w-130 mx-auto md:mx-0">
         Reading lab reports shouldn’t turn into a full-time job.
-        We translate complex data into Pass/Fails-covering
-        accuracy, heavy metals, and microbes - just verify
-        into your fingertips.
+        We translate complex data into Pass/Fails-covering accuracy, heavy metals,
+        and microbes - just verify into your fingertips.
       </p>
 
-      <a href="/waitlist" class="mt-10 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#2f6bff] to-[#1f49e8] px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:brightness-110">
+      <a href="/waitlist" class="mt-8 md:mt-10 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#2f6bff] to-[#1f49e8] px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:brightness-110">
         Join the waitlist
         <span aria-hidden="true">→</span>
       </a>
     </div>
 
-    <div class="relative min-h-125 md:min-h-180">
+    <div class="relative min-h-[360px] sm:min-h-[480px] md:min-h-280 overflow-visible">
+      <img
+        src={Stars.src}
+        width={Stars.width}
+        height={Stars.height}
+        alt="Decorative stars"
+        class="pointer-events-none select-none absolute left-1/2 top-0 z-0 w-[320px] max-w-none -translate-x-1/2 sm:w-[440px] md:left-auto md:right-0 md:top-0 md:w-200 md:translate-x-0"
+      />
       <img
         src={Phones.src}
         width={Phones.width}
         height={Phones.height}
         alt="Vista previa de la app trueview en varios teléfonos"
-        class="pointer-events-none select-none absolute -right-28 -top-44 w-180 max-w-none md:-right-20 md:-top-56 md:w-200"
+        class="pointer-events-none select-none absolute left-1/2 -top-8 z-10 w-[360px] max-w-none -translate-x-1/2 sm:w-[500px] sm:-top-16 md:left-auto md:-right-20 md:-top-56 md:w-200 md:translate-x-0"
       />
     </div>
   </div>

@@ -35,9 +35,9 @@ const featureCards = [
 </script>
 
 <template>
-  <section class="section-shell py-24">
+  <section class="section-shell py-16 md:py-24">
     <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-4xl md:text-6xl font-bold tracking-tight">Features</h2>
+      <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">Features</h2>
 
       <div class="mt-8 flex flex-wrap justify-center gap-3">
         <span
@@ -49,16 +49,16 @@ const featureCards = [
         </span>
       </div>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4 text-left">
+      <div class="mt-10 md:mt-14 grid gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-4 text-left">
         <article
           v-for="card in featureCards"
           :key="card.title"
-          class="rounded-4xl border border-white/10 bg-white/4 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]"
+          class="rounded-4xl border border-white/10 bg-white/4 p-5 sm:p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]"
         >
           <div class="flex items-start justify-between gap-4">
             <div>
               <p class="text-xs uppercase tracking-[0.24em] text-gray-500">Feature</p>
-              <h3 class="mt-2 text-2xl font-bold leading-tight">{{ card.title }}</h3>
+              <h3 class="mt-2 text-xl sm:text-2xl font-bold leading-tight">{{ card.title }}</h3>
             </div>
           </div>
 
