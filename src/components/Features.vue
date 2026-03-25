@@ -1,8 +1,8 @@
 <script setup>
-import TopProducts from '../assets/topproducts.png?url'
-import RequestATest from '../assets/requestatest.png?url'
-import CumulativeEffect from '../assets/cumulativeeffect.png?url'
-import WeeklyCategory from '../assets/weeklycategory.png?url'
+import TopProducts from '../assets/images/topproducts.png?url'
+import RequestATest from '../assets/images/requestatest.png?url'
+import CumulativeEffect from '../assets/images/cumulativeeffect.png?url'
+import WeeklyCategory from '../assets/images/weeklycategory.png?url'
 
 const featureLabels = ['Top Products', 'Request a Test', 'Cumulative Effect', 'Weekly Category']
 

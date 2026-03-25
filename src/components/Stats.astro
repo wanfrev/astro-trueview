@@ -1,14 +1,17 @@
 ---
-import HerbalFailed from '../assets/HerbalFailed.png';
-import PrenatalFailed from '../assets/PrenatalFailed.png';
-import SuperGreensFailed from '../assets/SuperGreensFailed.png';
+import NaturalIcon from '../assets/icons/natural.svg';
+import PillIcon from '../assets/icons/Pill.svg';
+import PlantIcon from '../assets/icons/plant.svg';
+import PoisonIcon from '../assets/icons/poison.svg';
+import { Image } from 'astro:assets';
 
 const cards = [
-  { src: HerbalFailed.src, alt: 'Protein card' },
-  { src: SuperGreensFailed.src, alt: 'Super Greens card' },
-  { src: PrenatalFailed.src, alt: 'Prenatal card' },
-  { src: HerbalFailed.src, alt: 'Herbal Supplements card' },
+  { name: 'Protein', percentage: '70%', icon: PillIcon },
+  { name: 'Super Greens', percentage: '75%', icon: PlantIcon },
+  { name: 'Prenatal', percentage: '19%', icon: NaturalIcon },
+  { name: 'Herbal Supplements', percentage: '38%', icon: PoisonIcon },
 ];
+
 ---
 
 <section class="section-shell py-16 md:py-28">
@@ -24,9 +27,28 @@ const cards = [
       found is <span class="text-[#ff5b58]">alarming</span>
     </h2>
 
-    <div class="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6">
+    <div class="grid grid-cols-2 gap-4 sm:gap-6">
       {cards.map((card) => (
-        <img src={card.src} alt={card.alt} class="block w-full h-auto" />
+        <div class="bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between w-full aspect-[2/1] min-h-[120px] shadow-lg">
+          
+          <div class="flex justify-between items-start">
+            <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">
+              <span class="text-[#e74c4e] text-3xl md:text-[42px] font-bold tracking-tight leading-none">{card.percentage}</span>
+              <span class="text-[#e74c4e] text-sm md:text-base font-medium leading-none">Failed</span>
+            </div>
+            
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 border border-white/5 flex items-center justify-center shrink-0 rounded-tl-sm rounded-br-sm rounded-tr-2xl rounded-bl-2xl">
+              <Image src={card.icon} alt={`${card.name} icon`} class="w-6 h-6 md:w-8 md:h-8" />
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <h3 class="text-white text-base md:text-lg font-medium tracking-wide">
+              {card.name}
+            </h3>
+          </div>
+          
+        </div>
       ))}
     </div>
   </div>
