@@ -1,65 +1,93 @@
 ---
-import Union from '../assets/Union.png';
-import Phone from '../assets/phonecaution1.png';
-import OverLimit from '../assets/overlimit.png';
-import Brands from '../assets/brands.png';
-import Lead from '../assets/lead.png';
-import { Image } from 'astro:assets';
+import Union from "../assets/Union.png";
+import Phone from "../assets/phonecaution1.png";
+import OverLimit from "../assets/overlimit.png";
+import Brands from "../assets/brands.png";
+import Lead from "../assets/lead.png";
+import { Image } from "astro:assets";
 ---
 
-<section class="section-shell min-h-screen flex items-center pt-28 md:pt-32 pb-16 md:pb-20">
+<section
+  class="section-shell min-h-screen flex items-center pt-20 md:pt-24 pb-16 md:pb-20"
+>
   <div aria-hidden="true" class="absolute inset-0 -z-10">
-    <div class="absolute -top-24 -left-24 h-[560px] w-[560px] rounded-full bg-purple-900/35 blur-[150px]"></div>
-    <div class="absolute top-0 right-0 h-[560px] w-[560px] rounded-full bg-blue-900/18 blur-[170px]"></div>
-    <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[620px] w-[620px] rounded-full bg-purple-900/20 blur-[190px]"></div>
+    <div
+      class="absolute -top-24 -left-24 h-[560px] w-[560px] rounded-full bg-purple-900/35 blur-[150px]"
+    >
+    </div>
+    <div
+      class="absolute top-0 right-0 h-[560px] w-[560px] rounded-full bg-blue-900/18 blur-[170px]"
+    >
+    </div>
+    <div
+      class="absolute left-0 top-1/2 -translate-y-1/2 h-[620px] w-[620px] rounded-full bg-purple-900/20 blur-[190px]"
+    >
+    </div>
   </div>
 
-  <div class="max-w-[1320px] mx-auto grid md:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] gap-10 md:gap-14 items-center w-full">
-    <div class="order-2 md:order-1 relative flex justify-center md:justify-start">
-      <div class="relative w-full max-w-[600px]">
-        <Image src={Union} alt="" aria-hidden="true" class="absolute inset-0 z-0 h-full w-full object-contain pointer-events-none select-none" />
-        <Image src={Phone} alt="phone caution" class="relative z-10 mx-auto" />
+  <div
+    class="mx-auto grid w-full max-w-full items-center gap-10 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-4"
+  >
+    <div
+      class="order-2 md:order-1 relative -ml-12 flex justify-center md:-ml-32 md:justify-start"
+    >
+      <div class="relative w-full max-w-[800px]">
+        <Image
+          src={Union}
+          alt=""
+          aria-hidden="true"
+          class="absolute inset-0 z-0 h-full w-[600px] md:top-15 md:left-12 object-contain pointer-events-none select-none"
+        />
+        <Image
+          src={Phone}
+          alt="phone caution"
+          class="relative z-10 mx-auto max-w-full md:mx-0 md:ml-52"
+        />
 
         <Image
           src={OverLimit}
           alt=""
           aria-hidden="true"
-          class="pointer-events-none select-none absolute z-20 left-0 top-16 w-36 md:w-44"
+          class="pointer-events-none select-none absolute z-20 left-12 top-36 md:left-52 md:top-38 overflow-visible"
         />
 
         <Image
           src={Brands}
           alt=""
           aria-hidden="true"
-          class="pointer-events-none select-none absolute z-20 right-0 top-12 w-44 md:w-52"
+          class="pointer-events-none select-none absolute z-20 right-4 top-24 md:right-9 md:top-32"
         />
 
         <Image
           src={Lead}
           alt=""
           aria-hidden="true"
-          class="pointer-events-none select-none absolute z-20 -left-4 bottom-8 w-44 md:w-56"
+          class="pointer-events-none select-none absolute z-20 left-1 bottom-24 md:left-38 md:bottom-28"
         />
       </div>
     </div>
 
-    <div class="order-1 md:order-2 md:pl-3">
-      <h1 class="text-5xl sm:text-6xl md:text-[70px] font-bold leading-[1.03] tracking-[-0.02em]">
-        The only marketplace
-        <br />
-        where every product
-        <br />
-        are lab tested
+    <div class="order-1 md:order-2 md:pl-0">
+      <h1
+        class="text-5xl sm:text-6xl md:text-[84px] font-bold leading-[0.95] tracking-[-0.03em] text-white"
+      >
+        The only marketplace where every product are lab tested
       </h1>
 
-      <p class="mt-8 text-base sm:text-lg text-gray-400 max-w-[560px] leading-[1.55]">
+      <p
+        class="mt-10 text-base sm:text-xl text-white/60 max-w-[600px] font-medium leading-[1.4] tracking-tight"
+      >
         We don’t offer you an opinion, we just show you the science.
+        <br />
         If a product passes or fails we show you readable lab results.
+        <br />
         Make healthy decisions, quickly.
       </p>
 
-      <div class="mt-10">
-        <button class="bg-gradient-to-r from-[#2A66FF] to-[#1E48E8] hover:brightness-110 px-9 py-4 rounded-full font-semibold text-lg transition-all shadow-[0_10px_30px_rgba(37,99,235,0.35)] border border-white/10">
+      <div class="mt-12">
+        <button
+          class="bg-gradient-to-r from-[#2A66FF] to-[#1E48E8] hover:brightness-110 px-12 py-5 rounded-full font-bold text-xl transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 text-white"
+        >
           Search products
         </button>
       </div>

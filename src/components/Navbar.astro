@@ -3,24 +3,24 @@ import Logo from '../assets/Logo.svg';
 import { Image } from 'astro:assets';
 ---
 
-<nav aria-label="Principal" class="fixed inset-x-0 top-0 z-50">
-  <div class="mx-auto flex h-10 max-w-334.25 items-start justify-between px-6 pt-1.5 md:px-10 md:pt-1.75">
-    <a href="/" class="inline-flex shrink-0 items-start">
+<nav aria-label="Principal" class="fixed inset-x-0 top-0 z-50 bg-transparent">
+  <div class="mx-auto flex h-24 max-w-full items-center justify-between px-6 md:px-12">
+    <a href="/" class="inline-flex shrink-0">
         <Image
           src={Logo}
           alt="Trueview"
-          width={219}
-          height={41}
-          class="block h-10.25 w-auto"
+          width={180} 
+          height={40}
+          class="h-9 w-auto"
           loading="eager"
         />
     </a>
 
-    <div class="hidden items-start gap-9 md:inline-flex font-['Outfit',Inter,system-ui,sans-serif] text-base leading-none text-white">
-      <a href="/" class="font-bold transition-opacity hover:opacity-80">Home</a>
-      <a href="#" class="font-normal transition-opacity hover:opacity-80">About</a>
-      <a href="#" class="font-normal transition-opacity hover:opacity-80">Search</a>
-      <a href="#" class="font-normal transition-opacity hover:opacity-80">Brands</a>
+    <div class="hidden items-center gap-10 md:inline-flex font-['Outfit',sans-serif] text-[15px] tracking-wide text-white/90">
+      <a href="/" class="font-semibold text-white transition-opacity hover:opacity-100">Home</a>
+      <a href="#" class="font-medium opacity-70 transition-opacity hover:opacity-100">About</a>
+      <a href="#" class="font-medium opacity-70 transition-opacity hover:opacity-100">Search</a>
+      <a href="#" class="font-medium opacity-70 transition-opacity hover:opacity-100">Brands</a>
     </div>
   </div>
 </nav>
