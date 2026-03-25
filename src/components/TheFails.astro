@@ -1,7 +1,26 @@
+---
+import PhoneTop from '../assets/phonecaution2.png';
+import PhoneBottom from '../assets/phone3.png';
+import VioletBottle from '../assets/violetbottle.png';
+import VioletBottle2 from '../assets/violetbottle2.png';
+import Pill from '../assets/pill.png';
+import GreyBottle from '../assets/greybottle.png';
+import { Image } from 'astro:assets';
+---
+
 <section class="section-shell py-24">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-    <div class="relative h-full min-h-[420px] md:min-h-[620px]">
-      <div class="asset-placeholder h-full" data-label="Espacio visual the fails"></div>
+    <div class="relative h-full min-h-[420px] md:min-h-[620px] overflow-hidden">
+      <div aria-hidden="true" class="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_40%_45%,rgba(255,91,88,0.28),transparent_40%),radial-gradient(circle_at_50%_58%,rgba(173,29,255,0.22),transparent_55%)] blur-[6px]"></div>
+
+      <Image src={PhoneTop} alt="" aria-hidden="true" class="absolute left-[2%] top-[5%] z-10 w-auto max-w-none" />
+      <Image src={PhoneBottom} alt="" aria-hidden="true" class="absolute left-[20%] top-[34%] z-10 w-auto max-w-none" />
+
+      <Image src={VioletBottle} alt="" aria-hidden="true" class="absolute left-[10%] top-[0%] z-20 w-auto max-w-none opacity-75" />
+      <Image src={VioletBottle2} alt="" aria-hidden="true" class="absolute left-[30%] top-[6%] z-20 w-auto max-w-none opacity-75" />
+
+      <Image src={Pill} alt="" aria-hidden="true" class="absolute left-[0%] bottom-[10%] z-20 w-auto max-w-none opacity-70" />
+      <Image src={GreyBottle} alt="" aria-hidden="true" class="absolute left-[15%] bottom-[1%] z-20 w-auto max-w-none opacity-85" />
     </div>
 
     <div class="flex flex-col gap-6 md:items-end md:text-right">

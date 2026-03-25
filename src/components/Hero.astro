@@ -1,3 +1,9 @@
+---
+import Union from '../assets/Union.png';
+import Phone from '../assets/phonecaution1.svg';
+import { Image } from 'astro:assets';
+---
+
 <section class="section-shell min-h-screen flex items-center pt-28 md:pt-32 pb-16 md:pb-20">
   <div aria-hidden="true" class="absolute inset-0 -z-10">
     <div class="absolute -top-24 -left-24 h-[560px] w-[560px] rounded-full bg-purple-900/35 blur-[150px]"></div>
@@ -8,8 +14,8 @@
   <div class="max-w-[1320px] mx-auto grid md:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] gap-10 md:gap-14 items-center w-full">
     <div class="order-2 md:order-1 relative flex justify-center md:justify-start">
       <div class="relative w-full max-w-[600px]">
-        <div aria-hidden="true" class="absolute -left-10 bottom-0 h-[360px] w-[470px] rounded-t-[16rem] rounded-b-[2rem] bg-white/[0.09]"></div>
-        <div class="asset-placeholder is-blank relative z-10 h-[430px] sm:h-[540px] md:h-[660px]" aria-label="Espacio para artes del Hero"></div>
+        <Image src={Union} alt="" aria-hidden="true" class="absolute inset-0 z-0 h-full w-full object-contain pointer-events-none select-none" />
+        <Image src={Phone} alt="phone caution" class="relative z-10 mx-auto" />
       </div>
     </div>
 
