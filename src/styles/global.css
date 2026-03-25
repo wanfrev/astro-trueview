@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 
 @layer base {
@@ -23,7 +25,7 @@
 	}
 
 	.asset-placeholder {
-		@apply relative w-full rounded-[2rem] border border-dashed border-white/20 bg-white/[0.03] backdrop-blur-sm;
+		@apply relative w-full rounded-4xl border border-dashed border-white/20 bg-white/3 backdrop-blur-sm;
 		min-height: 420px;
 	}
 

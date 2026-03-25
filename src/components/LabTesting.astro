@@ -1,3 +1,7 @@
+---
+import Group from '../assets/group.png';
+---
+
 <section class="section-shell py-24">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
     <div>
@@ -24,8 +28,16 @@
       </div>
     </div>
 
-    <div class="relative h-full min-h-[420px] md:min-h-[540px]">
-      <div class="asset-placeholder h-full" data-label="Espacio visual lab testing"></div>
+    <div class="relative h-full min-h-105 md:min-h-135 flex items-center justify-center">
+      <div aria-hidden="true" class="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(79,70,229,0.22),transparent_35%),radial-gradient(circle_at_70%_55%,rgba(239,68,68,0.18),transparent_40%)] blur-3xl"></div>
+
+      <img
+        src={Group.src}
+        width={Group.width}
+        height={Group.height}
+        alt="Ilustración de resultados de laboratorio de productos"
+        class="relative z-10 drop-shadow-[0_28px_70px_rgba(0,0,0,0.45)]"
+      />
     </div>
   </div>
 </section>

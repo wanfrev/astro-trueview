@@ -1,6 +1,9 @@
 ---
 import Union from '../assets/Union.png';
-import Phone from '../assets/phonecaution1.svg';
+import Phone from '../assets/phonecaution1.png';
+import OverLimit from '../assets/overlimit.png';
+import Brands from '../assets/brands.png';
+import Lead from '../assets/lead.png';
 import { Image } from 'astro:assets';
 ---
 
@@ -16,6 +19,27 @@ import { Image } from 'astro:assets';
       <div class="relative w-full max-w-[600px]">
         <Image src={Union} alt="" aria-hidden="true" class="absolute inset-0 z-0 h-full w-full object-contain pointer-events-none select-none" />
         <Image src={Phone} alt="phone caution" class="relative z-10 mx-auto" />
+
+        <Image
+          src={OverLimit}
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none select-none absolute z-20 left-0 top-16 w-36 md:w-44"
+        />
+
+        <Image
+          src={Brands}
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none select-none absolute z-20 right-0 top-12 w-44 md:w-52"
+        />
+
+        <Image
+          src={Lead}
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none select-none absolute z-20 -left-4 bottom-8 w-44 md:w-56"
+        />
       </div>
     </div>
 

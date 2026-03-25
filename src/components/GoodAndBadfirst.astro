@@ -1,0 +1,63 @@
+---
+import ZincPhone from '../assets/zinc.png';
+import ZincCard1 from '../assets/zinccard1.png';
+import ZincCard2 from '../assets/zinccard2.png';
+import ZincCard3 from '../assets/zinccard3.png';
+import ZincCard4 from '../assets/zinccard4.png';
+import { Image } from 'astro:assets';
+---
+
+<section class="section-shell py-24">
+  <div class="mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
+    <div class="order-1 max-w-xl">
+      <span class="mb-4 block text-lg font-medium text-[#2563eb]">The Good and the Bad</span>
+
+      <h2 class="text-4xl font-bold leading-tight md:text-5xl">
+        Reading lab reports sucks. <br />
+        <span class="text-white/90">We show you the critical information.</span>
+      </h2>
+
+      <p class="mt-8 max-w-lg text-lg leading-relaxed text-gray-400">
+        We don’t offer you an opinion, we just show you the science.
+        If a product passes or fails we show you readable lab results.
+        Make healthy decisions, quickly.
+      </p>
+    </div>
+
+    <div class="order-2">
+      <div class="relative mx-auto h-[700px] w-full max-w-[720px] overflow-visible">
+        <div aria-hidden="true" class="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(37,99,235,0.28)_0%,_rgba(24,24,84,0.14)_45%,_transparent_75%)] blur-[120px]"></div>
+
+        <Image
+          src={ZincPhone}
+          alt="Nature's Bounty Zinc 50mg lab result"
+          class="absolute left-[250px] top-0 z-10 h-auto w-auto rotate-[1.5deg] drop-shadow-[0_36px_80px_rgba(0,0,0,0.5)] md:left-[240px]"
+        />
+
+        <Image
+          src={ZincCard3}
+          alt="Heavy Metals Passed"
+          class="absolute left-[34px] top-[435px] z-20 h-auto w-auto drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] md:left-[18px]"
+        />
+
+        <Image
+          src={ZincCard4}
+          alt="Microbiological 7/7 Passed"
+          class="absolute left-0 top-[548px] z-20 h-auto w-auto drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)]"
+        />
+
+        <Image
+          src={ZincCard2}
+          alt="Potency Claim"
+          class="absolute left-[355px] top-[420px] z-20 h-auto w-auto drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] md:left-[345px]"
+        />
+
+        <Image
+          src={ZincCard1}
+          alt="Contaminants Detected: 0"
+          class="absolute left-[455px] top-[165px] z-20 h-auto w-auto drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] md:left-[430px]"
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,90 +1,78 @@
 <script setup>
-import { ref } from 'vue'
-const activeTab = ref('top-products')
+import TopProducts from '../assets/topproducts.png?url'
+import RequestATest from '../assets/requestatest.png?url'
+import CumulativeEffect from '../assets/cumulativeeffect.png?url'
+import WeeklyCategory from '../assets/weeklycategory.png?url'
 
-const tabs = [
-  { id: 'top-products', label: 'Top Products', icon: '✦' },
-  { id: 'request-test', label: 'Request a Test', icon: '✚' },
-  { id: 'cumulative', label: 'Cumulative Effect', icon: '✷' },
-  { id: 'weekly', label: 'Weekly Category', icon: '◆' }
-]
+const featureLabels = ['Top Products', 'Request a Test', 'Cumulative Effect', 'Weekly Category']
 
-const content = {
-  'top-products': {
+const featureCards = [
+  {
     title: 'Top Products',
-    desc: 'Browse high-performing supplements ranked by purity and accuracy.'
+    description: 'Browse high-performing supplements ranked by purity and accuracy.',
+    image: TopProducts,
+    alt: 'Top Products feature preview'
   },
-  'request-test': {
+  {
     title: 'Request a Test',
-    desc: 'Don’t see your product? Request a test and we’ll get it done for you.'
+    description: 'Request products to be lab tested and added to the catalog.',
+    image: RequestATest,
+    alt: 'Request a Test feature preview'
   },
-  cumulative: {
+  {
     title: 'Cumulative Effect',
-    desc: 'Understand cumulative exposure and how repeated use can impact your health.'
+    description: 'Understand cumulative exposure across repeated product use.',
+    image: CumulativeEffect,
+    alt: 'Cumulative Effect feature preview'
   },
-  weekly: {
+  {
     title: 'Weekly Category',
-    desc: 'Fresh results every week with new products tested and updated regularly.'
+    description: 'Fresh results every week with updated categories and products.',
+    image: WeeklyCategory,
+    alt: 'Weekly Category feature preview'
   }
-}
+]
 </script>
 
 <template>
-  <section class="section-shell py-24 text-center">
-    <h2 class="text-4xl md:text-6xl font-bold mb-12">Features</h2>
+  <section class="section-shell py-24">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-4xl md:text-6xl font-bold tracking-tight">Features</h2>
 
-    <div class="inline-flex flex-wrap justify-center gap-3 p-2 bg-white/5 border border-white/10 rounded-full mb-16">
-      <button
-        v-for="tab in tabs"
-        :key="tab.id"
-        @click="activeTab = tab.id"
-        :class="[
-          'px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2',
-          activeTab === tab.id
-            ? 'bg-white text-black shadow-lg'
-            : 'text-gray-400 hover:text-white'
-        ]"
-      >
-        <span :class="activeTab === tab.id ? 'text-blue-600' : 'text-gray-500'">{{ tab.icon }}</span>
-        {{ tab.label }}
-      </button>
-    </div>
-
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-6 mb-10 text-left">
-        <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
-          <h3 class="text-3xl font-bold mb-3">{{ content[activeTab].title }}</h3>
-          <p class="text-gray-400 leading-relaxed">{{ content[activeTab].desc }}</p>
-          <div class="asset-placeholder min-h-[340px] mt-8" :data-label="`Espacio visual ${content[activeTab].title}`"></div>
-        </article>
-
-        <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
-          <h3 class="text-3xl font-bold mb-3">Weekly Category</h3>
-          <p class="text-gray-400 leading-relaxed">
-            New products tested and results updated regularly.
-          </p>
-          <div class="asset-placeholder min-h-[340px] mt-8" data-label="Espacio visual weekly category"></div>
-        </article>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <span
+          v-for="label in featureLabels"
+          :key="label"
+          class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-gray-200"
+        >
+          {{ label }}
+        </span>
       </div>
 
-      <transition name="fade" mode="out-in">
-        <div :key="activeTab" class="max-w-xl mx-auto">
-          <p class="text-gray-400 leading-relaxed">{{ content[activeTab].desc }}</p>
-        </div>
-      </transition>
+      <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4 text-left">
+        <article
+          v-for="card in featureCards"
+          :key="card.title"
+          class="rounded-4xl border border-white/10 bg-white/4 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-gray-500">Feature</p>
+              <h3 class="mt-2 text-2xl font-bold leading-tight">{{ card.title }}</h3>
+            </div>
+          </div>
+
+          <p class="mt-3 text-sm leading-relaxed text-gray-400">{{ card.description }}</p>
+
+          <div class="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-black/20 p-3">
+            <img
+              :src="card.image"
+              :alt="card.alt"
+              class="h-auto w-full select-none object-contain"
+            />
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.25s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-}
-</style>

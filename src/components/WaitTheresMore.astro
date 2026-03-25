@@ -1,27 +1,44 @@
-<section class="section-shell py-28">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-    <div>
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-widest text-gray-300">
+---
+import Phones from '../assets/phones.png';
+---
+
+<section class="section-shell py-24 md:py-28">
+  
+
+  <div class="max-w-330 mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] gap-8 md:gap-10 items-center">
+    <div class="relative z-10 max-w-155">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[11px] uppercase tracking-wide text-gray-200">
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-linear-to-r from-trueview-blue to-trueview-red"></span>
         #1 trusted source for lab-tested supplements
       </span>
 
-      <h2 class="text-5xl md:text-6xl font-bold tracking-tight leading-tight mt-8">
-        Supplements don’t regulate themselves,
-        <span class="text-[#ef4444]">so we do!</span>
+      <h2 class="mt-7 text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+        Supplements don’t regulate
+        <br />
+        themselves, <span class="text-trueview-red">so we do!</span>
       </h2>
 
-      <p class="text-gray-400 text-xl max-w-xl leading-relaxed mt-8">
-        Reading lab reports shouldn’t turn into a full-time job. We translate
-        complex data into Pass/Fails covering accuracy, heavy metals, and microbes.
+      <p class="mt-8 text-gray-400 text-xl leading-relaxed">
+        Reading lab reports shouldn’t turn into a full-time job.
+        We translate complex data into Pass/Fails-covering
+        accuracy, heavy metals, and microbes - just verify
+        into your fingertips.
       </p>
 
-      <button class="mt-10 bg-trueview-blue hover:bg-blue-600 px-8 py-4 rounded-full font-semibold text-lg transition-all">
+      <a href="/waitlist" class="mt-10 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#2f6bff] to-[#1f49e8] px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:brightness-110">
         Join the waitlist
-      </button>
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
 
-    <div class="relative min-h-[420px] md:min-h-[620px]">
-      <div class="asset-placeholder h-full" data-label="Espacio visual waitlist"></div>
+    <div class="relative min-h-125 md:min-h-180">
+      <img
+        src={Phones.src}
+        width={Phones.width}
+        height={Phones.height}
+        alt="Vista previa de la app trueview en varios teléfonos"
+        class="pointer-events-none select-none absolute -right-28 -top-44 w-180 max-w-none md:-right-20 md:-top-56 md:w-200"
+      />
     </div>
   </div>
 </section>
