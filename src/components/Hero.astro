@@ -1,7 +1,7 @@
 ---
-// Importa solo el teléfono y los recursos de fondo. 
+// Importa solo el teléfono y los recursos de fondo.
 // ¡Ya puedes borrar los imports de overlimit, brands y lead en PNG!
-import Union from "../assets/images/Union.png";
+import Union from "../assets/icons/Union.svg";
 import Phone from "../assets/images/phonecaution1.png";
 import Logo1 from "../assets/icons/logo1.png";
 import Logo2 from "../assets/icons/logo2.png";
@@ -16,28 +16,41 @@ import { Image } from "astro:assets";
 // Aquí importarás tus SVGs de marcas cuando los tengas listos
 // import Logo1 from "../assets/logos/logo1.svg";
 
-const topBrandLogos = [Logo1, Logo2, Logo4, Logo5, Logo6];
+const topBrandLogos = [Logo1, Logo2, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
 ---
 
 <section
   class="section-shell min-h-screen flex items-center pt-24 md:pt-24 pb-14 md:pb-20 overflow-hidden"
 >
   <div aria-hidden="true" class="absolute inset-0 -z-10">
-    <div class="absolute -top-24 -left-24 h-[560px] w-[560px] rounded-full bg-purple-900/35 blur-[150px]"></div>
-    <div class="absolute top-0 right-0 h-[560px] w-[560px] rounded-full bg-blue-900/18 blur-[170px]"></div>
-    <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[620px] w-[620px] rounded-full bg-purple-900/20 blur-[190px]"></div>
+    <div
+      class="absolute -top-24 -left-24 h-[560px] w-[560px] rounded-full bg-purple-900/35 blur-[150px]"
+    >
+    </div>
+    <div
+      class="absolute top-0 right-0 h-[560px] w-[560px] rounded-full bg-blue-900/18 blur-[170px]"
+    >
+    </div>
+    <div
+      class="absolute left-0 top-1/2 -translate-y-1/2 h-[620px] w-[620px] rounded-full bg-purple-900/20 blur-[190px]"
+    >
+    </div>
   </div>
 
-  <div class="mx-auto grid w-full max-w-full items-center gap-12 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-4">
-    
-    <div class="order-2 md:order-1 relative ml-0 flex justify-center md:-ml-32 md:justify-start">
-      <div class="relative w-full max-w-[800px] min-h-[360px] sm:min-h-[460px] md:min-h-0 perspective-[1000px]">
-        
+  <div
+    class="mx-auto grid w-full max-w-full items-center gap-12 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-4"
+  >
+    <div
+      class="order-2 md:order-1 relative ml-0 flex justify-center md:-ml-32 md:justify-start"
+    >
+      <div
+        class="relative w-full max-w-[800px] min-h-[360px] sm:min-h-[460px] md:min-h-0 perspective-[1000px]"
+      >
         <Image
           src={Union}
           alt=""
           aria-hidden="true"
-          class="absolute left-1/2 top-8 z-0 w-[360px] -translate-x-1/2 object-contain pointer-events-none select-none sm:top-4 sm:w-[480px] md:left-12 md:top-[60px] md:w-[600px] md:translate-x-0"
+          class="absolute left-1/2 top-8 z-0 w-[360px] -translate-x-1/2 object-contain pointer-events-none select-none sm:top-4 sm:w-[480px] md:left-30 md:top-[215px] md:w-[600px] md:translate-x-0"
         />
         <Image
           src={Phone}
@@ -45,77 +58,108 @@ const topBrandLogos = [Logo1, Logo2, Logo4, Logo5, Logo6];
           class="relative z-10 mx-auto w-[300px] max-w-full sm:w-[380px] md:mx-0 md:ml-52 md:w-auto drop-shadow-2xl"
         />
 
-        <div class="absolute z-20 left-2 top-28 sm:left-6 sm:top-[136px] md:left-40 md:top-40 transition-transform duration-500 hover:-translate-y-2 hover:scale-105">
-          <div class="bg-gradient-to-r from-[#4A3B69] via-[#655383] to-[#A499B7] rounded-xl p-4 shadow-[0_15px_30px_rgba(0,0,0,0.4)] border border-white/20 flex flex-col items-center justify-center w-[130px] sm:w-[150px]">
-            <span class="text-white text-xl sm:text-2xl font-bold tracking-tight leading-none">239.00%</span>
-            <span class="text-white/90 text-[10px] sm:text-xs tracking-[0.2em] uppercase mt-1">Over Limit</span>
+        <div
+          class="absolute z-20 left-2 top-28 sm:left-6 sm:top-[136px] md:left-54 md:top-34 transition-transform duration-500 hover:-translate-y-2 hover:scale-105"
+        >
+          <div
+            class="flex h-[73px] w-[143px] flex-col items-center justify-center rounded-[7px] border border-white/20 bg-gradient-to-r from-[#4A3B69] via-[#655383] to-[#A499B7] px-3 shadow-[0_12px_28px_rgba(0,0,0,0.36)] backdrop-blur-xl"
+          >
+            <span class="text-white text-[20px] font-bold tracking-tight leading-none">239.00%</span>
+            <span class="text-white/90 text-[10px] tracking-[0.2em] uppercase mt-1">Over Limit</span>
           </div>
         </div>
 
-        <div class="absolute z-20 right-0 top-[72px] sm:right-4 sm:top-24 md:right-4 md:top-32 transition-transform duration-500 hover:-translate-y-2 hover:scale-105">
-          <div class="relative overflow-hidden bg-[#593E67] rounded-2xl p-5 shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-white/15 w-[160px] sm:w-[220px]">
-            <div class="absolute top-0 -left-10 w-[50%] h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12"></div>
-            
-            <div class="relative z-10">
-              <h3 class="text-white text-3xl sm:text-5xl font-bold leading-none tracking-tight">100+</h3>
-              <p class="text-white/80 text-[8px] sm:text-[10px] tracking-widest uppercase mt-1 mb-3">Hundreds of top brands</p>
-              
-              <div class="flex -space-x-3 sm:-space-x-4 items-center pt-1">
-                {topBrandLogos.map((logo) => (
-                  <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/95 border-2 border-[#593E67] flex items-center justify-center shadow-sm overflow-hidden shrink-0">
-                    <Image src={logo} alt="Top brand logo" class="h-5 w-5 sm:h-6 sm:w-6 object-contain" />
-                  </div>
-                ))}
+        <div
+          class="absolute z-20 right-0 top-[72px] sm:right-4 sm:top-24 md:right-9 md:top-31 transition-all duration-500 hover:-translate-y-2"
+        >
+          <div
+            class="relative w-[168px] h-[127px] rounded-[32px] border border-white/10 bg-[#533B5E]/80 p-4 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:w-[168px] sm:h-[127px]"
+          >
+            <div class="relative z-10 flex flex-col h-full">
+              <div class="flex-0">
+                <h3
+                  class="text-white text-[28px] font-bold leading-none tracking-tighter"
+                >
+                  100+
+                </h3>
+                <p
+                  class="mt-1 text-white/60 text-[8px] font-bold uppercase tracking-[0.1em]"
+                >
+                  Hundreds of top brands
+                </p>
+              </div>
+
+              <div class="mt-auto flex items-center -space-x-3">
+                {
+                  topBrandLogos.map((logo) => (
+                    <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-white bg-white shadow-lg">
+                      <Image
+                        src={logo}
+                        alt="Brand"
+                        class="h-[80%] w-[80%] object-contain"
+                      />
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>
         </div>
 
-        <div class="absolute z-30 left-0 bottom-12 sm:left-1 sm:bottom-20 md:left-32 md:bottom-20 transition-transform duration-500 hover:-translate-y-2 hover:scale-105">
-          <div class="w-[240px] sm:w-[280px] rounded-2xl bg-gradient-to-r from-[#4B3C4F] via-[#7B6C80] to-[#f4f4f4] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-stretch p-2 sm:p-3 gap-2 border border-white/20 backdrop-blur-md">
-            
-            <div class="flex items-center gap-2 sm:gap-3 flex-1 pl-1">
-               <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FFEAE8] flex items-center justify-center shrink-0 shadow-inner">
-                 <svg class="w-3 h-3 sm:w-4 sm:h-4 text-[#FF5B5B]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                 </svg>
-               </div>
-               <div class="flex flex-col">
-                 <span class="text-white font-semibold text-sm sm:text-base leading-tight">Lead</span>
-                 <span class="text-white/60 text-[9px] sm:text-[10px] mb-0.5">Limit: 0.5 (ppm)</span>
-                 <div class="flex items-baseline gap-1 mt-0.5">
-                   <span class="text-[#FF5B5B] font-bold text-sm leading-none">1.77</span>
-                   <span class="text-white/70 text-[9px] sm:text-[10px]">ppm Detected</span>
-                 </div>
-               </div>
+        <div
+          class="absolute z-30 left-0 bottom-12 sm:left-1 sm:bottom-20 md:left-48 md:bottom-29 transition-all duration-500 hover:-translate-y-2"
+        >
+          <div
+            class="relative w-[240px] h-[75px] rounded-[18px] bg-gradient-to-r from-[#4B3C4F] via-[#7B6C80] to-[#f4f4f4] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center p-2 gap-2 border border-white/20 backdrop-blur-md"
+          >
+            <div class="flex items-center gap-2 flex-1 pl-1">
+              <div class="h-8 w-8 rounded-full bg-[#FFEAE8] flex items-center justify-center shrink-0 shadow-inner">
+                <svg class="h-3 w-3 text-[#FF5B5B]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-white font-semibold text-sm leading-tight">Lead</span>
+                <span class="text-white/60 text-[9px] mb-0.5">Limit: 0.5 (ppm)</span>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-[#FF5B5B] font-bold text-sm leading-none">1.77</span>
+                  <span class="text-white/70 text-[9px]">ppm Detected</span>
+                </div>
+              </div>
             </div>
 
-            <div class="bg-[#EE5F5F] rounded-xl p-2 sm:p-2.5 flex flex-col items-center justify-center shrink-0 w-[80px] sm:w-[90px] shadow-[0_5px_15px_rgba(238,95,95,0.4)] border border-red-400/50">
-               <span class="text-white font-bold text-sm sm:text-base leading-none">230.00%</span>
-               <span class="text-white/90 text-[9px] sm:text-[10px] mt-1 tracking-wide">over limit</span>
+            <div class="flex h-12 w-[86px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FF6B57] to-[#F24E4E] px-2 shadow-[0_5px_15px_rgba(238,95,95,0.4)] border border-red-400/50">
+              <div class="flex flex-col items-center">
+                <span class="text-white font-bold text-sm leading-none">230.00%</span>
+                <span class="text-white/90 text-[9px] mt-1 tracking-wide">over limit</span>
+              </div>
             </div>
-            
           </div>
         </div>
-
       </div>
     </div>
 
     <div class="order-1 md:order-2 md:pl-0 text-center md:text-left z-10">
-      <h1 class="mx-auto max-w-[680px] text-4xl sm:text-5xl md:text-[84px] font-bold leading-[0.98] md:leading-[0.95] tracking-[-0.03em] text-white md:mx-0">
+      <h1
+        class="mx-auto max-w-[680px] text-4xl sm:text-5xl md:text-[84px] font-bold leading-[0.98] md:leading-[0.95] tracking-[-0.03em] text-white md:mx-0"
+      >
         The only marketplace where every product are lab tested
       </h1>
 
-      <p class="mt-6 md:mt-10 text-base sm:text-lg md:text-xl text-white/60 max-w-[600px] font-medium leading-[1.5] md:leading-[1.4] tracking-tight mx-auto md:mx-0">
-        We don’t offer you an opinion, we just show you the science. 
-        <br class="hidden md:block">
-        If a product passes or fails we show you readable lab results. 
-        <br class="hidden md:block">
+      <p
+        class="mt-6 md:mt-10 text-base sm:text-lg md:text-xl text-white/60 max-w-[600px] font-medium leading-[1.5] md:leading-[1.4] tracking-tight mx-auto md:mx-0"
+      >
+        We don’t offer you an opinion, we just show you the science.
+        <br class="hidden md:block" />
+        If a product passes or fails we show you readable lab results.
+        <br class="hidden md:block" />
         Make healthy decisions, quickly.
       </p>
 
       <div class="mt-8 md:mt-12 flex justify-center md:justify-start">
-        <button class="w-[192px] h-[60px] bg-gradient-to-r from-[#2A66FF] to-[#1E48E8] hover:brightness-105 rounded-full font-bold text-base text-white flex items-center justify-center transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 leading-none hover:scale-105 active:scale-95">
+        <button
+          class="w-[192px] h-[60px] bg-gradient-to-r from-[#2A66FF] to-[#1E48E8] hover:brightness-105 rounded-full font-bold text-base text-white flex items-center justify-center transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 leading-none hover:scale-105 active:scale-95"
+        >
           Search products
         </button>
       </div>
