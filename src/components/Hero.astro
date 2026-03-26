@@ -3,24 +3,18 @@
 // ¡Ya puedes borrar los imports de overlimit, brands y lead en PNG!
 import Union from "../assets/icons/Union.svg";
 import Phone from "../assets/images/phonecaution1.png";
-import Logo1 from "../assets/icons/logo1.png";
-import Logo2 from "../assets/icons/logo2.png";
-import Logo4 from "../assets/icons/logo4.png";
-import Logo5 from "../assets/icons/logo5.png";
-import Logo6 from "../assets/icons/logo6.png";
-import Logo7 from "../assets/icons/logo7.png";
-import Logo8 from "../assets/icons/logo8.png";
-import Logo9 from "../assets/icons/logo9.png";
+import Brands from "../assets/icons/brands.svg";
 import { Image } from "astro:assets";
 
 // Aquí importarás tus SVGs de marcas cuando los tengas listos
 // import Logo1 from "../assets/logos/logo1.svg";
 
-const topBrandLogos = [Logo1, Logo2, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
+// Usamos un único SVG con todas las marcas
+const topBrandLogos = Brands;
 ---
 
 <section
-  class="section-shell min-h-screen flex items-center pt-24 md:pt-24 pb-14 md:pb-20 overflow-hidden"
+  class="section-shell min-h-screen flex items-center pt-36 md:pt-36 pb-14 md:pb-20 overflow-hidden"
 >
   <div aria-hidden="true" class="absolute inset-0 -z-10">
     <div
@@ -89,18 +83,12 @@ const topBrandLogos = [Logo1, Logo2, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
                 </p>
               </div>
 
-              <div class="mt-auto flex items-center -space-x-3">
-                {
-                  topBrandLogos.map((logo) => (
-                    <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border-[1.5px] border-white bg-white shadow-lg">
-                      <Image
-                        src={logo}
-                        alt="Brand"
-                        class="h-[80%] w-[80%] object-contain"
-                      />
-                    </div>
-                  ))
-                }
+              <div class="mt-auto flex items-center justify-center">
+                <Image
+                  src={topBrandLogos}
+                  alt="Brands"
+                  class="h-8 w-auto object-contain"
+                />
               </div>
             </div>
           </div>
