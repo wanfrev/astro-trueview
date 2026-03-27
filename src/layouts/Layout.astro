@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Background from '../components/Background.astro';
 
 interface Props {
 	title?: string;
@@ -16,6 +17,7 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="selection:bg-trueview-blue/30">
+		<Background />
 		<slot />
 	</body>
 </html>
