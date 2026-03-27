@@ -4,8 +4,8 @@ import { Image } from 'astro:assets';
 
 ---
 
-<nav aria-label="Principal" class="fixed inset-x-0 top-0 z-50 bg-transparent">
-  <div class="mx-auto flex h-30 w-full max-w-[1700px] items-center justify-between px-4 md:px-6">
+<nav id="site-navbar" aria-label="Principal" class="fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-300 ease-out">
+  <div class="mx-auto flex h-30 w-full max-w-425 items-center justify-between px-4 md:px-6">
     <a href="/" class="flex shrink-0 transition-transform active:scale-95">
         <Image
           src={Logo}
@@ -20,7 +20,7 @@ import { Image } from 'astro:assets';
     <div class="hidden items-center gap-10 md:inline-flex font-['Outfit',sans-serif]">
       <a 
         href="/" 
-        class="text-[16px] md:text-[20px] font-semibold tracking-wide text-white transition-all hover:text-white/100"
+        class="text-[16px] md:text-[20px] font-semibold tracking-wide text-white transition-all hover:text-white"
       >
         Home
       </a>
@@ -52,3 +52,33 @@ import { Image } from 'astro:assets';
     </button>
   </div>
 </nav>
+
+<script is:inline>
+  (() => {
+    const navbar = document.getElementById('site-navbar');
+    if (!navbar) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateNavbar = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+
+      if (currentScrollY > 40 && scrollingDown) {
+        navbar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      } else {
+        navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateNavbar);
+    }, { passive: true });
+  })();
+</script>
