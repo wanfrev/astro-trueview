@@ -29,7 +29,7 @@ const cards = [
 
     <div class="grid grid-cols-2 gap-4 sm:gap-6">
       {cards.map((card) => (
-        <div class="bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between w-full aspect-[2/1] min-h-[120px] shadow-lg">
+        <div class="bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-lg">
           
           <div class="flex justify-between items-start">
             <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">
@@ -42,8 +42,8 @@ const cards = [
             </div>
           </div>
 
-          <div class="mt-4">
-            <h3 class="text-white text-base md:text-lg font-medium tracking-wide">
+          <div class="mt-1">
+            <h3 class="text-white text-base md:text-lg font-small tracking-wide">
               {card.name}
             </h3>
           </div>

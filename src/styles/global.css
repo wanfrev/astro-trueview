@@ -78,4 +78,14 @@
 	.asset-placeholder.is-blank::after {
 		content: none;
 	}
+
+	.card {
+		width: var(--card-width, 323.09px);
+		height: var(--card-height, 150.08px);
+		max-width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		box-sizing: border-box;
+	}
 }
