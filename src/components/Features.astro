@@ -48,7 +48,7 @@ const featureCards = [
 ---
 
 <section class="py-24 md:py-32 bg-[#050505] text-white overflow-hidden">
-  <div class="max-w-[1400px] mx-auto px-6">
+  <div class="max-w-[1700px] mx-auto px-6">
     
     <div class="text-center mb-16">
       <h2 class="text-5xl md:text-[90px] font-bold tracking-tighter mb-10">Features</h2>
@@ -65,17 +65,18 @@ const featureCards = [
         ))}
       </div>
     </div>
+  </div>
 
-    <div 
-      id="features-container"
-      class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-12 -mx-6 px-6"
-      style="scrollbar-width: none; -ms-overflow-style: none;"
-    >
-      {featureCards.map((card) => (
-        <article 
-          id={card.id}
-          class={`group relative flex flex-col justify-between overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-10 px-8 md:px-10 min-h-[580px] shrink-0 snap-center transition-all duration-500 hover:border-white/10 ${card.widthClass}`}
-        >
+  <div 
+    id="features-container"
+    class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-12 w-full"
+    style="--pad: max(1.5rem, calc((100vw - 1700px) / 2 + 1.5rem)); padding-left: var(--pad); padding-right: 1.5rem; scroll-padding-left: var(--pad); scrollbar-width: none; -ms-overflow-style: none;"
+  >
+    {featureCards.map((card) => (
+      <article 
+        id={card.id}
+        class={`group relative flex flex-col justify-between overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-10 px-8 md:px-10 min-h-[580px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.widthClass}`}
+      >
           
           <div class="max-w-[360px] text-left">
             <h3 class="text-2xl md:text-[28px] font-bold mb-3 tracking-tight">{card.title}</h3>
@@ -96,7 +97,6 @@ const featureCards = [
         </article>
       ))}
     </div>
-  </div>
 </section>
 
 <style>
