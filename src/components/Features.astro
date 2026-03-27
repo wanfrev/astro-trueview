@@ -19,14 +19,14 @@ const featureCards = [
     description: 'A comprehensive catalog showcasing top industry brands and products, each verified through laboratory testing.',
     image: TopProducts,
     // Card más ancha para los dos teléfonos
-    widthClass: 'w-[90vw] md:w-[950px]'
+    widthClass: 'w-[92vw] md:w-[1050px]'
   },
   {
     id: 'feature-1',
     title: 'Request a Test',
     description: "Don't see your product? Request a test and we'll get it done for you.",
     image: RequestATest,
-    widthClass: 'w-[85vw] md:w-[500px]'
+    widthClass: 'w-[88vw] md:w-[580px]'
   },
   {
     id: 'feature-2',
@@ -34,7 +34,7 @@ const featureCards = [
     description: 'Understand cumulative exposure across repeated product use.',
     image: CumulativeEffect,
     // Card intermedia
-    widthClass: 'w-[90vw] md:w-[750px]'
+    widthClass: 'w-[92vw] md:w-[850px]'
   },
   {
     id: 'feature-3',
@@ -42,7 +42,7 @@ const featureCards = [
     description: 'Fresh results every week. New products tested and results updated regularly.',
     image: WeeklyCategory,
     // Card ancha para los dos teléfonos
-    widthClass: 'w-[90vw] md:w-[950px]'
+    widthClass: 'w-[92vw] md:w-[1050px]'
   }
 ];
 ---
@@ -75,26 +75,25 @@ const featureCards = [
     {featureCards.map((card) => (
       <article 
         id={card.id}
-        class={`group relative flex flex-col justify-between overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-10 px-8 md:px-10 min-h-[580px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.widthClass}`}
+        class={`group relative flex flex-col overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-12 px-8 md:px-12 h-[550px] md:h-[920px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.id === 'feature-0' ? 'md:-ml-34' : ''} ${card.widthClass}`}
       >
-          
-          <div class="max-w-[360px] text-left">
-            <h3 class="text-2xl md:text-[28px] font-bold mb-3 tracking-tight">{card.title}</h3>
-            <p class="text-[15px] md:text-[16px] leading-relaxed text-gray-400 font-medium opacity-80">
-              {card.description}
-            </p>
-          </div>
+        <div class="max-w-[400px] text-left z-20 relative">
+          <h3 class="text-3xl md:text-[34px] font-bold mb-4 tracking-tight leading-tight">{card.title}</h3>
+          <p class="text-[16px] md:text-[17px] leading-relaxed text-gray-400 font-medium opacity-90">
+            {card.description}
+          </p>
+        </div>
 
-          <div class="mt-8 relative flex justify-center items-end h-full">
-            <div class="absolute bottom-[-20px] h-[150px] w-full bg-blue-500/5 blur-[80px] rounded-full pointer-events-none"></div>
-            
-            <Image 
-              src={card.image} 
-              alt={card.title} 
-              class="relative z-10 w-full h-auto object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.03]" 
-            />
-          </div>
-        </article>
+        <div class="absolute inset-0 flex items-end justify-center pointer-events-none pt-24">
+          <div class="absolute bottom-[-10%] h-[200px] w-full bg-blue-500/10 blur-[100px] rounded-full"></div>
+          
+          <Image 
+            src={card.image} 
+            alt={card.title} 
+            class="w-full h-[72%] md:h-[77%] object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.05]" 
+          />
+        </div>
+      </article>
       ))}
     </div>
 </section>
