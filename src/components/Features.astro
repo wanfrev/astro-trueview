@@ -18,43 +18,45 @@ const featureCards = [
     title: 'Top Products',
     description: 'A comprehensive catalog showcasing top industry brands and products, each verified through laboratory testing.',
     image: TopProducts,
-    widthClass: 'w-[90vw] lg:w-[82vw] 2xl:w-[1050px]'
+    widthClass: 'w-[88vw] sm:w-[84vw] lg:w-[82vw] 2xl:w-[1050px]'
   },
   {
     id: 'feature-1',
     title: 'Request a Test',
     description: "Don't see your product? Request a test and we'll get it done for you.",
     image: RequestATest,
-    widthClass: 'w-[86vw] lg:w-[62vw] 2xl:w-[620px]'
+    widthClass: 'w-[88vw] sm:w-[84vw] lg:w-[62vw] 2xl:w-[620px]'
   },
   {
     id: 'feature-2',
     title: 'Cumulative Effect',
     description: 'Understand cumulative exposure across repeated product use.',
     image: CumulativeEffect,
-    widthClass: 'w-[90vw] lg:w-[76vw] 2xl:w-[850px]'
+    widthClass: 'w-[88vw] sm:w-[84vw] lg:w-[76vw] 2xl:w-[850px]'
   },
   {
     id: 'feature-3',
     title: 'Weekly Category',
     description: 'Fresh results every week. New products tested and results updated regularly.',
     image: WeeklyCategory,
-    widthClass: 'w-[90vw] lg:w-[82vw] 2xl:w-[1050px]'
+    widthClass: 'w-[88vw] sm:w-[84vw] lg:w-[82vw] 2xl:w-[1050px]'
   }
 ];
 ---
 
-<section data-bg="features" class="section-shell py-24 lg:py-28 xl:py-32 bg-[#050505]/40 text-white overflow-hidden relative">
+<section id="features-section" data-bg="features" class="section-shell py-16 sm:py-20 lg:py-28 xl:py-32 bg-[#050505]/40 text-white overflow-hidden relative features-anim">
   <div class="content-shell">
     
-    <div class="text-center mb-16">
-      <h2 class="text-5xl lg:text-[62px] xl:text-[80px] 2xl:text-[90px] font-bold tracking-tighter mb-10">Features</h2>
+    <div class="text-center mb-10 sm:mb-14 lg:mb-16">
+      <h2 class="features-title text-[42px] sm:text-5xl lg:text-[62px] xl:text-[80px] 2xl:text-[90px] font-bold tracking-tighter mb-7 sm:mb-10">Features</h2>
 
-      <div class="flex flex-wrap justify-center gap-3">
+      <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3">
         {featureLabels.map((label, index) => (
           <button 
             data-target={`feature-${index}`}
-            class="feature-btn flex items-center gap-2 px-5 lg:px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-semibold tracking-wide transition-all hover:bg-white/15 active:scale-95"
+            class="feature-btn feature-chip flex items-center gap-2 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 rounded-full border border-white/10 bg-white/5 text-[13px] sm:text-sm font-semibold tracking-wide transition-all hover:bg-white/15 active:scale-95"
+            style={`--i:${index};`}
+            aria-pressed={index === 0 ? 'true' : 'false'}
           >
             <span class={`${label.color} text-lg`}>✦</span>
             {label.text}
@@ -66,31 +68,34 @@ const featureCards = [
 
   <div 
     id="features-container"
-    class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-12 w-full"
-    style="--pad: max(1.5rem, calc((100vw - 1440px) / 2 + 3rem)); padding-left: var(--pad); padding-right: 1.5rem; scroll-padding-left: var(--pad); scrollbar-width: none; -ms-overflow-style: none;"
+    class="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 sm:pb-12 w-full"
+    style="--pad: max(1rem, calc((100vw - 1440px) / 2 + 3rem)); padding-left: var(--pad); padding-right: 1rem; scroll-padding-left: var(--pad); scrollbar-width: none; -ms-overflow-style: none;"
   >
     {featureCards.map((card) => (
       <article 
         id={card.id}
-        class={`group relative flex flex-col overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-12 px-8 lg:px-10 xl:px-12 h-[550px] lg:h-[760px] xl:h-[860px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.id === 'feature-0' ? 'lg:-ml-2 2xl:-ml-6' : ''} ${card.widthClass}`}
+        class={`feature-card group relative flex flex-col overflow-hidden rounded-[30px] sm:rounded-[36px] lg:rounded-[40px] border border-white/5 bg-[#0D0D12] pt-7 sm:pt-9 lg:pt-12 px-5 sm:px-7 lg:px-10 xl:px-12 h-[460px] sm:h-[530px] lg:h-[760px] xl:h-[860px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.id === 'feature-0' ? 'lg:-ml-2 2xl:-ml-6' : ''} ${card.widthClass}`}
+        style={`--i:${Number(card.id.split('-')[1])};`}
       >
-        <div class="max-w-[400px] text-left z-20 relative">
-          <h3 class="text-3xl lg:text-[32px] xl:text-[34px] font-bold mb-4 tracking-tight leading-tight">{card.title}</h3>
-          <p class="text-[16px] lg:text-[17px] leading-relaxed text-gray-400 font-medium opacity-90">
+        <div class="max-w-[340px] sm:max-w-[400px] text-left z-20 relative">
+          <h3 class="text-[28px] sm:text-3xl lg:text-[32px] xl:text-[34px] font-bold mb-3 sm:mb-4 tracking-tight leading-tight">{card.title}</h3>
+          <p class="text-[14px] sm:text-[16px] lg:text-[17px] leading-relaxed text-gray-400 font-medium opacity-90 max-w-[34ch]">
             {card.description}
           </p>
         </div>
 
-        <div class="absolute inset-0 flex items-end justify-center pointer-events-none pt-24">
-          <div class="absolute bottom-[-10%] h-[160px] lg:h-[200px] w-full bg-blue-500/10 blur-[70px] lg:blur-[100px] rounded-full"></div>
-          
-          <Image 
-            src={card.image} 
-            alt={card.title} 
-            loading="lazy"
-            decoding="async"
-            class="w-full h-[70%] lg:h-[74%] xl:h-[77%] object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.05]" 
-          />
+        <div class="absolute inset-0 flex items-end justify-center pointer-events-none pt-20 sm:pt-24">
+          <div class="absolute bottom-[-10%] h-[130px] sm:h-[160px] lg:h-[200px] w-full bg-blue-500/10 blur-[55px] sm:blur-[70px] lg:blur-[100px] rounded-full"></div>
+
+          <div class="feature-image-wrap w-full h-[60%] sm:h-[67%] lg:h-[74%] xl:h-[77%]">
+            <Image 
+              src={card.image} 
+              alt={card.title} 
+              loading="lazy"
+              decoding="async"
+              class="feature-image w-full h-full object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.05]" 
+            />
+          </div>
         </div>
       </article>
       ))}
@@ -102,28 +107,262 @@ const featureCards = [
   #features-container::-webkit-scrollbar {
     display: none;
   }
+
+  @keyframes featureFadeUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 26px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes featureImageFloat {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+
+  @keyframes featureButtonPop {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(0.96);
+    }
+    100% {
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes featureButtonRipple {
+    0% {
+      opacity: 0.45;
+      transform: translate(-50%, -50%) scale(0.2);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+  }
+
+  @keyframes featureCardNudge {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    45% {
+      transform: translate3d(0, -8px, 0) scale(1.01);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  .features-title,
+  .feature-chip,
+  .feature-card {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+
+  .features-anim.is-visible .features-title {
+    animation: featureFadeUp 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .features-anim.is-visible .feature-chip {
+    animation: featureFadeUp 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(120ms + (var(--i) * 90ms));
+  }
+
+  .features-anim.is-visible .feature-card {
+    animation: featureFadeUp 800ms cubic-bezier(0.16, 0.84, 0.32, 1) both;
+    animation-delay: calc(220ms + (var(--i) * 110ms));
+  }
+
+  .features-anim.is-visible .feature-image-wrap {
+    animation: featureImageFloat 6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 280ms);
+  }
+
+  .feature-btn[aria-pressed='true'] {
+    background: rgb(255 255 255 / 0.16);
+    border-color: rgb(255 255 255 / 0.28);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08) inset;
+  }
+
+  .feature-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .feature-btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220%;
+    aspect-ratio: 1 / 1;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgb(255 255 255 / 0.34) 0%, rgb(255 255 255 / 0) 62%);
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .feature-btn > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .feature-btn.is-clicking {
+    animation: featureButtonPop 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .feature-btn.is-clicking::after {
+    animation: featureButtonRipple 420ms ease-out;
+  }
+
+  .feature-card.is-nudging {
+    animation: featureCardNudge 460ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .features-title,
+    .feature-chip,
+    .feature-card {
+      opacity: 1;
+      transform: none;
+      animation: none !important;
+    }
+
+    .feature-image-wrap {
+      animation: none !important;
+    }
+
+    .feature-btn.is-clicking,
+    .feature-btn.is-clicking::after,
+    .feature-card.is-nudging {
+      animation: none !important;
+    }
+  }
 </style>
 
 <script is:inline>
   (function(){
+    const section = document.getElementById('features-section');
     const container = document.getElementById('features-container');
     const buttons = document.querySelectorAll('.feature-btn');
+
+    const getClampedScrollLeft = (targetElement) => {
+      if (!container || !targetElement) return 0;
+
+      const containerHalfWidth = container.offsetWidth / 2;
+      const elementHalfWidth = targetElement.offsetWidth / 2;
+      const rawScrollLeft = targetElement.offsetLeft - containerHalfWidth + elementHalfWidth;
+      const maxScrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
+
+      return Math.max(0, Math.min(rawScrollLeft, maxScrollLeft));
+    };
+
+    const scrollToCard = (targetId, behavior = 'smooth') => {
+      if (!container || !targetId) return null;
+
+      const targetElement = document.getElementById(targetId);
+      if (!targetElement) return null;
+
+      container.scrollTo({
+        left: getClampedScrollLeft(targetElement),
+        behavior,
+      });
+
+      return targetElement;
+    };
+
+    const setActiveButton = (activeButton) => {
+      buttons.forEach((button) => {
+        button.setAttribute('aria-pressed', button === activeButton ? 'true' : 'false');
+      });
+    };
+
+    const triggerClickAnimation = (button, targetElement) => {
+      button.classList.remove('is-clicking');
+      void button.offsetWidth;
+      button.classList.add('is-clicking');
+
+      window.setTimeout(() => {
+        button.classList.remove('is-clicking');
+      }, 420);
+
+      if (targetElement) {
+        targetElement.classList.remove('is-nudging');
+        void targetElement.offsetWidth;
+        targetElement.classList.add('is-nudging');
+
+        window.setTimeout(() => {
+          targetElement.classList.remove('is-nudging');
+        }, 500);
+      }
+    };
+
+    if (section) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) return;
+            section.classList.add('is-visible');
+            observer.disconnect();
+          },
+          {
+            threshold: 0.18,
+          },
+        );
+
+        observer.observe(section);
+      } else {
+        section.classList.add('is-visible');
+      }
+    }
+
+    const initialActiveButton = document.querySelector('.feature-btn[aria-pressed="true"]');
+    const initialTargetId = initialActiveButton?.getAttribute('data-target');
+
+    if (initialTargetId) {
+      // Ejecutamos varias veces para cubrir hidratación y carga de imágenes en móvil.
+      window.requestAnimationFrame(() => scrollToCard(initialTargetId, 'auto'));
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => scrollToCard(initialTargetId, 'auto'));
+      });
+
+      window.addEventListener('load', () => {
+        scrollToCard(initialTargetId, 'auto');
+      });
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      if (!initialTargetId) return;
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        scrollToCard(initialTargetId, 'auto');
+      }, 140);
+    });
 
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         const targetId = button.getAttribute('data-target');
-        const targetElement = document.getElementById(targetId);
+        const targetElement = scrollToCard(targetId);
 
         if (container && targetElement) {
-          // Calculamos la posición para centrar la card
-          const containerHalfWidth = container.offsetWidth / 2;
-          const elementHalfWidth = targetElement.offsetWidth / 2;
-          const targetScrollPos = targetElement.offsetLeft - containerHalfWidth + elementHalfWidth;
-
-          container.scrollTo({
-            left: targetScrollPos,
-            behavior: 'smooth'
-          });
+          setActiveButton(button);
+          triggerClickAnimation(button, targetElement);
         }
       });
     });

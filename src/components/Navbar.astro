@@ -49,49 +49,70 @@ import { Image } from 'astro:assets';
     const navbar = document.getElementById('site-navbar');
     const menuButton = document.getElementById('mobile-menu-toggle');
     const mobilePanel = document.getElementById('mobile-menu-panel');
+
     if (!navbar) return;
 
-    let lastScrollY = window.scrollY;
+    const TOP_THRESHOLD = 16;
+
+    const setNavbarVisible = (visible) => {
+      navbar.classList.toggle('-translate-y-full', !visible);
+      navbar.classList.toggle('opacity-0', !visible);
+      navbar.classList.toggle('pointer-events-none', !visible);
+    };
+
+    let isMenuOpen = false;
     let ticking = false;
 
-    const updateNavbar = () => {
-      const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY;
-      const isMenuOpen = menuButton?.getAttribute('aria-expanded') === 'true';
+    const syncNavbarVisibility = () => {
+      setNavbarVisible(window.scrollY <= TOP_THRESHOLD || isMenuOpen);
+    };
 
-      if (currentScrollY > 40 && scrollingDown && !isMenuOpen) {
-        navbar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
-      } else {
-        navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+    const updateNavbar = () => {
+      const nearTop = window.scrollY <= TOP_THRESHOLD;
+
+      if (!nearTop && isMenuOpen) {
+        mobilePanel?.classList.add('hidden');
+        menuButton?.setAttribute('aria-expanded', 'false');
+        menuButton?.setAttribute('aria-label', 'Abrir menu principal');
+        isMenuOpen = false;
       }
 
-      lastScrollY = currentScrollY;
+      syncNavbarVisibility();
       ticking = false;
     };
 
-    window.addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateNavbar);
-    }, { passive: true });
+    syncNavbarVisibility();
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(updateNavbar);
+      },
+      { passive: true },
+    );
 
     if (menuButton && mobilePanel) {
       const closeMenu = () => {
         mobilePanel.classList.add('hidden');
         menuButton.setAttribute('aria-expanded', 'false');
         menuButton.setAttribute('aria-label', 'Abrir menu principal');
+        isMenuOpen = false;
+        syncNavbarVisibility();
       };
 
       const openMenu = () => {
         mobilePanel.classList.remove('hidden');
         menuButton.setAttribute('aria-expanded', 'true');
         menuButton.setAttribute('aria-label', 'Cerrar menu principal');
-        navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        isMenuOpen = true;
+        syncNavbarVisibility();
       };
 
       menuButton.addEventListener('click', () => {
-        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
+        const currentlyOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        if (currentlyOpen) {
           closeMenu();
         } else {
           openMenu();

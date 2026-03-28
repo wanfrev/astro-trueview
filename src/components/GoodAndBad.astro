@@ -3,40 +3,38 @@ import Mockups7 from '../assets/images/Mockups7.png';
 import { Image } from 'astro:assets';
 ---
 
-<section data-bg="good-bad-2" class="section-shell py-16 lg:py-24 relative overflow-hidden">
+<section data-bg="good-bad-2" class="section-shell py-14 sm:py-16 lg:py-24 relative overflow-hidden">
 	<div class="content-shell relative">
-		<!-- Contenedor grid superpuesto -->
-		<div class="grid grid-cols-1 items-start min-h-[560px] sm:min-h-[680px] lg:min-h-[760px] xl:min-h-[860px]">
-			<!-- Imagen de fondo full-bleed -->
-			<div class="col-start-1 row-start-1 w-full flex justify-center lg:justify-end overflow-visible">
-				<Image
-					src={Mockups7}
-					alt="Good and the Bad mockup"
-					format="webp"
-					quality={80}
-					fetchpriority="low"
-					class="block h-auto w-[210%] sm:w-[165%] lg:w-[132%] xl:w-[118%] 2xl:w-[108%] max-w-none translate-x-0 sm:translate-x-[3%] lg:translate-x-[9%] xl:translate-x-[6%]"
-					loading="lazy"
-					decoding="async"
-				/>
-			</div>
-
-			<!-- Texto superpuesto encima de la imagen -->
-			<div class="col-start-1 row-start-1 z-10 flex flex-col gap-3 lg:gap-4 items-start text-left w-full max-w-[760px] lg:max-w-[820px] xl:max-w-[880px] px-4 sm:px-6 lg:px-10 self-start pt-5 sm:pt-7 lg:pt-9">
+		<div class="relative min-h-0 lg:min-h-[760px] xl:min-h-[860px]">
+			<!-- Texto optimizado para móvil; overlay en desktop -->
+			<div class="relative z-20 flex flex-col gap-3 lg:gap-4 items-start text-left w-full max-w-[760px] lg:max-w-[820px] xl:max-w-[880px] px-1 sm:px-2 lg:px-10 pt-2 sm:pt-4 lg:pt-9">
 				<span class="text-[#ff5b58] font-bold text-sm lg:text-base">The Good and the Bad</span>
 
-				<h2 class="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-bold leading-[1.06] lg:leading-[1.04] tracking-[-0.03em] max-w-[19ch]">
+				<h2 class="text-[34px] sm:text-3xl lg:text-[32px] xl:text-[36px] font-bold leading-[1.06] lg:leading-[1.04] tracking-[-0.03em] max-w-[19ch]">
 					Reading lab reports sucks. <br />
 					<span class="text-white">We show you the critical information</span>
 				</h2>
 
-				<p class="text-gray-400 text-sm lg:text-[16px] xl:text-[18px] leading-relaxed max-w-[56ch]">
+				<p class="text-gray-400 text-[15px] sm:text-sm lg:text-[16px] xl:text-[18px] leading-relaxed max-w-[56ch]">
 					We don’t offer you an opinion, we just show you the science.
 					If a product passes or fails we show you readable lab results.
 					Make healthy decisions, quickly.
 				</p>
 			</div>
 
+			<!-- En móvil se apila debajo del texto con escala controlada; en desktop vuelve a look superpuesto -->
+			<div class="relative z-10 mt-8 sm:mt-10 lg:absolute lg:inset-0 lg:mt-0 w-full flex justify-center lg:justify-end overflow-visible">
+				<Image
+					src={Mockups7}
+					alt="Good and the Bad mockup"
+					format="webp"
+					quality={80}
+					fetchpriority="low"
+					class="block h-auto w-[165%] sm:w-[145%] md:w-[125%] lg:w-[132%] xl:w-[118%] 2xl:w-[108%] max-w-none -translate-x-[8%] sm:translate-x-0 lg:translate-x-[9%] xl:translate-x-[6%]"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
 		</div>
 	</div>
 </section>
