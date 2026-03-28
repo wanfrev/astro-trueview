@@ -36,7 +36,7 @@ import { Image } from 'astro:assets';
         alt="Decorative stars"
         format="webp"
         quality={78}
-        loading="lazy"
+        loading="eager"
         decoding="async"
         class="pointer-events-none select-none absolute left-1/2 top-0 z-0 w-[320px] max-w-none -translate-x-1/2 sm:w-[440px] md:left-auto md:right-8 md:top-0 md:w-200 md:translate-x-0"
       />
@@ -45,7 +45,8 @@ import { Image } from 'astro:assets';
         alt="Vista previa de la app trueview en varios teléfonos"
         format="webp"
         quality={82}
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
         decoding="async"
         class="pointer-events-none select-none absolute left-1/2 -top-8 z-10 w-[360px] max-w-none -translate-x-1/2 sm:w-[500px] md:h-[1500px] sm:-top-16 md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
       />

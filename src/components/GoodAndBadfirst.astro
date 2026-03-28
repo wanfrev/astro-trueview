@@ -28,7 +28,8 @@ import { Image } from 'astro:assets';
           <Image
             src={ZincPhone}
             alt="Nature's Bounty Zinc 50mg lab result"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             decoding="async"
             class="absolute left-1/2 top-0 z-10 h-auto w-[260px] -translate-x-1/2 drop-shadow-[0_36px_80px_rgba(0,0,0,0.5)] sm:w-[320px] lg:left-[20%] lg:w-auto lg:translate-x-0"
           />
