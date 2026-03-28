@@ -13,14 +13,14 @@ import { Image } from 'astro:assets';
     <div class="relative h-full min-h-[420px] sm:min-h-[560px] md:min-h-[920px] overflow-visible">
       <div aria-hidden="true" class="hidden"></div>
 
-      <Image src={PhoneTop} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-top absolute left-[8%] top-[8%] z-30 w-[70%] max-w-[300px] sm:left-[10%] sm:w-[66%] sm:max-w-[360px] md:left-[12%] md:top-[12%] md:w-auto md:max-w-none" />
-      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom absolute left-[34%] top-[34%] z-10 w-[62%] max-w-[280px] sm:left-[28%] sm:w-[60%] sm:max-w-[340px] md:left-[20%] md:top-[34%] md:w-auto md:max-w-none" />
+      <Image src={PhoneTop} alt="" aria-hidden="true" loading="lazy" decoding="async" class="thefails-phone thefails-phone-top absolute left-[8%] top-[8%] z-30 w-[70%] max-w-[300px] sm:left-[10%] sm:w-[66%] sm:max-w-[360px] md:left-[12%] md:top-[12%] md:w-auto md:max-w-none" />
+      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="lazy" decoding="async" class="thefails-phone thefails-phone-bottom absolute left-[34%] top-[34%] z-10 w-[62%] max-w-[280px] sm:left-[28%] sm:w-[60%] sm:max-w-[340px] md:left-[20%] md:top-[34%] md:w-auto md:max-w-none" />
 
-      <Image src={VioletBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[76%] top-[8%] z-20 w-[44px] sm:w-auto md:left-[80%] md:w-auto max-w-none opacity-75" />
-      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[85%] top-[12%] z-20 w-[40px] sm:w-auto md:left-[89.7%] md:top-[13.5%] max-w-none opacity-75" />
+      <Image src={VioletBottle} alt="" aria-hidden="true" loading="lazy" decoding="async" class="absolute left-[76%] top-[8%] z-20 w-[44px] sm:w-auto md:left-[80%] md:w-auto max-w-none opacity-75" />
+      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" decoding="async" class="absolute left-[85%] top-[12%] z-20 w-[40px] sm:w-auto md:left-[89.7%] md:top-[13.5%] max-w-none opacity-75" />
 
-      <Image src={Pill} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[12%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[15%] md:bottom-[12%] max-w-none opacity-60" />
-      <Image src={GreyBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[2%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[5%] md:bottom-[11%] max-w-none opacity-85" />
+      <Image src={Pill} alt="" aria-hidden="true" loading="lazy" decoding="async" class="absolute left-[12%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[15%] md:bottom-[12%] max-w-none opacity-60" />
+      <Image src={GreyBottle} alt="" aria-hidden="true" loading="lazy" decoding="async" class="absolute left-[2%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[5%] md:bottom-[11%] max-w-none opacity-85" />
     </div>
 
     <div class="flex flex-col gap-5 md:gap-6 items-center text-center md:items-end md:text-right">
