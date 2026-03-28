@@ -33,7 +33,7 @@ import { Image } from 'astro:assets';
 
     --bg-lab-right: -12%;
     --bg-lab-dx: 180px; /* mover a la izquierda */
-    --bg-lab-dy: -740px; /* mover hacia arriba */
+    --bg-lab-dy: -540px; /* menos negativo = 100px más abajo (ajustado otra vez) */
     --bg-lab-w: 980px;
     --bg-lab-h: auto;
 
@@ -81,7 +81,7 @@ import { Image } from 'astro:assets';
     src={Ellipse4}
     alt=""
     id="bg-lab"
-    class="absolute max-w-none mix-blend-screen opacity-95"
+    class="absolute max-w-none mix-blend-screen opacity-95 blur-[8px]"
     style="top: calc(var(--bg-lab-top, 2250px) + var(--bg-lab-dy, 0px)); right: calc(var(--bg-lab-right, -12%) + var(--bg-lab-dx, 0px)); width: var(--bg-lab-w, 980px); height: var(--bg-lab-h, auto);"
   />
 
