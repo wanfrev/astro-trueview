@@ -4,7 +4,7 @@ import Stars from '../assets/images/stars.png';
 import { Image } from 'astro:assets';
 ---
 
-<section data-bg="wait-more" class="section-shell py-16 md:py-28 overflow-hidden">
+<section data-bg="wait-more" class="section-shell pt-16 pb-6 md:py-28 overflow-hidden">
   <div class="max-w-[1700px] mx-auto grid md:grid-cols-[1fr_1.2fr] gap-12 items-center">
     <div class="relative z-20 max-w-155 text-center md:text-left">
       <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-gray-200" style="font-size: var(--wait-badge-size);">
@@ -30,7 +30,7 @@ import { Image } from 'astro:assets';
       </a>
     </div>
 
-    <div class="relative min-h-[360px] sm:min-h-[480px] md:min-h-280 overflow-visible">
+    <div class="relative min-h-80 sm:min-h-[480px] md:min-h-280 overflow-visible">
       <Image
         src={Stars}
         alt="Decorative stars"
@@ -48,7 +48,7 @@ import { Image } from 'astro:assets';
         loading="eager"
         fetchpriority="high"
         decoding="async"
-        class="pointer-events-none select-none absolute left-1/2 -top-8 z-10 w-[360px] max-w-none -translate-x-1/2 sm:w-[500px] md:h-[1500px] sm:-top-16 md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
+        class="pointer-events-none select-none absolute -right-3.5 -bottom-5 z-10 w-82.5 max-w-none sm:w-107.5 md:h-[1500px] md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
       />
     </div>
   </div>

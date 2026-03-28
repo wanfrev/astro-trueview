@@ -22,15 +22,33 @@ import { Image } from 'astro:assets';
       <a href="#" data-astro-prefetch class="text-[16px] lg:text-[18px] font-medium tracking-wide text-white/60 transition-all hover:text-white">Brands</a>
     </div>
 
-    <button class="flex md:hidden text-white">
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      class="flex md:hidden text-white"
+      aria-expanded="false"
+      aria-controls="mobile-menu-panel"
+      aria-label="Abrir menu principal"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
     </button>
+  </div>
+
+  <div id="mobile-menu-panel" class="md:hidden hidden border-t border-white/10 bg-[#0f1526]/95 backdrop-blur-xl">
+    <div class="content-shell px-6 py-5 flex flex-col gap-4 font-['Outfit',sans-serif]">
+      <a href="/" data-astro-prefetch class="text-[18px] font-semibold tracking-wide text-white">Home</a>
+      <a href="#" data-astro-prefetch class="text-[18px] font-medium tracking-wide text-white/75 hover:text-white">About</a>
+      <a href="#" data-astro-prefetch class="text-[18px] font-medium tracking-wide text-white/75 hover:text-white">Search</a>
+      <a href="#" data-astro-prefetch class="text-[18px] font-medium tracking-wide text-white/75 hover:text-white">Brands</a>
+    </div>
   </div>
 </nav>
 
 <script is:inline>
   (() => {
     const navbar = document.getElementById('site-navbar');
+    const menuButton = document.getElementById('mobile-menu-toggle');
+    const mobilePanel = document.getElementById('mobile-menu-panel');
     if (!navbar) return;
 
     let lastScrollY = window.scrollY;
@@ -39,8 +57,9 @@ import { Image } from 'astro:assets';
     const updateNavbar = () => {
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY;
+      const isMenuOpen = menuButton?.getAttribute('aria-expanded') === 'true';
 
-      if (currentScrollY > 40 && scrollingDown) {
+      if (currentScrollY > 40 && scrollingDown && !isMenuOpen) {
         navbar.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
       } else {
         navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
@@ -55,5 +74,45 @@ import { Image } from 'astro:assets';
       ticking = true;
       window.requestAnimationFrame(updateNavbar);
     }, { passive: true });
+
+    if (menuButton && mobilePanel) {
+      const closeMenu = () => {
+        mobilePanel.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Abrir menu principal');
+      };
+
+      const openMenu = () => {
+        mobilePanel.classList.remove('hidden');
+        menuButton.setAttribute('aria-expanded', 'true');
+        menuButton.setAttribute('aria-label', 'Cerrar menu principal');
+        navbar.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      };
+
+      menuButton.addEventListener('click', () => {
+        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      mobilePanel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
+    }
   })();
 </script>
