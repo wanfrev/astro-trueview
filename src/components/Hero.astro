@@ -14,7 +14,8 @@ const topBrandLogos = Brands;
 ---
 
 <section
-  class="section-shell min-h-screen flex items-center pt-36 md:pt-36 pb-14 md:pb-20 overflow-hidden"
+  data-bg="hero"
+  class="section-shell relative min-h-screen flex items-center pt-36 md:pt-36 pb-14 md:pb-20 overflow-hidden"
 >
   <div aria-hidden="true" class="absolute inset-0 -z-10">
     <div
@@ -46,6 +47,9 @@ const topBrandLogos = Brands;
           aria-hidden="true"
           class="absolute left-1/2 top-8 z-0 w-[360px] -translate-x-1/2 object-contain pointer-events-none select-none sm:top-4 sm:w-[480px] md:left-[7.5%] md:top-[215px] md:w-[75%] md:max-w-[600px] md:translate-x-0 opacity-40"
         />
+
+        <!-- Ellipse2 moved to section background to avoid clipping by the phone container -->
+
         <Image
           src={Phone}
           alt="phone caution"

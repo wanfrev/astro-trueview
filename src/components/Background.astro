@@ -1,0 +1,71 @@
+---
+import Ellipse2 from '../assets/images/ellipse2.png';
+import { Image } from 'astro:assets';
+---
+
+<div aria-hidden="true" class="fixed inset-0 z-[-10] pointer-events-none bg-observer">
+  <!-- Degradado de Hero -->
+  <Image
+    src={Ellipse2}
+    alt=""
+    id="bg-hero"
+    class="absolute left-[6%] top-24 w-[1200px] max-w-none mix-blend-screen blur-[36px] transition-opacity duration-1000 ease-out opacity-0"
+  />
+  
+  <!-- Aquí podrás añadir los otros PNGs en el futuro, ejemplo:
+  <Image
+    src={EllipseStats}
+    alt=""
+    id="bg-stats"
+    class="absolute right-0 top-[20%] w-[800px] max-w-none mix-blend-screen transition-opacity duration-1000 ease-out opacity-0"
+  />
+  -->
+</div>
+
+<script is:inline>
+  (() => {
+    function init() {
+      const sections = document.querySelectorAll('section[data-bg]');
+      if (!sections.length) return;
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const bgVal = e.target.getAttribute('data-bg');
+          if (bgVal) document.body.setAttribute('data-bg', bgVal);
+        });
+      }, { threshold: 0.3 });
+
+      sections.forEach(s => obs.observe(s));
+
+      // Inicializa el fondo con la primera sección visible o la primera sección definida
+      const inView = Array.from(sections).find(s => {
+        const r = s.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+      });
+      const initial = (inView && inView.getAttribute('data-bg')) || sections[0].getAttribute('data-bg');
+      if (initial) document.body.setAttribute('data-bg', initial);
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style is:global>
+  /* Por defecto oculta todos */
+  
+  /* Muestra el de Hero solo cuando la sección activa sea "hero" */
+  body[data-bg="hero"] #bg-hero {
+    opacity: 1;
+  }
+
+  /* Ejemplo futuro para stats:
+  body[data-bg="stats"] #bg-stats {
+    opacity: 1;
+  }
+  */
+</style>
