@@ -58,6 +58,17 @@
 		}
 	}
 
+	/* Allow specific sections to opt-out of the automatic inter-section gap */
+	.section-shell.no-section-gap {
+		margin-top: 0;
+	}
+
+	@media (min-width: 768px) {
+		.section-shell.no-section-gap {
+			margin-top: 0;
+		}
+	}
+
 	.asset-placeholder {
 		@apply relative w-full rounded-4xl border border-dashed border-white/20 bg-white/3 backdrop-blur-sm;
 		min-height: 420px;
