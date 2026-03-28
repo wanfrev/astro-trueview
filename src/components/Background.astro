@@ -1,71 +1,171 @@
 ---
 import Ellipse2 from '../assets/images/ellipse2.png';
+import Ellipse3 from '../assets/images/ellipse3.png';
+import Ellipse4 from '../assets/images/ellipse4.png';
+import Ellipse5 from '../assets/images/ellipse5.png';
+import Ellipse6 from '../assets/images/ellipse6.png';
+import Ellipse7 from '../assets/images/ellipse7.png';
 import { Image } from 'astro:assets';
 ---
 
-<div aria-hidden="true" class="fixed inset-0 z-[-10] pointer-events-none bg-observer">
+<style is:inline>
+  /*
+    Ajustes rápidos: modifica los valores de abajo (en px o %) para mover cada ellipse.
+    - --bg-*-left / --bg-*-right: posición horizontal base (usa % o px, con signo si es necesario)
+    - --bg-*-dx: desplazamiento horizontal adicional (px)
+    - --bg-*-dy: desplazamiento vertical adicional (px)
+    Los valores calculados combinan la posición dinámica (desde JS) y estos offsets.
+  */
+  :root{
+    --bg-hero-left: 6%;
+    --bg-hero-dx: -180px;
+    --bg-hero-dy: -200px;
+
+    /* Tamaño por defecto (ajusta ancho/alto aquí) */
+    --bg-hero-w: 1800px;
+    --bg-hero-h: auto;
+
+    --bg-fails-left: -12%;
+    --bg-fails-dx: 210px; /* más a la derecha */
+    --bg-fails-dy: -420px; /* un poco hacia arriba */
+    --bg-fails-w: 1550px;
+    --bg-fails-h: auto;
+
+    --bg-lab-right: -12%;
+    --bg-lab-dx: 180px; /* mover a la izquierda */
+    --bg-lab-dy: -740px; /* mover hacia arriba */
+    --bg-lab-w: 980px;
+    --bg-lab-h: auto;
+
+    --bg-good-bad-right: -10%;
+    --bg-good-bad-dx: 260px; /* bastante a la izquierda */
+    --bg-good-bad-dy: -450px;
+    --bg-good-bad-w: 1820px;
+    --bg-good-bad-h: auto;
+
+    --bg-good-bad-2-left: -8%;
+    --bg-good-bad-2-dx: 1100px; /* muy a la derecha */
+    --bg-good-bad-2-dy: -240px;
+    --bg-good-bad-2-w: 980px;
+    --bg-good-bad-2-h: auto;
+
+    --bg-wait-more-right: -16%;
+    --bg-wait-more-dx: 200px; /* mucho más a la izquierda */
+    --bg-wait-more-dy: -480px;
+    --bg-wait-more-w: 1540px;
+    --bg-wait-more-h: auto;
+  }
+</style>
+
+<div aria-hidden="true" class="absolute inset-x-0 top-0 -z-10 pointer-events-none overflow-hidden" style="height: var(--bg-canvas-height, 3000px)">
   <!-- Degradado de Hero -->
   <Image
     src={Ellipse2}
     alt=""
     id="bg-hero"
-    class="absolute left-[6%] top-24 w-[1200px] max-w-none mix-blend-screen blur-[36px] transition-opacity duration-1000 ease-out opacity-0"
+    class="absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
+    style="top: calc(var(--bg-hero-top, 96px) + var(--bg-hero-dy, 0px)); left: calc(var(--bg-hero-left, 6%) + var(--bg-hero-dx, 0px)); width: var(--bg-hero-w, 1200px); height: var(--bg-hero-h, auto);"
   />
-  
-  <!-- Aquí podrás añadir los otros PNGs en el futuro, ejemplo:
+
+  <!-- Degradado de The Fails -->
   <Image
-    src={EllipseStats}
+    src={Ellipse3}
     alt=""
-    id="bg-stats"
-    class="absolute right-0 top-[20%] w-[800px] max-w-none mix-blend-screen transition-opacity duration-1000 ease-out opacity-0"
+    id="bg-fails"
+    class="absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
+    style="top: calc(var(--bg-fails-top, 1500px) + var(--bg-fails-dy, 0px)); left: calc(var(--bg-fails-left, -12%) + var(--bg-fails-dx, 0px)); width: var(--bg-fails-w, 980px); height: var(--bg-fails-h, auto);"
   />
-  -->
+
+  <!-- Degradado de LabTesting -->
+  <Image
+    src={Ellipse4}
+    alt=""
+    id="bg-lab"
+    class="absolute max-w-none mix-blend-screen opacity-95"
+    style="top: calc(var(--bg-lab-top, 2250px) + var(--bg-lab-dy, 0px)); right: calc(var(--bg-lab-right, -12%) + var(--bg-lab-dx, 0px)); width: var(--bg-lab-w, 980px); height: var(--bg-lab-h, auto);"
+  />
+
+  <!-- Degradado de GoodAndBadfirst -->
+  <Image
+    src={Ellipse5}
+    alt=""
+    id="bg-good-bad"
+    class="absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
+    style="top: calc(var(--bg-good-bad-top, 2900px) + var(--bg-good-bad-dy, 0px)); right: calc(var(--bg-good-bad-right, -10%) + var(--bg-good-bad-dx, 0px)); width: var(--bg-good-bad-w, 920px); height: var(--bg-good-bad-h, auto);"
+  />
+
+  <!-- Degradado de GoodAndBad -->
+  <Image
+    src={Ellipse6}
+    alt=""
+    id="bg-good-bad-2"
+    class="absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
+    style="top: calc(var(--bg-good-bad-2-top, 3600px) + var(--bg-good-bad-2-dy, 0px)); left: calc(var(--bg-good-bad-2-left, -8%) + var(--bg-good-bad-2-dx, 0px)); width: var(--bg-good-bad-2-w, 980px); height: var(--bg-good-bad-2-h, auto);"
+  />
+
+  <!-- Degradado de WaitTheresMore -->
+  <Image
+    src={Ellipse7}
+    alt=""
+    id="bg-wait-more"
+    class="absolute max-w-none mix-blend-screen opacity-95"
+    style="top: calc(var(--bg-wait-more-top, 4300px) + var(--bg-wait-more-dy, 0px)); right: calc(var(--bg-wait-more-right, -16%) + var(--bg-wait-more-dx, 0px)); width: var(--bg-wait-more-w, 940px); height: var(--bg-wait-more-h, auto);"
+  />
 </div>
 
 <script is:inline>
   (() => {
-    function init() {
-      const sections = document.querySelectorAll('section[data-bg]');
-      if (!sections.length) return;
+    function updateBackgroundLayout() {
+      const doc = document.documentElement;
+      const body = document.body;
 
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (!e.isIntersecting) return;
-          const bgVal = e.target.getAttribute('data-bg');
-          if (bgVal) document.body.setAttribute('data-bg', bgVal);
-        });
-      }, { threshold: 0.3 });
+      const canvasHeight = Math.max(body.scrollHeight, doc.scrollHeight, body.offsetHeight, doc.offsetHeight);
+      doc.style.setProperty('--bg-canvas-height', `${canvasHeight}px`);
 
-      sections.forEach(s => obs.observe(s));
+      const hero = document.querySelector('section[data-bg="hero"]');
+      const fails = document.querySelector('section[data-bg="fails"]');
+      const lab = document.querySelector('section[data-bg="lab"]');
+      const goodBad = document.querySelector('section[data-bg="good-bad"]');
+      const goodBad2 = document.querySelector('section[data-bg="good-bad-2"]');
+      const waitMore = document.querySelector('section[data-bg="wait-more"]');
 
-      // Inicializa el fondo con la primera sección visible o la primera sección definida
-      const inView = Array.from(sections).find(s => {
-        const r = s.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom > 0;
-      });
-      const initial = (inView && inView.getAttribute('data-bg')) || sections[0].getAttribute('data-bg');
-      if (initial) document.body.setAttribute('data-bg', initial);
+      if (hero) {
+        const heroTop = hero.offsetTop + 96;
+        doc.style.setProperty('--bg-hero-top', `${heroTop}px`);
+      }
+
+      if (fails) {
+        const failsTop = fails.offsetTop + 120;
+        doc.style.setProperty('--bg-fails-top', `${failsTop}px`);
+      }
+
+      if (lab) {
+        const labTop = lab.offsetTop + 40;
+        doc.style.setProperty('--bg-lab-top', `${labTop}px`);
+      }
+
+      if (goodBad) {
+        const goodBadTop = goodBad.offsetTop + 110;
+        doc.style.setProperty('--bg-good-bad-top', `${goodBadTop}px`);
+      }
+
+      if (goodBad2) {
+        const goodBad2Top = goodBad2.offsetTop + 20;
+        doc.style.setProperty('--bg-good-bad-2-top', `${goodBad2Top}px`);
+      }
+
+      if (waitMore) {
+        const waitMoreTop = waitMore.offsetTop + 120;
+        doc.style.setProperty('--bg-wait-more-top', `${waitMoreTop}px`);
+      }
     }
 
     if (document.readyState === 'loading') {
-      window.addEventListener('DOMContentLoaded', init, { once: true });
+      window.addEventListener('DOMContentLoaded', updateBackgroundLayout, { once: true });
     } else {
-      init();
+      updateBackgroundLayout();
     }
+
+    window.addEventListener('resize', updateBackgroundLayout, { passive: true });
   })();
 </script>
-
-<style is:global>
-  /* Por defecto oculta todos */
-  
-  /* Muestra el de Hero solo cuando la sección activa sea "hero" */
-  body[data-bg="hero"] #bg-hero {
-    opacity: 1;
-  }
-
-  /* Ejemplo futuro para stats:
-  body[data-bg="stats"] #bg-stats {
-    opacity: 1;
-  }
-  */
-</style>
