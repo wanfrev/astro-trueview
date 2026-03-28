@@ -5,50 +5,25 @@ import { Image } from 'astro:assets';
 ---
 
 <nav id="site-navbar" aria-label="Principal" class="fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-300 ease-out">
-  <div class="mx-auto flex h-30 w-full max-w-425 items-center justify-between px-4 md:px-6">
+  <div class="content-shell flex h-20 md:h-24 lg:h-28 items-center justify-between px-6 lg:px-12">
     <a href="/" class="flex shrink-0 transition-transform active:scale-95">
         <Image
           src={Logo}
           alt="Trueview"
-          width={200}
-          height={50}
-          class="h-8 w-auto md:h-10"
+          class="h-7 w-auto md:h-9 lg:h-10"
           loading="eager"
         />
     </a>
 
-    <div class="hidden items-center gap-10 md:inline-flex font-['Outfit',sans-serif]">
-      <a 
-        href="/" 
-        class="text-[16px] md:text-[20px] font-semibold tracking-wide text-white transition-all hover:text-white"
-      >
-        Home
-      </a>
-      
-      <a 
-        href="#" 
-        class="text-[16px] md:text-[20px] font-medium tracking-wide text-white/60 transition-all hover:text-white hover:opacity-100"
-      >
-        About
-      </a>
-      
-      <a 
-        href="#" 
-        class="text-[16px] md:text-[20px] font-medium tracking-wide text-white/60 transition-all hover:text-white hover:opacity-100"
-      >
-        Search
-      </a>
-      
-      <a 
-        href="#" 
-        class="text-[16px] md:text-[20px] font-medium tracking-wide text-white/60 transition-all hover:text-white hover:opacity-100"
-      >
-        Brands
-      </a>
+    <div class="hidden items-center gap-6 lg:gap-10 md:inline-flex font-['Outfit',sans-serif]">
+      <a href="/" class="text-[16px] lg:text-[18px] font-semibold tracking-wide text-white transition-all">Home</a>
+      <a href="#" class="text-[16px] lg:text-[18px] font-medium tracking-wide text-white/60 transition-all hover:text-white">About</a>
+      <a href="#" class="text-[16px] lg:text-[18px] font-medium tracking-wide text-white/60 transition-all hover:text-white">Search</a>
+      <a href="#" class="text-[16px] lg:text-[18px] font-medium tracking-wide text-white/60 transition-all hover:text-white">Brands</a>
     </div>
 
-    <button class="flex md:hidden text-white opacity-80">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+    <button class="flex md:hidden text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
     </button>
   </div>
 </nav>

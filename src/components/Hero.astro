@@ -15,7 +15,7 @@ const topBrandLogos = Brands;
 
 <section
   data-bg="hero"
-  class="section-shell relative min-h-screen flex items-center pt-36 md:pt-36 pb-14 md:pb-20 overflow-hidden"
+  class="section-shell relative min-h-screen flex items-center pt-32 md:pt-36 pb-14 md:pb-20 overflow-hidden"
 >
   <div aria-hidden="true" class="absolute inset-0 -z-10">
     <div
@@ -32,20 +32,18 @@ const topBrandLogos = Brands;
     </div>
   </div>
 
-  <div
-    class="mx-auto grid w-full max-w-full items-center gap-12 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-4"
-  >
+  <div class="content-shell grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8">
     <div
-      class="order-2 md:order-1 relative ml-0 flex justify-center md:-ml-10 desktop:ml-56 md:justify-start"
+      class="order-2 lg:order-1 relative flex justify-center lg:justify-start"
     >
       <div
-        class="relative w-full max-w-[800px] min-h-[360px] sm:min-h-[460px] md:min-h-0 perspective-[1000px] origin-center xl:origin-left xl:scale-[1.08] 2xl:scale-[1.14] transition-transform duration-300"
+        class="relative w-full max-w-[720px] min-h-[360px] sm:min-h-[460px] lg:min-h-[520px] perspective-[1000px] origin-center lg:origin-left lg:scale-[0.9] xl:scale-100 2xl:scale-[1.08] transition-transform duration-300"
       >
         <Image
           src={Union}
           alt=""
           aria-hidden="true"
-          class="absolute left-1/2 top-8 z-0 w-[360px] -translate-x-1/2 object-contain pointer-events-none select-none sm:top-4 sm:w-[480px] md:left-[7.5%] md:top-[215px] md:w-[75%] md:max-w-[600px] md:translate-x-0 opacity-40"
+          class="absolute left-1/2 top-8 z-0 w-[360px] -translate-x-1/2 object-contain pointer-events-none select-none sm:top-4 sm:w-[480px] lg:left-[8%] lg:top-[200px] lg:w-[75%] lg:max-w-[600px] lg:translate-x-0 opacity-40"
         />
 
         <!-- Ellipse2 moved to section background to avoid clipping by the phone container -->
@@ -53,11 +51,11 @@ const topBrandLogos = Brands;
         <Image
           src={Phone}
           alt="phone caution"
-          class="relative z-10 mx-auto w-[300px] max-w-full sm:w-[380px] md:mx-0 md:ml-[26%] md:w-auto drop-shadow-2xl"
+          class="relative z-10 mx-auto w-[300px] max-w-full sm:w-[380px] lg:mx-0 lg:ml-[18%] lg:w-[430px] xl:w-[470px] 2xl:w-[510px] drop-shadow-2xl"
         />
 
         <div
-          class="absolute z-20 left-2 top-28 sm:left-6 sm:top-[136px] md:left-[27%] md:top-34 transition-transform duration-500 hover:-translate-y-2 hover:scale-105"
+          class="absolute z-20 left-[2%] top-[112px] sm:left-[6%] sm:top-[136px] lg:left-[21%] lg:top-[146px] xl:left-[24%] xl:top-[138px] transition-transform duration-500 hover:-translate-y-2 hover:scale-105"
         >
           <div
             class="flex h-[73px] w-[143px] flex-col items-center justify-center rounded-[7px] border border-white/20 bg-[#5b5570] px-3 shadow-[0_12px_28px_rgba(0,0,0,0.36)] backdrop-blur-xl"
@@ -68,7 +66,7 @@ const topBrandLogos = Brands;
         </div>
 
         <div
-          class="absolute z-20 right-0 top-[72px] sm:right-4 sm:top-24 md:right-[4%] md:top-31 transition-all duration-500 hover:-translate-y-2"
+          class="absolute z-20 right-[2%] top-[72px] sm:right-[4%] sm:top-24 lg:right-[8%] lg:top-[92px] xl:right-[5%] transition-all duration-500 hover:-translate-y-2"
         >
           <div
             class="relative w-[168px] h-[127px] rounded-[32px] border border-white/10 bg-[#4d465f]/90 p-4 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:w-[168px] sm:h-[127px]"
@@ -99,7 +97,7 @@ const topBrandLogos = Brands;
         </div>
 
         <div
-          class="absolute z-30 left-0 bottom-12 sm:left-1 sm:bottom-20 md:left-[24%] md:bottom-29 transition-all duration-500 hover:-translate-y-2"
+          class="absolute z-30 left-[1%] bottom-[48px] sm:left-[2%] sm:bottom-[82px] lg:left-[18%] lg:bottom-[104px] xl:left-[22%] transition-all duration-500 hover:-translate-y-2"
         >
           <div
             class="relative w-[240px] h-[75px] rounded-[18px] bg-[#6f6676] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center p-2 gap-2 border border-white/20 backdrop-blur-md"
@@ -131,25 +129,25 @@ const topBrandLogos = Brands;
       </div>
     </div>
 
-    <div class="order-1 md:order-2 md:pl-0 text-center md:text-left z-10">
+    <div class="order-1 lg:order-2 text-center lg:text-left z-10">
       <h1
         id="hero-title"
-        class="mx-auto max-w-[680px] text-4xl sm:text-5xl md:text-[70px] font-bold leading-[0.98] md:leading-[0.95] tracking-[-0.03em] text-white md:mx-0"
+        class="mx-auto max-w-[22ch] text-4xl sm:text-5xl lg:text-[52px] xl:text-[64px] 2xl:text-[72px] font-bold leading-[0.98] lg:leading-[0.95] tracking-[-0.03em] text-white lg:mx-0"
       >
-        The only marketplace where every product are lab tested
+        The only marketplace where every product is lab tested
       </h1>
 
       <p
-        class="mt-6 md:mt-10 text-base sm:text-lg md:text-xl text-white/60 max-w-[600px] font-medium leading-[1.5] md:leading-[1.4] tracking-tight mx-auto md:mx-0"
+        class="mt-6 lg:mt-10 text-base sm:text-lg lg:text-[19px] xl:text-xl text-white/60 max-w-[56ch] font-medium leading-[1.5] lg:leading-[1.4] tracking-tight mx-auto lg:mx-0"
       >
         We don’t offer you an opinion, we just show you the science.
-        <br class="hidden md:block" />
+        <br class="hidden lg:block" />
         If a product passes or fails we show you readable lab results.
-        <br class="hidden md:block" />
+        <br class="hidden lg:block" />
         Make healthy decisions, quickly.
       </p>
 
-      <div class="mt-8 md:mt-12 flex justify-center md:justify-start">
+      <div class="mt-8 lg:mt-12 flex justify-center lg:justify-start">
         <button
           class="w-[192px] h-[60px] bg-[#2563eb] hover:brightness-105 rounded-full font-bold text-base text-white flex items-center justify-center transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 leading-none hover:scale-105 active:scale-95"
         >

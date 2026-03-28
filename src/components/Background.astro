@@ -18,42 +18,96 @@ import { Image } from 'astro:assets';
   */
   :root{
     --bg-hero-left: 6%;
-    --bg-hero-dx: -180px;
-    --bg-hero-dy: -200px;
+    --bg-hero-dx: -140px;
+    --bg-hero-dy: -170px;
 
     /* Tamaño por defecto (ajusta ancho/alto aquí) */
-    --bg-hero-w: 1800px;
+    --bg-hero-w: 1500px;
     --bg-hero-h: auto;
 
     --bg-fails-left: -12%;
-    --bg-fails-dx: 280px; /* más a la derecha */
-    --bg-fails-dy: -420px; /* un poco hacia arriba */
-    --bg-fails-w: 1550px;
+    --bg-fails-dx: 180px;
+    --bg-fails-dy: -380px;
+    --bg-fails-w: 1300px;
     --bg-fails-h: auto;
 
     --bg-lab-right: -12%;
-    --bg-lab-dx: 180px; /* mover a la izquierda */
-    --bg-lab-dy: -540px; /* menos negativo = 100px más abajo (ajustado otra vez) */
-    --bg-lab-w: 980px;
+    --bg-lab-dx: 120px;
+    --bg-lab-dy: -460px;
+    --bg-lab-w: 900px;
     --bg-lab-h: auto;
 
     --bg-good-bad-right: -10%;
-    --bg-good-bad-dx: 260px; /* bastante a la izquierda */
-    --bg-good-bad-dy: -450px;
-    --bg-good-bad-w: 1820px;
+    --bg-good-bad-dx: 180px;
+    --bg-good-bad-dy: -390px;
+    --bg-good-bad-w: 1480px;
     --bg-good-bad-h: auto;
 
     --bg-good-bad-2-left: -8%;
-    --bg-good-bad-2-dx: 1100px; /* muy a la derecha */
-    --bg-good-bad-2-dy: -240px;
-    --bg-good-bad-2-w: 980px;
+    --bg-good-bad-2-dx: 780px;
+    --bg-good-bad-2-dy: -220px;
+    --bg-good-bad-2-w: 900px;
     --bg-good-bad-2-h: auto;
 
     --bg-wait-more-right: -16%;
-    --bg-wait-more-dx: 200px; /* mucho más a la izquierda */
-    --bg-wait-more-dy: -480px;
-    --bg-wait-more-w: 1540px;
+    --bg-wait-more-dx: 120px;
+    --bg-wait-more-dy: -420px;
+    --bg-wait-more-w: 1340px;
     --bg-wait-more-h: auto;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1535px) {
+    :root {
+      --bg-hero-w: 1320px;
+      --bg-hero-dx: -110px;
+
+      --bg-fails-w: 1120px;
+      --bg-fails-dx: 120px;
+      --bg-fails-dy: -300px;
+
+      --bg-lab-w: 760px;
+      --bg-lab-dx: 80px;
+      --bg-lab-dy: -360px;
+
+      --bg-good-bad-w: 1220px;
+      --bg-good-bad-dx: 110px;
+      --bg-good-bad-dy: -300px;
+
+      --bg-good-bad-2-w: 760px;
+      --bg-good-bad-2-dx: 620px;
+
+      --bg-wait-more-w: 1080px;
+      --bg-wait-more-dx: 80px;
+      --bg-wait-more-dy: -340px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    :root {
+      --bg-hero-w: 980px;
+      --bg-hero-dx: -80px;
+      --bg-hero-dy: -120px;
+
+      --bg-fails-w: 880px;
+      --bg-fails-dx: 40px;
+      --bg-fails-dy: -180px;
+
+      --bg-lab-w: 620px;
+      --bg-lab-dx: 40px;
+      --bg-lab-dy: -260px;
+
+      --bg-good-bad-w: 980px;
+      --bg-good-bad-dx: 50px;
+      --bg-good-bad-dy: -220px;
+
+      --bg-good-bad-2-w: 620px;
+      --bg-good-bad-2-dx: 360px;
+      --bg-good-bad-2-dy: -150px;
+
+      --bg-wait-more-w: 860px;
+      --bg-wait-more-dx: 40px;
+      --bg-wait-more-dy: -220px;
+    }
   }
 </style>
 

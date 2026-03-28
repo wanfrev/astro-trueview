@@ -18,46 +18,43 @@ const featureCards = [
     title: 'Top Products',
     description: 'A comprehensive catalog showcasing top industry brands and products, each verified through laboratory testing.',
     image: TopProducts,
-    // Card más ancha para los dos teléfonos
-    widthClass: 'w-[92vw] md:w-[1050px]'
+    widthClass: 'w-[90vw] lg:w-[82vw] 2xl:w-[1050px]'
   },
   {
     id: 'feature-1',
     title: 'Request a Test',
     description: "Don't see your product? Request a test and we'll get it done for you.",
     image: RequestATest,
-    widthClass: 'w-[88vw] md:w-[580px]'
+    widthClass: 'w-[86vw] lg:w-[62vw] 2xl:w-[620px]'
   },
   {
     id: 'feature-2',
     title: 'Cumulative Effect',
     description: 'Understand cumulative exposure across repeated product use.',
     image: CumulativeEffect,
-    // Card intermedia
-    widthClass: 'w-[92vw] md:w-[850px]'
+    widthClass: 'w-[90vw] lg:w-[76vw] 2xl:w-[850px]'
   },
   {
     id: 'feature-3',
     title: 'Weekly Category',
     description: 'Fresh results every week. New products tested and results updated regularly.',
     image: WeeklyCategory,
-    // Card ancha para los dos teléfonos
-    widthClass: 'w-[92vw] md:w-[1050px]'
+    widthClass: 'w-[90vw] lg:w-[82vw] 2xl:w-[1050px]'
   }
 ];
 ---
 
-<section data-bg="features" class="py-24 md:py-32 bg-[#050505]/40 text-white overflow-hidden relative">
-  <div class="max-w-[1700px] mx-auto px-6">
+<section data-bg="features" class="section-shell py-24 lg:py-28 xl:py-32 bg-[#050505]/40 text-white overflow-hidden relative">
+  <div class="content-shell">
     
     <div class="text-center mb-16">
-      <h2 class="text-5xl md:text-[90px] font-bold tracking-tighter mb-10">Features</h2>
+      <h2 class="text-5xl lg:text-[62px] xl:text-[80px] 2xl:text-[90px] font-bold tracking-tighter mb-10">Features</h2>
 
       <div class="flex flex-wrap justify-center gap-3">
         {featureLabels.map((label, index) => (
           <button 
             data-target={`feature-${index}`}
-            class="feature-btn flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-semibold tracking-wide transition-all hover:bg-white/15 active:scale-95"
+            class="feature-btn flex items-center gap-2 px-5 lg:px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-semibold tracking-wide transition-all hover:bg-white/15 active:scale-95"
           >
             <span class={`${label.color} text-lg`}>✦</span>
             {label.text}
@@ -70,27 +67,27 @@ const featureCards = [
   <div 
     id="features-container"
     class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-12 w-full"
-    style="--pad: max(1.5rem, calc((100vw - 1700px) / 2 + 1.5rem)); padding-left: var(--pad); padding-right: 1.5rem; scroll-padding-left: var(--pad); scrollbar-width: none; -ms-overflow-style: none;"
+    style="--pad: max(1.5rem, calc((100vw - 1440px) / 2 + 3rem)); padding-left: var(--pad); padding-right: 1.5rem; scroll-padding-left: var(--pad); scrollbar-width: none; -ms-overflow-style: none;"
   >
     {featureCards.map((card) => (
       <article 
         id={card.id}
-        class={`group relative flex flex-col overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-12 px-8 md:px-12 h-[550px] md:h-[920px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.id === 'feature-0' ? 'md:-ml-34' : ''} ${card.widthClass}`}
+        class={`group relative flex flex-col overflow-hidden rounded-[40px] border border-white/5 bg-[#0D0D12] pt-12 px-8 lg:px-10 xl:px-12 h-[550px] lg:h-[760px] xl:h-[860px] shrink-0 snap-start transition-all duration-500 hover:border-white/10 ${card.id === 'feature-0' ? 'lg:-ml-2 2xl:-ml-6' : ''} ${card.widthClass}`}
       >
         <div class="max-w-[400px] text-left z-20 relative">
-          <h3 class="text-3xl md:text-[34px] font-bold mb-4 tracking-tight leading-tight">{card.title}</h3>
-          <p class="text-[16px] md:text-[17px] leading-relaxed text-gray-400 font-medium opacity-90">
+          <h3 class="text-3xl lg:text-[32px] xl:text-[34px] font-bold mb-4 tracking-tight leading-tight">{card.title}</h3>
+          <p class="text-[16px] lg:text-[17px] leading-relaxed text-gray-400 font-medium opacity-90">
             {card.description}
           </p>
         </div>
 
         <div class="absolute inset-0 flex items-end justify-center pointer-events-none pt-24">
-          <div class="absolute bottom-[-10%] h-[200px] w-full bg-blue-500/10 blur-[100px] rounded-full"></div>
+          <div class="absolute bottom-[-10%] h-[160px] lg:h-[200px] w-full bg-blue-500/10 blur-[70px] lg:blur-[100px] rounded-full"></div>
           
           <Image 
             src={card.image} 
             alt={card.title} 
-            class="w-full h-[72%] md:h-[77%] object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.05]" 
+            class="w-full h-[70%] lg:h-[74%] xl:h-[77%] object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.05]" 
           />
         </div>
       </article>

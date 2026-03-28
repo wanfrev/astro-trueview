@@ -14,27 +14,27 @@ const cards = [
 
 ---
 
-<section data-bg="stats" class="section-shell py-16 md:py-28">
+<section data-bg="stats" class="section-shell py-16 lg:py-24 xl:py-28">
   <div aria-hidden="true" class="absolute inset-0 -z-10 overflow-hidden">
-    <div class="absolute left-[45%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-purple-900/20 blur-[160px]"></div>
-    <div class="absolute right-[10%] top-[18%] h-[320px] w-[320px] rounded-full bg-blue-900/12 blur-[150px]"></div>
+    <div class="absolute left-[45%] top-1/2 h-[320px] w-[320px] -translate-y-1/2 rounded-full bg-purple-900/16 blur-[120px] lg:h-[420px] lg:w-[420px] lg:blur-[160px]"></div>
+    <div class="absolute right-[10%] top-[18%] h-[240px] w-[240px] rounded-full bg-blue-900/10 blur-[110px] lg:h-[320px] lg:w-[320px] lg:blur-[150px]"></div>
   </div>
 
-  <div class="max-w-[1700px] mx-auto grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,760px)] items-center">
-    <h2 style="transform: translateX(var(--stats-text-translate-x)); transition: transform 220ms ease" class="max-w-[620px] text-3xl sm:text-4xl md:text-[48px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] text-center md:text-left">
+  <div class="content-shell grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+    <h2 class="max-w-[23ch] text-3xl sm:text-4xl lg:text-[44px] xl:text-[52px] font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] text-center lg:text-left">
       We have lab tested many
       products and what we have
       found is <span class="text-[#ff5b58]">alarming</span>
     </h2>
 
-    <div class="grid grid-cols-2 gap-4 sm:gap-6" style="transform: translateX(var(--cards-translate-x)); transition: transform 220ms ease">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       {cards.map((card) => (
-        <div class="bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-lg">
+        <div class="bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-[0_16px_36px_rgba(0,0,0,0.28)] xl:shadow-[0_26px_52px_rgba(0,0,0,0.38)]">
           
           <div class="flex justify-between items-start">
             <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">
-              <span class="text-[#e74c4e] text-3xl md:text-[42px] font-bold tracking-tight leading-none">{card.percentage}</span>
-              <span class="text-[#e74c4e] text-sm md:text-base font-medium leading-none">Failed</span>
+              <span class="text-[#e74c4e] text-3xl lg:text-[38px] xl:text-[42px] font-bold tracking-tight leading-none">{card.percentage}</span>
+              <span class="text-[#e74c4e] text-sm lg:text-base font-medium leading-none">Failed</span>
             </div>
             
             <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 border border-white/5 flex items-center justify-center shrink-0 rounded-tl-sm rounded-br-sm rounded-tr-2xl rounded-bl-2xl">
