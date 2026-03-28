@@ -109,6 +109,42 @@ import { Image } from 'astro:assets';
       --bg-wait-more-dy: -220px;
     }
   }
+
+  .bg-ellipse {
+    will-change: transform, opacity;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+  }
+
+  .bg-ellipse-1 { animation-name: bgDriftA; animation-duration: 11s; }
+  .bg-ellipse-2 { animation-name: bgDriftB; animation-duration: 13s; }
+  .bg-ellipse-3 { animation-name: bgDriftC; animation-duration: 12s; }
+  .bg-ellipse-4 { animation-name: bgDriftA; animation-duration: 15s; }
+  .bg-ellipse-5 { animation-name: bgDriftB; animation-duration: 14s; }
+  .bg-ellipse-6 { animation-name: bgDriftC; animation-duration: 16s; }
+
+  @keyframes bgDriftA {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(-20px, 14px, 0) scale(1.025); }
+  }
+
+  @keyframes bgDriftB {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(16px, -12px, 0) scale(1.02); }
+  }
+
+  @keyframes bgDriftC {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(-12px, -10px, 0) scale(1.018); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bg-ellipse {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
 </style>
 
 <div aria-hidden="true" class="absolute inset-x-0 top-0 -z-10 pointer-events-none overflow-hidden" style="height: var(--bg-canvas-height, 3000px)">
@@ -120,7 +156,7 @@ import { Image } from 'astro:assets';
     loading="eager"
     fetchpriority="high"
     decoding="async"
-    class="absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
+    class="bg-ellipse bg-ellipse-1 absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
     style="top: calc(var(--bg-hero-top, 96px) + var(--bg-hero-dy, 0px)); left: calc(var(--bg-hero-left, 6%) + var(--bg-hero-dx, 0px)); width: var(--bg-hero-w, 1200px); height: var(--bg-hero-h, auto);"
   />
 
@@ -131,7 +167,7 @@ import { Image } from 'astro:assets';
     id="bg-fails"
     loading="eager"
     decoding="async"
-    class="absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
+    class="bg-ellipse bg-ellipse-2 absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
     style="top: calc(var(--bg-fails-top, 1500px) + var(--bg-fails-dy, 0px)); left: calc(var(--bg-fails-left, -12%) + var(--bg-fails-dx, 0px)); width: var(--bg-fails-w, 980px); height: var(--bg-fails-h, auto);"
   />
 
@@ -142,7 +178,7 @@ import { Image } from 'astro:assets';
     id="bg-lab"
     loading="eager"
     decoding="async"
-    class="absolute max-w-none mix-blend-screen opacity-95 blur-[8px]"
+    class="bg-ellipse bg-ellipse-3 absolute max-w-none mix-blend-screen opacity-95 blur-[8px]"
     style="top: calc(var(--bg-lab-top, 2250px) + var(--bg-lab-dy, 0px)); right: calc(var(--bg-lab-right, -12%) + var(--bg-lab-dx, 0px)); width: var(--bg-lab-w, 980px); height: var(--bg-lab-h, auto);"
   />
 
@@ -153,7 +189,7 @@ import { Image } from 'astro:assets';
     id="bg-good-bad"
     loading="eager"
     decoding="async"
-    class="absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
+    class="bg-ellipse bg-ellipse-4 absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
     style="top: calc(var(--bg-good-bad-top, 2900px) + var(--bg-good-bad-dy, 0px)); right: calc(var(--bg-good-bad-right, -10%) + var(--bg-good-bad-dx, 0px)); width: var(--bg-good-bad-w, 920px); height: var(--bg-good-bad-h, auto);"
   />
 
@@ -164,7 +200,7 @@ import { Image } from 'astro:assets';
     id="bg-good-bad-2"
     loading="eager"
     decoding="async"
-    class="absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
+    class="bg-ellipse bg-ellipse-5 absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
     style="top: calc(var(--bg-good-bad-2-top, 3600px) + var(--bg-good-bad-2-dy, 0px)); left: calc(var(--bg-good-bad-2-left, -8%) + var(--bg-good-bad-2-dx, 0px)); width: var(--bg-good-bad-2-w, 980px); height: var(--bg-good-bad-2-h, auto);"
   />
 
@@ -175,13 +211,26 @@ import { Image } from 'astro:assets';
     id="bg-wait-more"
     loading="eager"
     decoding="async"
-    class="absolute max-w-none mix-blend-screen opacity-95"
+    class="bg-ellipse bg-ellipse-6 absolute max-w-none mix-blend-screen opacity-95"
     style="top: calc(var(--bg-wait-more-top, 4300px) + var(--bg-wait-more-dy, 0px)); right: calc(var(--bg-wait-more-right, -16%) + var(--bg-wait-more-dx, 0px)); width: var(--bg-wait-more-w, 940px); height: var(--bg-wait-more-h, auto);"
   />
 </div>
 
 <script is:inline>
   (() => {
+    let rafId = 0;
+
+    const scheduleUpdate = () => {
+      if (rafId) {
+        return;
+      }
+
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        updateBackgroundLayout();
+      });
+    };
+
     function updateBackgroundLayout() {
       const doc = document.documentElement;
       const body = document.body;
@@ -228,11 +277,33 @@ import { Image } from 'astro:assets';
     }
 
     if (document.readyState === 'loading') {
-      window.addEventListener('DOMContentLoaded', updateBackgroundLayout, { once: true });
+      window.addEventListener('DOMContentLoaded', scheduleUpdate, { once: true });
     } else {
-      updateBackgroundLayout();
+      scheduleUpdate();
     }
 
-    window.addEventListener('resize', updateBackgroundLayout, { passive: true });
+    window.addEventListener('load', scheduleUpdate, { once: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    window.addEventListener('orientationchange', scheduleUpdate, { passive: true });
+    window.addEventListener('pageshow', scheduleUpdate);
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(scheduleUpdate);
+    }
+
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach((img) => {
+      if (!img.complete) {
+        img.addEventListener('load', scheduleUpdate, { once: true });
+      }
+    });
+
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => {
+        scheduleUpdate();
+      });
+
+      ro.observe(document.body);
+    }
   })();
 </script>
