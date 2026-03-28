@@ -46,6 +46,9 @@ const topBrandLogos = Brands;
           src={Union}
           alt=""
           aria-hidden="true"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
           class="absolute left-1/2 top-8 z-0 w-[360px] -translate-x-1/2 object-contain pointer-events-none select-none sm:top-4 sm:w-[480px] lg:left-[2%] lg:top-[200px] lg:w-[75%] lg:max-w-[600px] lg:translate-x-0 opacity-40"
         />
 
@@ -55,6 +58,9 @@ const topBrandLogos = Brands;
           <Image
             src={Phone}
             alt="phone caution"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             class="mx-auto w-[300px] max-w-full sm:w-[380px] lg:mx-0 lg:ml-[10%] lg:w-[430px] xl:w-[470px] 2xl:w-[510px] drop-shadow-2xl"
           />
         </div>
@@ -96,6 +102,8 @@ const topBrandLogos = Brands;
                 <Image
                   src={topBrandLogos}
                   alt="Brands"
+                  loading="eager"
+                  decoding="async"
                   class="h-8 w-auto object-contain"
                 />
               </div>

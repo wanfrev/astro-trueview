@@ -1,6 +1,7 @@
 ---
 import Phones from '../assets/images/phones.png';
 import Stars from '../assets/images/stars.png';
+import { Image } from 'astro:assets';
 ---
 
 <section data-bg="wait-more" class="section-shell py-16 md:py-28 overflow-hidden">
@@ -30,18 +31,23 @@ import Stars from '../assets/images/stars.png';
     </div>
 
     <div class="relative min-h-[360px] sm:min-h-[480px] md:min-h-280 overflow-visible">
-      <img
-        src={Stars.src}
-        width={Stars.width}
-        height={Stars.height}
+      <Image
+        src={Stars}
         alt="Decorative stars"
+        format="webp"
+        quality={78}
+        loading="eager"
+        decoding="async"
         class="pointer-events-none select-none absolute left-1/2 top-0 z-0 w-[320px] max-w-none -translate-x-1/2 sm:w-[440px] md:left-auto md:right-8 md:top-0 md:w-200 md:translate-x-0"
       />
-      <img
-        src={Phones.src}
-        width={Phones.width}
-        height={Phones.height}
+      <Image
+        src={Phones}
         alt="Vista previa de la app trueview en varios teléfonos"
+        format="webp"
+        quality={82}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
         class="pointer-events-none select-none absolute left-1/2 -top-8 z-10 w-[360px] max-w-none -translate-x-1/2 sm:w-[500px] md:h-[1500px] sm:-top-16 md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
       />
     </div>

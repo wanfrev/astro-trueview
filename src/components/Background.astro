@@ -117,6 +117,9 @@ import { Image } from 'astro:assets';
     src={Ellipse2}
     alt=""
     id="bg-hero"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
     class="absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
     style="top: calc(var(--bg-hero-top, 96px) + var(--bg-hero-dy, 0px)); left: calc(var(--bg-hero-left, 6%) + var(--bg-hero-dx, 0px)); width: var(--bg-hero-w, 1200px); height: var(--bg-hero-h, auto);"
   />
@@ -126,6 +129,8 @@ import { Image } from 'astro:assets';
     src={Ellipse3}
     alt=""
     id="bg-fails"
+    loading="eager"
+    decoding="async"
     class="absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
     style="top: calc(var(--bg-fails-top, 1500px) + var(--bg-fails-dy, 0px)); left: calc(var(--bg-fails-left, -12%) + var(--bg-fails-dx, 0px)); width: var(--bg-fails-w, 980px); height: var(--bg-fails-h, auto);"
   />
@@ -135,6 +140,8 @@ import { Image } from 'astro:assets';
     src={Ellipse4}
     alt=""
     id="bg-lab"
+    loading="eager"
+    decoding="async"
     class="absolute max-w-none mix-blend-screen opacity-95 blur-[8px]"
     style="top: calc(var(--bg-lab-top, 2250px) + var(--bg-lab-dy, 0px)); right: calc(var(--bg-lab-right, -12%) + var(--bg-lab-dx, 0px)); width: var(--bg-lab-w, 980px); height: var(--bg-lab-h, auto);"
   />
@@ -144,6 +151,8 @@ import { Image } from 'astro:assets';
     src={Ellipse5}
     alt=""
     id="bg-good-bad"
+    loading="eager"
+    decoding="async"
     class="absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
     style="top: calc(var(--bg-good-bad-top, 2900px) + var(--bg-good-bad-dy, 0px)); right: calc(var(--bg-good-bad-right, -10%) + var(--bg-good-bad-dx, 0px)); width: var(--bg-good-bad-w, 920px); height: var(--bg-good-bad-h, auto);"
   />
@@ -153,6 +162,8 @@ import { Image } from 'astro:assets';
     src={Ellipse6}
     alt=""
     id="bg-good-bad-2"
+    loading="eager"
+    decoding="async"
     class="absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
     style="top: calc(var(--bg-good-bad-2-top, 3600px) + var(--bg-good-bad-2-dy, 0px)); left: calc(var(--bg-good-bad-2-left, -8%) + var(--bg-good-bad-2-dx, 0px)); width: var(--bg-good-bad-2-w, 980px); height: var(--bg-good-bad-2-h, auto);"
   />
@@ -162,6 +173,8 @@ import { Image } from 'astro:assets';
     src={Ellipse7}
     alt=""
     id="bg-wait-more"
+    loading="eager"
+    decoding="async"
     class="absolute max-w-none mix-blend-screen opacity-95"
     style="top: calc(var(--bg-wait-more-top, 4300px) + var(--bg-wait-more-dy, 0px)); right: calc(var(--bg-wait-more-right, -16%) + var(--bg-wait-more-dx, 0px)); width: var(--bg-wait-more-w, 940px); height: var(--bg-wait-more-h, auto);"
   />
