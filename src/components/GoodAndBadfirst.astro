@@ -3,7 +3,7 @@ import ZincPhone from '../assets/images/zinc.png';
 import { Image } from 'astro:assets';
 ---
 
-<section data-bg="good-bad" class="section-shell py-16 lg:py-24">
+<section data-bg="good-bad" data-gabfirst-root data-gabfirst-in-view="false" class="section-shell py-16 lg:py-24">
   <div class="content-shell grid items-center gap-10 lg:gap-16 lg:grid-cols-2">
     <div class="order-2 lg:order-1 max-w-[56ch] text-center lg:text-left mx-auto lg:mx-0">
       <span class="mb-4 block text-lg lg:text-xl font-medium text-[#2563eb]" style="font-size: var(--goodandbad-label-size);">The Good and the Bad</span>
@@ -32,7 +32,7 @@ import { Image } from 'astro:assets';
           />
 
           <div
-            class="absolute right-[2%] top-[74px] z-20 w-[86px] h-[67px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:w-[170px] sm:h-[132px] lg:left-[69%] lg:right-auto lg:top-[14%]"
+            class="gabfirst-card gabfirst-card-1 absolute right-[2%] top-[74px] z-20 w-[86px] h-[67px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:w-[170px] sm:h-[132px] lg:left-[69%] lg:right-auto lg:top-[14%]"
             aria-label="Heavy Metals Passed"
           >
             <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex flex-col items-center justify-center px-3 sm:px-4">
@@ -48,7 +48,7 @@ import { Image } from 'astro:assets';
           </div>
 
           <div
-            class="absolute left-[6%] top-[300px] z-20 w-[115px] h-[44px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:top-[370px] sm:w-[250px] sm:h-[69px] lg:left-[13%] lg:top-[58%]"
+            class="gabfirst-card gabfirst-card-2 absolute left-[6%] top-[300px] z-20 w-[115px] h-[44px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:top-[370px] sm:w-[250px] sm:h-[69px] lg:left-[13%] lg:top-[58%]"
             aria-label="Microbiological 7/7 Passed"
           >
             <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex items-center px-3 sm:px-5">
@@ -64,7 +64,7 @@ import { Image } from 'astro:assets';
           </div>
 
           <div
-            class="absolute left-[2%] top-[356px] z-20 w-[122px] h-[95px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:top-[460px] sm:w-[180px] sm:h-[120px] lg:left-[9.5%] lg:top-[71%]"
+            class="gabfirst-card gabfirst-card-3 absolute left-[2%] top-[356px] z-20 w-[122px] h-[95px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:top-[460px] sm:w-[180px] sm:h-[120px] lg:left-[9.5%] lg:top-[71%]"
             aria-label="Potency Claim"
           >
             <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex flex-col items-center justify-center px-3 sm:px-4">
@@ -80,7 +80,7 @@ import { Image } from 'astro:assets';
           </div>
 
           <div
-            class="absolute right-[4%] top-[206px] z-20 w-[122px] h-[47px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:w-[265px] sm:h-[65px] lg:left-[58%] lg:right-auto lg:top-[35%]"
+            class="gabfirst-card gabfirst-card-4 absolute right-[4%] top-[206px] z-20 w-[122px] h-[47px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] sm:w-[265px] sm:h-[65px] lg:left-[58%] lg:right-auto lg:top-[35%]"
             aria-label="Contaminants Detected: 0"
           >
             <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex items-center px-3 sm:px-5">
@@ -99,3 +99,56 @@ import { Image } from 'astro:assets';
     </div>
   </div>
 </section>
+
+<style>
+  .gabfirst-card {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.96);
+    transition-property: opacity, transform;
+    transition-duration: 920ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .gabfirst-card-1 { transition-delay: 140ms; }
+  .gabfirst-card-2 { transition-delay: 340ms; }
+  .gabfirst-card-3 { transition-delay: 540ms; }
+  .gabfirst-card-4 { transition-delay: 740ms; }
+
+  [data-gabfirst-root][data-gabfirst-in-view='true'] .gabfirst-card {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gabfirst-card {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const sections = document.querySelectorAll('[data-gabfirst-root]');
+
+    sections.forEach((section) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              section.setAttribute('data-gabfirst-in-view', 'true');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      observer.observe(section);
+    });
+  })();
+</script>

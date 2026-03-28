@@ -8,32 +8,30 @@ import GreyBottle from '../assets/icons/greybottle.png';
 import { Image } from 'astro:assets';
 ---
 
-<section data-bg="fails" class="section-shell py-14 lg:py-20 xl:py-24">
-  <div class="content-shell grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-    <div class="relative h-full min-h-[420px] sm:min-h-[560px] lg:min-h-[680px] xl:min-h-[820px] overflow-visible">
+<section data-bg="fails" data-thefails-root data-thefails-in-view="false" class="section-shell py-14 md:py-20">
+  <div class="max-w-[1700px] mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="relative h-full min-h-[420px] sm:min-h-[560px] md:min-h-[920px] overflow-visible">
       <div aria-hidden="true" class="hidden"></div>
 
-      <div class="absolute inset-0 origin-center lg:origin-left lg:scale-[0.9] xl:scale-100 2xl:scale-[1.05]">
-        <Image src={PhoneTop} alt="" aria-hidden="true" class="absolute left-[8%] top-[8%] z-30 w-[70%] max-w-[300px] sm:left-[10%] sm:w-[66%] sm:max-w-[360px] lg:left-[12%] lg:top-[12%] lg:w-[68%] lg:max-w-[430px]" />
-        <Image src={PhoneBottom} alt="" aria-hidden="true" class="absolute left-[34%] top-[34%] z-10 w-[62%] max-w-[280px] sm:left-[28%] sm:w-[60%] sm:max-w-[340px] lg:left-[20%] lg:top-[34%] lg:w-[62%] lg:max-w-[420px]" />
+      <Image src={PhoneTop} alt="" aria-hidden="true" class="thefails-phone thefails-phone-top absolute left-[8%] top-[8%] z-30 w-[70%] max-w-[300px] sm:left-[10%] sm:w-[66%] sm:max-w-[360px] md:left-[12%] md:top-[12%] md:w-auto md:max-w-none" />
+      <Image src={PhoneBottom} alt="" aria-hidden="true" class="thefails-phone thefails-phone-bottom absolute left-[34%] top-[34%] z-10 w-[62%] max-w-[280px] sm:left-[28%] sm:w-[60%] sm:max-w-[340px] md:left-[20%] md:top-[34%] md:w-auto md:max-w-none" />
 
-        <Image src={VioletBottle} alt="" aria-hidden="true" class="absolute left-[76%] top-[8%] z-20 w-[44px] sm:w-auto lg:left-[80%] lg:w-auto max-w-none opacity-75" />
-        <Image src={VioletBottle2} alt="" aria-hidden="true" class="absolute left-[85%] top-[12%] z-20 w-[40px] sm:w-auto lg:left-[89.7%] lg:top-[13.5%] max-w-none opacity-75" />
+      <Image src={VioletBottle} alt="" aria-hidden="true" class="absolute left-[76%] top-[8%] z-20 w-[44px] sm:w-auto md:left-[80%] md:w-auto max-w-none opacity-75" />
+      <Image src={VioletBottle2} alt="" aria-hidden="true" class="absolute left-[85%] top-[12%] z-20 w-[40px] sm:w-auto md:left-[89.7%] md:top-[13.5%] max-w-none opacity-75" />
 
-        <Image src={Pill} alt="" aria-hidden="true" class="absolute left-[12%] bottom-[8%] z-20 w-[44px] sm:w-auto lg:left-[15%] lg:bottom-[12%] max-w-none opacity-60" />
-        <Image src={GreyBottle} alt="" aria-hidden="true" class="absolute left-[2%] bottom-[8%] z-20 w-[44px] sm:w-auto lg:left-[5%] lg:bottom-[11%] max-w-none opacity-85" />
-      </div>
+      <Image src={Pill} alt="" aria-hidden="true" class="absolute left-[12%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[15%] md:bottom-[12%] max-w-none opacity-60" />
+      <Image src={GreyBottle} alt="" aria-hidden="true" class="absolute left-[2%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[5%] md:bottom-[11%] max-w-none opacity-85" />
     </div>
 
-    <div class="flex flex-col gap-5 lg:gap-6 items-center text-center lg:items-end lg:text-right">
-      <span class="text-[#ff5b58] font-medium text-lg lg:text-xl" style="font-size: var(--thefails-label-size);">The Fails</span>
+    <div class="flex flex-col gap-5 md:gap-6 items-center text-center md:items-end md:text-right">
+      <span class="text-[#ff5b58] font-medium text-lg" style="font-size: var(--thefails-label-size);">The Fails</span>
 
-      <h2 style="font-size: var(--thefails-h2-size);" class="text-3xl sm:text-4xl lg:text-[44px] xl:text-[54px] font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] max-w-[22ch]">
+      <h2 style="font-size: var(--thefails-h2-size);" class="text-3xl sm:text-4xl md:text-[40px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] max-w-[620px]">
         Reading lab reports is difficult. <br />
         <span class="text-white">We show you the critical information. Quickly.</span>
       </h2>
 
-      <p style="font-size: var(--thefails-body-size);" class="text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-md lg:max-w-[52ch]">
+      <p style="font-size: var(--thefails-body-size);" class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-md md:max-w-[520px]">
         We don't offer you an opinion, we just show you the science.
         If a product passes or fails we show you readable lab results.
         Make healthy decisions, quickly.
@@ -41,3 +39,64 @@ import { Image } from 'astro:assets';
     </div>
   </div>
 </section>
+
+<style>
+  .thefails-phone {
+    will-change: transform;
+    animation-duration: 3.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: paused;
+  }
+
+  .thefails-phone-top {
+    animation-name: thefailsFloatUp;
+  }
+
+  .thefails-phone-bottom {
+    animation-name: thefailsFloatDown;
+  }
+
+  [data-thefails-root][data-thefails-in-view='true'] .thefails-phone {
+    animation-play-state: running;
+  }
+
+  @keyframes thefailsFloatUp {
+    from { transform: translate3d(0, 6px, 0); }
+    to { transform: translate3d(0, -14px, 0); }
+  }
+
+  @keyframes thefailsFloatDown {
+    from { transform: translate3d(0, -6px, 0); }
+    to { transform: translate3d(0, 14px, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thefails-phone {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const sections = document.querySelectorAll('[data-thefails-root]');
+
+    sections.forEach((section) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            section.setAttribute('data-thefails-in-view', entry.isIntersecting ? 'true' : 'false');
+          });
+        },
+        {
+          threshold: 0.35,
+        }
+      );
+
+      observer.observe(section);
+    });
+  })();
+</script>

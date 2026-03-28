@@ -14,8 +14,10 @@ const topBrandLogos = Brands;
 ---
 
 <section
+  data-hero-root
+  data-hero-in-view="false"
   data-bg="hero"
-  class="section-shell relative min-h-screen flex items-center pt-32 md:pt-36 pb-14 md:pb-20 overflow-hidden"
+  class="hero-root section-shell relative min-h-screen flex items-center pt-32 md:pt-36 pb-14 md:pb-20 overflow-hidden"
 >
   <div aria-hidden="true" class="absolute inset-0 -z-10">
     <div
@@ -34,7 +36,8 @@ const topBrandLogos = Brands;
 
   <div class="content-shell grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8">
     <div
-      class="order-2 lg:order-1 relative flex justify-center lg:justify-start"
+      data-hero-media
+      class="hero-media order-2 lg:order-1 relative flex justify-center lg:justify-start"
     >
       <div
         class="relative w-full max-w-[720px] min-h-[360px] sm:min-h-[460px] lg:min-h-[520px] perspective-[1000px] origin-center lg:origin-left lg:scale-[0.9] xl:scale-100 2xl:scale-[1.08] transition-transform duration-300"
@@ -51,14 +54,15 @@ const topBrandLogos = Brands;
         <Image
           src={Phone}
           alt="phone caution"
-          class="relative z-10 mx-auto w-[300px] max-w-full sm:w-[380px] lg:mx-0 lg:ml-[18%] lg:w-[430px] xl:w-[470px] 2xl:w-[510px] drop-shadow-2xl"
+          class="hero-reveal hero-reveal-phone relative z-10 mx-auto w-[300px] max-w-full sm:w-[380px] lg:mx-0 lg:ml-[18%] lg:w-[430px] xl:w-[470px] 2xl:w-[510px] drop-shadow-2xl"
         />
 
         <div
-          class="absolute z-20 left-[2%] top-[112px] sm:left-[6%] sm:top-[136px] lg:left-[21%] lg:top-[146px] xl:left-[24%] xl:top-[138px] transition-transform duration-500 hover:-translate-y-2 hover:scale-105"
+          data-hero-card="1"
+          class="hero-card-layer hero-reveal hero-reveal-card-1 absolute z-20 left-[2%] top-[112px] sm:left-[6%] sm:top-[136px] lg:left-[21%] lg:top-[146px] xl:left-[24%] xl:top-[138px]"
         >
           <div
-            class="flex h-[73px] w-[143px] flex-col items-center justify-center rounded-[7px] border border-white/20 bg-[#5b5570] px-3 shadow-[0_12px_28px_rgba(0,0,0,0.36)] backdrop-blur-xl"
+            class="transition-transform duration-500 hover:-translate-y-2 hover:scale-105 flex h-[73px] w-[143px] flex-col items-center justify-center rounded-[7px] border border-white/20 bg-[#5b5570] px-3 shadow-[0_12px_28px_rgba(0,0,0,0.36)] backdrop-blur-xl"
           >
             <span class="text-white text-[20px] font-bold tracking-tight leading-none">239.00%</span>
             <span class="text-white/90 text-[10px] tracking-[0.2em] uppercase mt-1">Over Limit</span>
@@ -66,10 +70,11 @@ const topBrandLogos = Brands;
         </div>
 
         <div
-          class="absolute z-20 right-[2%] top-[72px] sm:right-[4%] sm:top-24 lg:right-[8%] lg:top-[92px] xl:right-[5%] transition-all duration-500 hover:-translate-y-2"
+          data-hero-card="2"
+          class="hero-card-layer hero-reveal hero-reveal-card-2 absolute z-20 right-[2%] top-[72px] sm:right-[4%] sm:top-24 lg:right-[8%] lg:top-[92px] xl:right-[5%]"
         >
           <div
-            class="relative w-[168px] h-[127px] rounded-[32px] border border-white/10 bg-[#4d465f]/90 p-4 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:w-[168px] sm:h-[127px]"
+            class="transition-all duration-500 hover:-translate-y-2 relative w-[168px] h-[127px] rounded-[32px] border border-white/10 bg-[#4d465f]/90 p-4 shadow-[0_30px_60px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:w-[168px] sm:h-[127px]"
           >
             <div class="relative z-10 flex flex-col h-full">
               <div class="flex-0">
@@ -97,10 +102,11 @@ const topBrandLogos = Brands;
         </div>
 
         <div
-          class="absolute z-30 left-[1%] bottom-[48px] sm:left-[2%] sm:bottom-[82px] lg:left-[18%] lg:bottom-[104px] xl:left-[22%] transition-all duration-500 hover:-translate-y-2"
+          data-hero-card="3"
+          class="hero-card-layer hero-reveal hero-reveal-card-3 absolute z-30 left-[1%] bottom-[48px] sm:left-[2%] sm:bottom-[82px] lg:left-[18%] lg:bottom-[104px] xl:left-[22%]"
         >
           <div
-            class="relative w-[240px] h-[75px] rounded-[18px] bg-[#6f6676] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center p-2 gap-2 border border-white/20 backdrop-blur-md"
+            class="transition-all duration-500 hover:-translate-y-2 relative w-[240px] h-[75px] rounded-[18px] bg-[#6f6676] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center p-2 gap-2 border border-white/20 backdrop-blur-md"
           >
             <div class="flex items-center gap-2 flex-1 pl-1">
               <div class="h-8 w-8 rounded-full bg-[#FFEAE8] flex items-center justify-center shrink-0 shadow-inner">
@@ -129,16 +135,16 @@ const topBrandLogos = Brands;
       </div>
     </div>
 
-    <div class="order-1 lg:order-2 text-center lg:text-left z-10">
+    <div data-hero-copy class="hero-copy order-1 lg:order-2 text-center lg:text-left z-10">
       <h1
         id="hero-title"
-        class="mx-auto max-w-[22ch] text-4xl sm:text-5xl lg:text-[52px] xl:text-[64px] 2xl:text-[72px] font-bold leading-[0.98] lg:leading-[0.95] tracking-[-0.03em] text-white lg:mx-0"
+        class="hero-reveal hero-reveal-copy-1 mx-auto max-w-[22ch] text-4xl sm:text-5xl lg:text-[52px] xl:text-[64px] 2xl:text-[72px] font-bold leading-[0.98] lg:leading-[0.95] tracking-[-0.03em] text-white lg:mx-0"
       >
         The only marketplace where every product is lab tested
       </h1>
 
       <p
-        class="mt-6 lg:mt-10 text-base sm:text-lg lg:text-[19px] xl:text-xl text-white/60 max-w-[56ch] font-medium leading-[1.5] lg:leading-[1.4] tracking-tight mx-auto lg:mx-0"
+        class="hero-reveal hero-reveal-copy-2 mt-6 lg:mt-10 text-base sm:text-lg lg:text-[19px] xl:text-xl text-white/60 max-w-[56ch] font-medium leading-[1.5] lg:leading-[1.4] tracking-tight mx-auto lg:mx-0"
       >
         We don’t offer you an opinion, we just show you the science.
         <br class="hidden lg:block" />
@@ -149,7 +155,7 @@ const topBrandLogos = Brands;
 
       <div class="mt-8 lg:mt-12 flex justify-center lg:justify-start">
         <button
-          class="w-[192px] h-[60px] bg-[#2563eb] hover:brightness-105 rounded-full font-bold text-base text-white flex items-center justify-center transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 leading-none hover:scale-105 active:scale-95"
+          class="hero-reveal hero-reveal-copy-3 w-[192px] h-[60px] bg-[#2563eb] hover:brightness-105 rounded-full font-bold text-base text-white flex items-center justify-center transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 leading-none hover:scale-105 active:scale-95"
         >
           Search products
         </button>
@@ -157,3 +163,154 @@ const topBrandLogos = Brands;
     </div>
   </div>
 </section>
+
+<style>
+  .hero-root {
+    --hero-copy-y: 0px;
+    --hero-copy-opacity: 1;
+    --hero-media-y: 0px;
+    --hero-card-1-y: 0px;
+    --hero-card-2-y: 0px;
+    --hero-card-3-y: 0px;
+  }
+
+  .hero-copy {
+    transform: translate3d(0, var(--hero-copy-y), 0);
+    opacity: var(--hero-copy-opacity);
+    will-change: transform, opacity;
+  }
+
+  .hero-media {
+    transform: translate3d(0, var(--hero-media-y), 0);
+    will-change: transform;
+  }
+
+  .hero-card-layer[data-hero-card="1"] {
+    transform: translate3d(0, var(--hero-card-1-y), 0);
+    will-change: transform;
+  }
+
+  .hero-card-layer[data-hero-card="2"] {
+    transform: translate3d(0, var(--hero-card-2-y), 0);
+    will-change: transform;
+  }
+
+  .hero-card-layer[data-hero-card="3"] {
+    transform: translate3d(0, var(--hero-card-3-y), 0);
+    will-change: transform;
+  }
+
+  .hero-reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition-property: opacity, transform;
+    transition-duration: 760ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-reveal-copy-1 { transition-delay: 60ms; }
+  .hero-reveal-copy-2 { transition-delay: 140ms; }
+  .hero-reveal-copy-3 { transition-delay: 220ms; }
+  .hero-reveal-phone { transition-delay: 120ms; }
+  .hero-reveal-card-1 { transition-delay: 200ms; }
+  .hero-reveal-card-2 { transition-delay: 260ms; }
+  .hero-reveal-card-3 { transition-delay: 320ms; }
+
+  .hero-root[data-hero-in-view="true"] .hero-reveal {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-copy,
+    .hero-media,
+    .hero-card-layer[data-hero-card="1"],
+    .hero-card-layer[data-hero-card="2"],
+    .hero-card-layer[data-hero-card="3"] {
+      transform: none !important;
+    }
+
+    .hero-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const heroes = document.querySelectorAll("[data-hero-root]");
+
+    heroes.forEach((hero) => {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      hero.setAttribute("data-hero-in-view", "false");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hero.setAttribute("data-hero-in-view", "true");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.28 }
+      );
+
+      revealObserver.observe(hero);
+
+      if (prefersReducedMotion) {
+        hero.style.setProperty("--hero-copy-y", "0px");
+        hero.style.setProperty("--hero-copy-opacity", "1");
+        hero.style.setProperty("--hero-media-y", "0px");
+        hero.style.setProperty("--hero-card-1-y", "0px");
+        hero.style.setProperty("--hero-card-2-y", "0px");
+        hero.style.setProperty("--hero-card-3-y", "0px");
+        return;
+      }
+
+      let rafId = 0;
+      const onScroll = () => {
+        if (rafId !== 0) {
+          return;
+        }
+
+        rafId = window.requestAnimationFrame(() => {
+          rafId = 0;
+
+          const rect = hero.getBoundingClientRect();
+          const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+          const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+          // Start parallax only after the hero begins leaving the top of the viewport.
+          const scrolledPastTop = Math.max(0, -rect.top);
+          const travelDistance = rect.height * (isDesktop ? 0.72 : 0.55);
+          const progress = clamp(scrolledPastTop / Math.max(travelDistance, 1), 0, 1);
+
+          const copyDistance = isDesktop ? 124 : 70;
+          const mediaDistance = isDesktop ? 46 : 26;
+          const copyY = -progress * copyDistance;
+          const mediaY = -progress * mediaDistance;
+          const copyOpacity = clamp(1 - progress * (isDesktop ? 1.28 : 0.95), 0, 1);
+
+          const card1Y = -progress * (isDesktop ? 25 : 14);
+          const card2Y = -progress * (isDesktop ? 34 : 18);
+          const card3Y = -progress * (isDesktop ? 19 : 12);
+
+          hero.style.setProperty("--hero-copy-y", `${copyY.toFixed(2)}px`);
+          hero.style.setProperty("--hero-copy-opacity", copyOpacity.toFixed(3));
+          hero.style.setProperty("--hero-media-y", `${mediaY.toFixed(2)}px`);
+          hero.style.setProperty("--hero-card-1-y", `${card1Y.toFixed(2)}px`);
+          hero.style.setProperty("--hero-card-2-y", `${card2Y.toFixed(2)}px`);
+          hero.style.setProperty("--hero-card-3-y", `${card3Y.toFixed(2)}px`);
+        });
+      };
+
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+    });
+  })();
+</script>
