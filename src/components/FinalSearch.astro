@@ -1,16 +1,25 @@
+---
+import logoIcon from "../assets/icons/Logo.svg?url";
+import socialLinksIcon from "../assets/icons/Social Links.svg?url";
+import emailIcon from "../assets/icons/email-icon.svg?url";
+import mobileIcon from "../assets/icons/Mobile.svg?url";
+import locationIcon from "../assets/icons/location-icon.svg?url";
+import sendIcon from "../assets/icons/Vector.svg?url";
+---
+
 <section class="section-shell py-16 md:py-32">
   <footer class="content-shell mt-8 md:mt-16 border-t border-white/10 pt-8 md:pt-12 pb-6 md:pb-8 grid gap-8 md:grid-cols-4 md:gap-10 text-sm text-gray-300">
     <div class="flex flex-col gap-6 justify-between h-full">
       <div>
         <div class="w-[120px]">
-          <img src="/src/assets/icons/Logo.svg" alt="trueview logo" class="w-full h-auto" />
+          <img src={logoIcon} alt="trueview logo" class="w-full h-auto" />
         </div>
         <p class="mt-6 text-white">Copyright © 2025 trueview.</p>
         <p class="text-white">All rights reserved</p>
       </div>
       <div class="mt-4">
         <a href="#" class="inline-block">
-          <img src="/src/assets/icons/Social%20Links.svg" alt="Instagram" class="w-8 h-8" />
+          <img src={socialLinksIcon} alt="Instagram" class="w-8 h-8" />
         </a>
       </div>
     </div>
@@ -30,15 +39,15 @@
       <h4 class="text-white font-semibold mb-4 text-lg md:text-xl">Reach us</h4>
       <ul class="space-y-6 text-gray-400">
         <li class="flex items-center gap-2">
-          <img src="/src/assets/icons/email-icon.svg" alt="Email" class="w-5 h-5" />
+          <img src={emailIcon} alt="Email" class="w-5 h-5" />
           <span>support@trueview.health</span>
         </li>
         <li class="flex items-center gap-2">
-          <img src="/src/assets/icons/Mobile.svg" alt="Phone" class="w-4 h-5" />
+          <img src={mobileIcon} alt="Phone" class="w-4 h-5" />
           <span>+1(858)568-1132</span>
         </li>
         <li class="flex items-center gap-2">
-          <img src="/src/assets/icons/location-icon.svg" alt="Location" class="w-5 h-5" />
+          <img src={locationIcon} alt="Location" class="w-5 h-5" />
           <span>100 S Congress Ave, STE 2000<br />Austin, TX</span>
         </li>
       </ul>
@@ -53,7 +62,7 @@
           class="w-full bg-gray-700 border border-white/10 rounded-lg py-3 px-4 pr-10 text-gray-900 outline-none focus:border-trueview-blue placeholder:text-gray-500"
         />
         <span class="absolute right-3 top-1/2 -translate-y-1/2">
-          <img src="/src/assets/icons/Vector.svg" alt="Enviar" class="w-5 h-5" />
+          <img src={sendIcon} alt="Enviar" class="w-5 h-5" />
         </span>
       </div>
     </div>

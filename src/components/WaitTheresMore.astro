@@ -30,7 +30,7 @@ import { Image } from 'astro:assets';
       </a>
     </div>
 
-    <div class="relative min-h-80 sm:min-h-[480px] md:min-h-280 overflow-visible">
+    <div class="relative mt-10 min-h-80 sm:mt-14 sm:min-h-[480px] md:mt-0 md:min-h-280 overflow-visible">
       <Image
         src={Stars}
         alt="Decorative stars"
@@ -38,7 +38,7 @@ import { Image } from 'astro:assets';
         quality={78}
         loading="eager"
         decoding="async"
-        class="pointer-events-none select-none absolute left-1/2 top-0 z-0 w-[320px] max-w-none -translate-x-1/2 sm:w-[440px] md:left-auto md:right-8 md:top-0 md:w-200 md:translate-x-0"
+        class="pointer-events-none select-none absolute left-1/2 top-8 z-0 w-[320px] max-w-none -translate-x-1/2 sm:top-4 sm:w-[440px] md:left-auto md:right-8 md:top-0 md:w-200 md:translate-x-0"
       />
       <Image
         src={Phones}
@@ -48,7 +48,7 @@ import { Image } from 'astro:assets';
         loading="eager"
         fetchpriority="high"
         decoding="async"
-        class="pointer-events-none select-none absolute -right-3.5 -bottom-5 z-10 w-82.5 max-w-none sm:w-107.5 md:h-[1500px] md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
+        class="pointer-events-none select-none absolute -right-3.5 -bottom-16 z-10 w-82.5 max-w-none sm:-bottom-12 sm:w-107.5 md:h-[1500px] md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
       />
     </div>
   </div>
