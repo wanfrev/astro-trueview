@@ -6,6 +6,26 @@
 	:root {
 		color-scheme: dark;
 		--app-scale: 0.94;
+		--cards-translate-x: -100px;
+		--stats-text-translate-x: 100px;
+
+		/* TheFails text size controls (editable) */
+		--thefails-label-size: 3rem; /* small label */
+		--thefails-h2-size: 2.5rem; /* heading */
+		--thefails-body-size: 1.5rem; /* paragraph/body */
+		/* LabTesting text size controls (editable) */
+		--labtesting-h2-size: 2.5rem; /* heading */
+		--labtesting-body-size: 1.5rem; /* paragraph/body */
+		/* GoodAndBad (GoodAndBadfirst) text size controls (editable) */
+		--goodandbad-label-size: 1.5rem; /* label */
+		--goodandbad-h2-size: 2rem; /* heading */
+		--goodandbad-body-size: 1.2rem; /* paragraph/body */
+
+		/* WaitTheresMore text size controls (editable) */
+		--wait-badge-size: 0.6875rem; /* badge/small label (10px) */
+		--wait-h2-size: 2.5rem; /* heading */
+		--wait-body-size: 1.5rem; /* paragraph/body */
+		--wait-button-size: 1rem; /* button text */
 	}
 
 	html {

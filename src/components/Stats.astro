@@ -6,10 +6,10 @@ import PoisonIcon from '../assets/icons/poison.svg';
 import { Image } from 'astro:assets';
 
 const cards = [
-  { name: 'Protein', percentage: '70%', icon: PillIcon },
+  { name: 'Protein', percentage: '70%', icon: PoisonIcon },
   { name: 'Super Greens', percentage: '75%', icon: PlantIcon },
   { name: 'Prenatal', percentage: '19%', icon: NaturalIcon },
-  { name: 'Herbal Supplements', percentage: '38%', icon: PoisonIcon },
+  { name: 'Herbal Supplements', percentage: '38%', icon: PillIcon },
 ];
 
 ---
@@ -20,14 +20,14 @@ const cards = [
     <div class="absolute right-[10%] top-[18%] h-[320px] w-[320px] rounded-full bg-blue-900/12 blur-[150px]"></div>
   </div>
 
-  <div class="max-w-[1700px] mx-auto grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,560px)] items-center">
-    <h2 class="max-w-[620px] text-3xl sm:text-4xl md:text-[48px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] text-center md:text-left">
+  <div class="max-w-[1700px] mx-auto grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,760px)] items-center">
+    <h2 style="transform: translateX(var(--stats-text-translate-x)); transition: transform 220ms ease" class="max-w-[620px] text-3xl sm:text-4xl md:text-[48px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] text-center md:text-left">
       We have lab tested many
       products and what we have
       found is <span class="text-[#ff5b58]">alarming</span>
     </h2>
 
-    <div class="grid grid-cols-2 gap-4 sm:gap-6">
+    <div class="grid grid-cols-2 gap-4 sm:gap-6" style="transform: translateX(var(--cards-translate-x)); transition: transform 220ms ease">
       {cards.map((card) => (
         <div class="bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-lg">
           
