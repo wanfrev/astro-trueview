@@ -7,6 +7,10 @@
 		color-scheme: dark;
 		--cards-translate-x: 0px;
 		--stats-text-translate-x: 0px;
+		--motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+		--motion-duration: 760ms;
+		--motion-distance: 28px;
+		--motion-stagger: 90ms;
 
 		/* TheFails text size controls (editable) */
 		--thefails-label-size: 3rem; /* small label */
@@ -115,5 +119,142 @@
 		flex-direction: column;
 		justify-content: space-between;
 		box-sizing: border-box;
+	}
+
+	.motion-reveal {
+		opacity: 1;
+		transform: none;
+		--reveal-y: var(--motion-distance);
+		--reveal-x: 0px;
+		--reveal-scale: 0.985;
+		--reveal-rotate: 0deg;
+		--reveal-blur: 0px;
+		--reveal-delay: 0ms;
+		--reveal-duration: var(--motion-duration);
+		--reveal-ease: var(--motion-ease);
+		transition-property: opacity, transform, filter;
+		transition-duration: var(--reveal-duration);
+		transition-timing-function: var(--reveal-ease);
+		transition-delay: var(--reveal-delay);
+		will-change: opacity, transform, filter;
+	}
+
+	html.motion-enabled .motion-reveal {
+		opacity: 0;
+		filter: blur(var(--reveal-blur));
+		transform: translate3d(var(--reveal-x), var(--reveal-y), 0) scale(var(--reveal-scale)) rotate(var(--reveal-rotate));
+	}
+
+	html.motion-enabled .motion-reveal.is-inview {
+		opacity: 1;
+		filter: blur(0px);
+		transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+	}
+
+	html.motion-enabled [data-reveal-group] .motion-reveal {
+		transition-delay: calc(var(--reveal-delay) + (var(--reveal-index, 0) * var(--motion-stagger)));
+	}
+
+	.motion-reveal-left {
+		--reveal-x: calc(var(--motion-distance) * -1);
+		--reveal-y: 0px;
+	}
+
+	.motion-reveal-right {
+		--reveal-x: var(--motion-distance);
+		--reveal-y: 0px;
+	}
+
+	.motion-reveal-zoom {
+		--reveal-y: 14px;
+		--reveal-scale: 0.94;
+	}
+
+	.motion-reveal-impact {
+		--reveal-y: 56px;
+		--reveal-scale: 0.9;
+		--reveal-rotate: -0.6deg;
+		--reveal-blur: 3px;
+		--reveal-duration: 560ms;
+		--reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.motion-float-soft {
+		animation: motionFloatSoft 6.4s ease-in-out infinite;
+	}
+
+	.motion-word-glow {
+		background-image: linear-gradient(105deg, #ffffff 0%, #c9d8ff 26%, #ff8f8d 50%, #ffffff 72%);
+		background-size: 220% 100%;
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+		animation: motionTextSheen 4.8s linear infinite;
+	}
+
+	.motion-word-glow-red {
+		background-image: linear-gradient(105deg, #ffb9b8 0%, #ff5b58 40%, #ffd3d2 70%, #ff5b58 100%);
+	}
+
+	.motion-word-glow-blue {
+		background-image: linear-gradient(105deg, #9ecbff 0%, #2563eb 42%, #d4e6ff 72%, #2563eb 100%);
+	}
+
+	.motion-hover-lift {
+		transition: transform 260ms var(--motion-ease), box-shadow 260ms ease, filter 260ms ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.motion-hover-lift:hover {
+			transform: translate3d(0, -9px, 0) scale(1.012);
+			filter: brightness(1.04);
+		}
+	}
+
+	.motion-hover-lift:focus-visible {
+		transform: translate3d(0, -4px, 0);
+	}
+
+	@keyframes motionFloatSoft {
+		0%,
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+		50% {
+			transform: translate3d(0, -12px, 0);
+		}
+	}
+
+	@keyframes motionTextSheen {
+		from {
+			background-position: 0% 50%;
+		}
+		to {
+			background-position: 220% 50%;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html.motion-enabled .motion-reveal,
+		html.motion-enabled [data-reveal-group] .motion-reveal {
+			opacity: 1 !important;
+			filter: none !important;
+			transform: none !important;
+			transition: none !important;
+		}
+
+		.motion-float-soft,
+		.motion-word-glow {
+			animation: none !important;
+		}
+
+		.motion-hover-lift,
+		.motion-hover-lift:hover,
+		.motion-hover-lift:focus-visible {
+			transform: none !important;
+			filter: none !important;
+			transition: none !important;
+		}
 	}
 }

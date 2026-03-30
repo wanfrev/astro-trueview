@@ -6,25 +6,25 @@ import { Image } from 'astro:assets';
 
 <section data-bg="wait-more" class="section-shell pt-16 pb-6 md:py-28 overflow-hidden">
   <div class="max-w-[1700px] mx-auto grid md:grid-cols-[1fr_1.2fr] gap-12 items-center">
-    <div class="relative z-20 max-w-155 text-center md:text-left">
-      <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-gray-200" style="font-size: var(--wait-badge-size);">
+    <div data-reveal-group class="relative z-20 max-w-155 text-center md:text-left">
+      <span class="motion-reveal inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-gray-200" style="font-size: var(--wait-badge-size);">
         <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#2563eb]"></span>
         #1 trusted source for lab-tested supplements
       </span>
 
-      <h2 style="font-size: var(--wait-h2-size);" class="mt-6 md:mt-7 text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.06] md:leading-[1.02] tracking-[-0.03em] md:tracking-[-0.035em]">
+      <h2 style="font-size: var(--wait-h2-size);" class="motion-reveal motion-reveal-left mt-6 md:mt-7 text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.06] md:leading-[1.02] tracking-[-0.03em] md:tracking-[-0.035em]">
         Supplements don’t regulate
         <br />
-        themselves, <span class="text-trueview-red">so we do!</span>
+        themselves, <span class="motion-word-glow motion-word-glow-red">so we do!</span>
       </h2>
 
-      <p style="font-size: var(--wait-body-size);" class="mt-6 md:mt-8 text-gray-400 text-base sm:text-lg md:text-xl leading-[1.55] max-w-130 mx-auto md:mx-0">
+      <p style="font-size: var(--wait-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-6 md:mt-8 text-gray-400 text-base sm:text-lg md:text-xl leading-[1.55] max-w-130 mx-auto md:mx-0">
         Reading lab reports shouldn’t turn into a full-time job.
         We translate complex data into Pass/Fails-covering accuracy, heavy metals,
         and microbes - just verify into your fingertips.
       </p>
 
-      <a href="/waitlist" class="mt-8 md:mt-10 inline-flex items-center gap-2 rounded-full bg-[#2563eb] px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:brightness-110" style="font-size: var(--wait-button-size);">
+      <a href="/waitlist" class="motion-reveal motion-reveal-left motion-hover-lift mt-8 md:mt-10 inline-flex items-center gap-2 rounded-full bg-[#2563eb] px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-blue-900/30 transition hover:brightness-110" style="font-size: var(--wait-button-size); --reveal-delay: 220ms;">
         Join the waitlist
         <span aria-hidden="true">→</span>
       </a>
@@ -39,7 +39,8 @@ import { Image } from 'astro:assets';
         loading="eager"
         fetchpriority="high"
         decoding="async"
-        class="pointer-events-none select-none absolute -right-16 -bottom-16 z-10 w-82.5 max-w-none sm:-right-3.5 sm:-bottom-12 sm:w-107.5 md:h-[1500px] md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
+        style="--reveal-delay: 160ms;"
+        class="motion-reveal motion-reveal-right motion-float-soft pointer-events-none select-none absolute -right-16 -bottom-16 z-10 w-82.5 max-w-none sm:-right-3.5 sm:-bottom-12 sm:w-107.5 md:h-[1500px] md:left-auto md:-right-80 md:-top-40 md:w-200 md:translate-x-0"
       />
     </div>
   </div>

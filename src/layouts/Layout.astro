@@ -25,5 +25,76 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 	<body class="selection:bg-trueview-blue/30">
 		<Background />
 		<slot />
+
+		<script is:inline>
+			(() => {
+				const revealSelector = '.motion-reveal';
+
+				const assignStaggerIndexes = () => {
+					document.querySelectorAll('[data-reveal-group]').forEach((group) => {
+						group.querySelectorAll(revealSelector).forEach((item, index) => {
+							item.style.setProperty('--reveal-index', String(index));
+						});
+					});
+				};
+
+				const setupRevealObserver = () => {
+					document.documentElement.classList.add('motion-enabled');
+
+					const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+					assignStaggerIndexes();
+
+					if (prefersReducedMotion) {
+						document.querySelectorAll(revealSelector).forEach((element) => {
+							element.classList.add('is-inview');
+						});
+						return;
+					}
+
+					if (window.__trueviewRevealObserver) {
+						window.__trueviewRevealObserver.disconnect();
+					}
+
+					const observer = new IntersectionObserver(
+						(entries) => {
+							entries.forEach((entry) => {
+								const element = entry.target;
+								const revealOnce = element.getAttribute('data-reveal-once') !== 'false';
+
+								if (entry.isIntersecting) {
+									element.classList.add('is-inview');
+									if (revealOnce) {
+										observer.unobserve(element);
+									}
+								} else if (!revealOnce) {
+									element.classList.remove('is-inview');
+								}
+							});
+						},
+						{
+							threshold: 0.22,
+							rootMargin: '0px 0px -8% 0px',
+						}
+					);
+
+					window.__trueviewRevealObserver = observer;
+
+					document.querySelectorAll(revealSelector).forEach((element) => {
+						element.classList.remove('is-inview');
+						observer.observe(element);
+					});
+				};
+
+				const init = () => window.requestAnimationFrame(setupRevealObserver);
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', init, { once: true });
+				} else {
+					init();
+				}
+
+				document.addEventListener('astro:page-load', init);
+			})();
+		</script>
 	</body>
 </html>

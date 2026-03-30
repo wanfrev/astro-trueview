@@ -5,15 +5,15 @@ import { Image } from 'astro:assets';
 
 <section data-bg="good-bad" data-gabfirst-root data-gabfirst-in-view="false" class="section-shell py-16 lg:py-24">
   <div class="content-shell grid items-center gap-10 lg:gap-16 lg:grid-cols-2">
-    <div class="order-2 lg:order-1 max-w-[56ch] text-center lg:text-left mx-auto lg:mx-0">
-      <span class="mb-4 block text-lg lg:text-xl font-medium text-[#2563eb]" style="font-size: var(--goodandbad-label-size);">The Good and the Bad</span>
+    <div data-reveal-group class="order-2 lg:order-1 max-w-[56ch] text-center lg:text-left mx-auto lg:mx-0">
+      <span class="motion-reveal motion-reveal-impact motion-word-glow motion-word-glow-blue mb-4 block text-lg lg:text-xl font-black tracking-[-0.02em] text-[#2563eb]" style="font-size: var(--goodandbad-label-size);">The Good and the Bad</span>
 
-      <h2 style="font-size: var(--goodandbad-h2-size);" class="text-3xl sm:text-4xl lg:text-[48px] xl:text-[56px] font-bold leading-tight">
+      <h2 style="font-size: var(--goodandbad-h2-size);" class="motion-reveal motion-reveal-impact motion-reveal-left text-3xl sm:text-4xl lg:text-[48px] xl:text-[56px] font-bold leading-tight">
         Reading lab reports sucks. <br />
         <span class="text-white/90">We show you the critical information.</span>
       </h2>
 
-      <p style="font-size: var(--goodandbad-body-size);" class="mt-6 lg:mt-8 max-w-lg text-base sm:text-lg lg:text-xl leading-relaxed text-gray-400 mx-auto lg:mx-0">
+      <p style="font-size: var(--goodandbad-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-left mt-6 lg:mt-8 max-w-lg text-base sm:text-lg lg:text-xl leading-relaxed text-gray-400 mx-auto lg:mx-0">
         We don’t offer you an opinion, we just show you the science.
         If a product passes or fails we show you readable lab results.
         Make healthy decisions, quickly.
@@ -31,7 +31,8 @@ import { Image } from 'astro:assets';
             loading="eager"
             fetchpriority="high"
             decoding="async"
-            class="absolute left-1/2 top-0 z-10 h-auto w-[244px] -translate-x-1/2 drop-shadow-[0_36px_80px_rgba(0,0,0,0.5)] sm:w-[320px] lg:left-[20%] lg:w-auto lg:translate-x-0"
+            style="--reveal-delay: 160ms;"
+            class="motion-reveal motion-reveal-right motion-float-soft absolute left-1/2 top-0 z-10 h-auto w-[244px] -translate-x-1/2 drop-shadow-[0_36px_80px_rgba(0,0,0,0.5)] sm:w-[320px] lg:left-[20%] lg:w-auto lg:translate-x-0"
           />
 
           <div

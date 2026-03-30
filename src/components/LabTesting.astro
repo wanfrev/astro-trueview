@@ -4,22 +4,22 @@ import Group from '../assets/images/group.png';
 
 <section data-bg="lab" class="section-shell py-18 lg:py-24 xl:py-28">
   <div class="content-shell grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-    <div class="order-2 lg:order-1 text-center lg:text-left">
-      <h2 style="font-size: var(--labtesting-h2-size);" class="text-4xl sm:text-5xl lg:text-[48px] xl:text-[56px] font-bold leading-tight">
+    <div data-reveal-group class="order-2 lg:order-1 text-center lg:text-left">
+      <h2 style="font-size: var(--labtesting-h2-size);" class="motion-reveal motion-reveal-left text-4xl sm:text-5xl lg:text-[48px] xl:text-[56px] font-bold leading-tight">
         We test products for <br />
-        <span class="text-[#ef4444]">accuracy</span>,
-        <span class="text-[#ef4444]">heavy metals</span>, <br />
-        and <span class="text-[#ef4444]">microbes</span>
+        <span class="motion-word-glow motion-word-glow-red">accuracy</span>,
+        <span class="motion-word-glow motion-word-glow-red">heavy metals</span>, <br />
+        and <span class="motion-word-glow motion-word-glow-red">microbes</span>
       </h2>
 
-      <p style="font-size: var(--labtesting-body-size);" class="mt-8 text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[56ch] mx-auto lg:mx-0">
+      <p style="font-size: var(--labtesting-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-8 text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[56ch] mx-auto lg:mx-0">
         A concerning finding is the presence of a diverse array of contaminants in these products.
         This highlights the importance of thorough testing and quality control measures to ensure
         consumer safety and product purity.
       </p>
 
-      <div class="mt-10 flex justify-center lg:justify-start">
-        <a href="/products" class="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold transition-all">
+      <div style="--reveal-delay: 220ms;" class="motion-reveal motion-reveal-left mt-10 flex justify-center lg:justify-start">
+        <a href="/products" class="motion-hover-lift inline-flex items-center gap-2 bg-[#2563eb] hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold transition-all">
           Explore products
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -36,7 +36,8 @@ import Group from '../assets/images/group.png';
         width={Group.width}
         height={Group.height}
         alt="Ilustración de resultados de laboratorio de productos"
-        class="relative z-10 w-[92%] sm:w-[86%] lg:w-full max-w-[620px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)] xl:drop-shadow-[0_28px_70px_rgba(0,0,0,0.45)]"
+        style="--reveal-delay: 140ms;"
+        class="motion-reveal motion-reveal-right motion-float-soft relative z-10 w-[92%] sm:w-[86%] lg:w-full max-w-[620px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)] xl:drop-shadow-[0_28px_70px_rgba(0,0,0,0.45)]"
       />
     </div>
   </div>

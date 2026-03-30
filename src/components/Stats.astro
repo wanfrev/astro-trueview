@@ -21,15 +21,15 @@ const cards = [
   </div>
 
   <div class="content-shell grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-    <h2 class="max-w-[23ch] text-3xl sm:text-4xl lg:text-[44px] xl:text-[52px] font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] text-center lg:text-left">
+    <h2 class="motion-reveal motion-reveal-left max-w-[23ch] text-3xl sm:text-4xl lg:text-[44px] xl:text-[52px] font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] text-center lg:text-left">
       We have lab tested many
       products and what we have
-      found is <span class="text-[#ff5b58]">alarming</span>
+      found is <span class="motion-word-glow motion-word-glow-red">alarming</span>
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+    <div data-reveal-group class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       {cards.map((card, index) => (
-        <div class={`stats-card ${index < 2 ? 'stats-card--up' : 'stats-card--down'} bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-[0_16px_36px_rgba(0,0,0,0.28)] xl:shadow-[0_26px_52px_rgba(0,0,0,0.38)]`}>
+        <div class={`motion-reveal motion-reveal-zoom motion-hover-lift stats-card ${index < 2 ? 'stats-card--up' : 'stats-card--down'} bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-[0_16px_36px_rgba(0,0,0,0.28)] xl:shadow-[0_26px_52px_rgba(0,0,0,0.38)]`}>
           
           <div class="flex justify-between items-start">
             <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">

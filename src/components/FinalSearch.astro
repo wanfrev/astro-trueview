@@ -8,8 +8,8 @@ import sendIcon from "../assets/icons/Vector.svg?url";
 ---
 
 <section class="section-shell no-section-gap px-6 lg:px-12 bg-black">
-  <footer class="content-shell border-t border-white/10 pt-8 md:pt-12 pb-6 md:pb-8 grid gap-8 md:grid-cols-4 md:gap-10 text-sm text-gray-300">
-    <div class="flex flex-col gap-6 justify-between h-full">
+  <footer data-reveal-group class="content-shell border-t border-white/10 pt-8 md:pt-12 pb-6 md:pb-8 grid gap-8 md:grid-cols-4 md:gap-10 text-sm text-gray-300">
+    <div class="motion-reveal motion-reveal-left flex flex-col gap-6 justify-between h-full">
       <div>
         <div class="w-[120px]">
           <img src={logoIcon} alt="trueview logo" class="w-full h-auto" />
@@ -24,18 +24,18 @@ import sendIcon from "../assets/icons/Vector.svg?url";
       </div>
     </div>
 
-    <div>
+    <div class="motion-reveal">
       <h4 class="text-white font-semibold mb-4 text-lg md:text-xl">Quick links</h4>
       <ul class="space-y-3 text-white/40">
-        <li><a href="#" class="hover:text-white transition">Home</a></li>
-        <li><a href="#" class="hover:text-white transition">About</a></li>
-        <li><a href="#" class="hover:text-white transition">Search</a></li>
-        <li><a href="#" class="hover:text-white transition">Brands</a></li>
-        <li><a href="#" class="hover:text-white transition">Privacy policy</a></li>
+        <li><a href="#" class="motion-hover-lift inline-flex hover:text-white transition">Home</a></li>
+        <li><a href="#" class="motion-hover-lift inline-flex hover:text-white transition">About</a></li>
+        <li><a href="#" class="motion-hover-lift inline-flex hover:text-white transition">Search</a></li>
+        <li><a href="#" class="motion-hover-lift inline-flex hover:text-white transition">Brands</a></li>
+        <li><a href="#" class="motion-hover-lift inline-flex hover:text-white transition">Privacy policy</a></li>
       </ul>
     </div>
 
-    <div>
+    <div class="motion-reveal">
       <h4 class="text-white font-semibold mb-4 text-lg md:text-xl">Reach us</h4>
       <ul class="space-y-6 text-gray-400">
         <li class="flex items-center gap-2">
@@ -53,13 +53,13 @@ import sendIcon from "../assets/icons/Vector.svg?url";
       </ul>
     </div>
 
-    <div>
+    <div class="motion-reveal motion-reveal-right">
       <h4 class="text-white font-semibold mb-4">Stay up to date</h4>
       <div class="relative">
         <input
           type="email"
           placeholder="Your email address"
-          class="w-full bg-gray-700 border border-white/10 rounded-lg py-3 px-4 pr-10 text-gray-900 outline-none focus:border-trueview-blue placeholder:text-gray-500"
+          class="motion-hover-lift w-full bg-gray-700 border border-white/10 rounded-lg py-3 px-4 pr-10 text-gray-900 outline-none focus:border-trueview-blue placeholder:text-gray-500"
         />
         <span class="absolute right-3 top-1/2 -translate-y-1/2">
           <img src={sendIcon} alt="Enviar" class="w-5 h-5" />

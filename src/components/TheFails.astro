@@ -23,15 +23,15 @@ import { Image } from 'astro:assets';
       <Image src={GreyBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[2%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[5%] md:bottom-[11%] max-w-none opacity-85" />
     </div>
 
-    <div class="flex flex-col gap-5 md:gap-6 items-center text-center md:items-end md:text-right">
-      <span class="text-[#ff5b58] font-medium text-lg" style="font-size: var(--thefails-label-size);">The Fails</span>
+    <div data-reveal-group class="flex flex-col gap-5 md:gap-6 items-center text-center md:items-end md:text-right">
+      <span class="motion-reveal motion-reveal-impact motion-word-glow motion-word-glow-red text-[#ff5b58] font-black tracking-[-0.02em] text-lg" style="font-size: var(--thefails-label-size);">The Fails</span>
 
-      <h2 style="font-size: var(--thefails-h2-size);" class="text-3xl sm:text-4xl md:text-[40px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] max-w-[620px]">
+      <h2 style="font-size: var(--thefails-h2-size);" class="motion-reveal motion-reveal-impact motion-reveal-right text-3xl sm:text-4xl md:text-[40px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] max-w-[620px]">
         Reading lab reports is difficult. <br />
-        <span class="text-white">We show you the critical information. Quickly.</span>
+        <span class="motion-word-glow text-white">We show you the critical information. Quickly.</span>
       </h2>
 
-      <p style="font-size: var(--thefails-body-size);" class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-md md:max-w-[520px]">
+      <p style="font-size: var(--thefails-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-right text-gray-400 text-base sm:text-lg leading-relaxed max-w-md md:max-w-[520px]">
         We don't offer you an opinion, we just show you the science.
         If a product passes or fails we show you readable lab results.
         Make healthy decisions, quickly.
