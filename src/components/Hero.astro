@@ -55,14 +55,18 @@ const topBrandLogos = Brands;
         <!-- Ellipse2 moved to section background to avoid clipping by the phone container -->
 
         <div class="hero-phone-layer hero-reveal hero-reveal-phone relative z-10">
-          <Image
-            src={Phone}
-            alt="phone caution"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            class="mx-auto w-[300px] max-w-full sm:w-[380px] lg:mx-0 lg:ml-[10%] lg:w-[430px] xl:w-[470px] 2xl:w-[510px] drop-shadow-2xl"
-          />
+          <div class="hero-phone-frame mx-auto h-[357px] w-[250px] max-w-full sm:h-[451px] sm:w-[316px] lg:mx-0 lg:ml-[10%] lg:h-[511px] lg:w-[358px] xl:h-[559px] xl:w-[392px] 2xl:h-[608px] 2xl:w-[426px]">
+            <img
+              src={Phone.src}
+              width={Phone.width}
+              height={Phone.height}
+              alt="phone caution"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="hero-phone-image"
+            />
+          </div>
         </div>
 
         <div
@@ -148,7 +152,7 @@ const topBrandLogos = Brands;
     <div data-hero-copy class="hero-copy order-1 lg:order-2 text-center lg:text-left z-10">
       <h1
         id="hero-title"
-        class="hero-reveal hero-reveal-copy-1 mx-auto max-w-[22ch] text-4xl sm:text-5xl lg:text-[52px] xl:text-[64px] 2xl:text-[72px] font-bold leading-[0.98] lg:leading-[0.95] tracking-[-0.03em] text-white lg:mx-0"
+        class="hero-reveal hero-reveal-copy-1 mx-auto max-w-[22ch] text-4xl sm:text-5xl lg:text-[52px] xl:text-[64px] 2xl:text-[70px] font-bold leading-[0.98] lg:leading-[0.95] tracking-[-0.03em] text-white lg:mx-0"
       >
         The only marketplace where every product is lab tested
       </h1>
@@ -197,6 +201,21 @@ const topBrandLogos = Brands;
   .hero-phone-layer {
     transform: translate3d(0, var(--hero-media-y), 0);
     will-change: transform;
+  }
+
+  .hero-phone-frame {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-phone-image {
+    position: absolute;
+    left: -16.01%;
+    top: -13.81%;
+    width: 143.69%;
+    height: 127.66%;
+    max-width: none;
+    object-fit: contain;
   }
 
   .hero-card-layer[data-hero-card="1"] {
