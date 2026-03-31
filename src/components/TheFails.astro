@@ -185,8 +185,8 @@ import { Image } from 'astro:assets';
 
     .thefails-phone-bottom {
       width: 80%;
-      left: 20%;
-      top: 14%;
+      left: 18%;
+      top: 19%;
       --thefails-rotate: 0deg;
     }
   }
@@ -216,9 +216,23 @@ import { Image } from 'astro:assets';
 
     .thefails-phone-bottom {
       width: 82%;
-      left: 20%;
-      top: 12%;
+      left: 18%;
+      top: 20%;
       --thefails-rotate: 0deg;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    .thefails-phone-bottom {
+      left: 17%;
+      top: 24%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .thefails-phone-bottom {
+      left: 16%;
+      top: 24%;
     }
   }
 
