@@ -3,8 +3,8 @@ import Group from '../assets/images/group.png';
 ---
 
 <section data-bg="lab" class="section-shell py-18 lg:py-24 xl:py-28">
-  <div class="content-shell grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-    <div data-reveal-group class="order-2 lg:order-1 text-center lg:text-left">
+  <div class="content-shell grid items-center gap-12 xl:grid-cols-2 xl:gap-16">
+    <div data-reveal-group class="order-1 text-center xl:text-left">
       <h2 style="font-size: var(--labtesting-h2-size);" class="motion-reveal motion-reveal-left text-4xl sm:text-5xl lg:text-[48px] xl:text-[56px] font-bold leading-tight">
         We test products for <br />
         <span class="motion-word-glow motion-word-glow-red">accuracy</span>,
@@ -12,13 +12,26 @@ import Group from '../assets/images/group.png';
         and <span class="motion-word-glow motion-word-glow-red">microbes</span>
       </h2>
 
-      <p style="font-size: var(--labtesting-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-8 text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[56ch] mx-auto lg:mx-0">
+      <p style="font-size: var(--labtesting-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-8 text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[56ch] mx-auto xl:mx-0">
         A concerning finding is the presence of a diverse array of contaminants in these products.
         This highlights the importance of thorough testing and quality control measures to ensure
         consumer safety and product purity.
       </p>
 
-      <div style="--reveal-delay: 220ms;" class="motion-reveal motion-reveal-left mt-10 flex justify-center lg:justify-start">
+      <div class="mt-8 flex justify-center xl:hidden">
+        <div class="labtesting-visual labtesting-visual-mobile">
+          <img
+            src={Group.src}
+            width={Group.width}
+            height={Group.height}
+            alt="Ilustración de resultados de laboratorio de productos"
+            style="--reveal-delay: 140ms;"
+            class="motion-reveal motion-reveal-right motion-float-soft labtesting-visual-image relative z-10 drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)]"
+          />
+        </div>
+      </div>
+
+      <div style="--reveal-delay: 220ms;" class="motion-reveal motion-reveal-left mt-10 flex justify-center xl:justify-start">
         <a href="/products" class="motion-hover-lift inline-flex items-center gap-2 bg-[#2563eb] hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold transition-all">
           Explore products
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -28,17 +41,39 @@ import Group from '../assets/images/group.png';
       </div>
     </div>
 
-    <div class="order-1 lg:order-2 relative h-full min-h-[320px] sm:min-h-[420px] lg:min-h-[520px] flex items-center justify-center">
-      <div aria-hidden="true" class="hidden"></div>
-
-      <img
-        src={Group.src}
-        width={Group.width}
-        height={Group.height}
-        alt="Ilustración de resultados de laboratorio de productos"
-        style="--reveal-delay: 140ms;"
-        class="motion-reveal motion-reveal-right motion-float-soft relative z-10 w-[92%] sm:w-[86%] lg:w-full max-w-[620px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)] xl:drop-shadow-[0_28px_70px_rgba(0,0,0,0.45)]"
-      />
+    <div class="order-2 hidden items-center justify-center xl:flex">
+      <div class="labtesting-visual">
+        <img
+          src={Group.src}
+          width={Group.width}
+          height={Group.height}
+          alt="Ilustración de resultados de laboratorio de productos"
+          style="--reveal-delay: 140ms;"
+          class="motion-reveal motion-reveal-right motion-float-soft labtesting-visual-image relative z-10 drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)] xl:drop-shadow-[0_28px_70px_rgba(0,0,0,0.45)]"
+        />
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .labtesting-visual {
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 620 / 520;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .labtesting-visual-mobile {
+    max-width: min(100%, 420px);
+    aspect-ratio: 620 / 520;
+  }
+
+  .labtesting-visual-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+</style>

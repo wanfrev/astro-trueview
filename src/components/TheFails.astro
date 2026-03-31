@@ -8,30 +8,32 @@ import GreyBottle from '../assets/icons/greybottle.png';
 import { Image } from 'astro:assets';
 ---
 
-<section data-bg="fails" data-thefails-root data-thefails-in-view="false" class="section-shell py-14 md:py-20">
-  <div class="max-w-[1700px] mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-    <div class="relative h-full min-h-[420px] sm:min-h-[560px] md:min-h-[920px] overflow-visible">
+<section data-bg="fails" data-thefails-root data-thefails-in-view="false" class="section-shell py-14 md:py-20 overflow-hidden">
+  <div class="thefails-grid max-w-425 mx-auto items-center">
+    <div class="thefails-media order-2 lg:order-1">
+      <div class="phone-collage-wrapper">
       <div aria-hidden="true" class="hidden"></div>
 
-      <Image src={PhoneTop} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-top absolute left-[8%] top-[8%] z-30 w-[70%] max-w-[300px] sm:left-[10%] sm:w-[66%] sm:max-w-[360px] md:left-[12%] md:top-[12%] md:w-auto md:max-w-none" />
-      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom absolute left-[34%] top-[34%] z-10 w-[62%] max-w-[280px] sm:left-[28%] sm:w-[60%] sm:max-w-[340px] md:left-[20%] md:top-[34%] md:w-auto md:max-w-none" />
+      <Image src={PhoneTop} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
+      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:430px;width:65%;height:auto;" />
 
-      <Image src={VioletBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[76%] top-[8%] z-20 w-[44px] sm:w-auto md:left-[80%] md:w-auto max-w-none opacity-75" />
-      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[85%] top-[12%] z-20 w-[40px] sm:w-auto md:left-[89.7%] md:top-[13.5%] max-w-none opacity-75" />
+      <Image src={VioletBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-a" />
+      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-b" />
 
-      <Image src={Pill} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[12%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[15%] md:bottom-[12%] max-w-none opacity-60" />
-      <Image src={GreyBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="absolute left-[2%] bottom-[8%] z-20 w-[44px] sm:w-auto md:left-[5%] md:bottom-[11%] max-w-none opacity-85" />
+      <Image src={Pill} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-pill" />
+      <Image src={GreyBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-grey" />
+      </div>
     </div>
 
-    <div data-reveal-group class="flex flex-col gap-5 md:gap-6 items-center text-center md:items-end md:text-right">
+    <div data-reveal-group class="thefails-text flex flex-col gap-5 md:gap-6 items-center text-center lg:items-end lg:text-right order-1 lg:order-2">
       <span class="motion-reveal motion-reveal-impact motion-word-glow motion-word-glow-red text-[#ff5b58] font-black tracking-[-0.02em] text-lg" style="font-size: var(--thefails-label-size);">The Fails</span>
 
-      <h2 style="font-size: var(--thefails-h2-size);" class="motion-reveal motion-reveal-impact motion-reveal-right text-3xl sm:text-4xl md:text-[40px] font-bold leading-[1.08] md:leading-[1.06] tracking-[-0.03em] max-w-[620px]">
+      <h2 style="font-size: clamp(2rem, 5vw, var(--thefails-h2-size));" class="motion-reveal motion-reveal-impact motion-reveal-right font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] max-w-155">
         Reading lab reports is difficult. <br />
         <span class="motion-word-glow text-white">We show you the critical information. Quickly.</span>
       </h2>
 
-      <p style="font-size: var(--thefails-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-right text-gray-400 text-base sm:text-lg leading-relaxed max-w-md md:max-w-[520px]">
+      <p style="font-size: var(--thefails-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-right text-gray-400 text-base sm:text-lg leading-relaxed max-w-md md:max-w-130">
         We don't offer you an opinion, we just show you the science.
         If a product passes or fails we show you readable lab results.
         Make healthy decisions, quickly.
@@ -41,13 +43,110 @@ import { Image } from 'astro:assets';
 </section>
 
 <style>
+  .thefails-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(2.25rem, 4vw, 4rem);
+    align-items: center;
+  }
+
+  .thefails-media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone-collage-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
   .thefails-phone {
+    position: absolute;
+    height: auto;
+    transform-origin: center center;
     will-change: transform;
     animation-duration: 3.8s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-play-state: paused;
+    transition: width 260ms ease, left 260ms ease, top 260ms ease;
+    max-width: 100%;
+  }
+
+  .thefails-phone-top {
+    width: 65%;
+    max-width: 430px !important;
+    left: 5%;
+    top: 5%;
+    z-index: 30;
+    --thefails-rotate: 5deg;
+    transform: rotate(var(--thefails-rotate));
+  }
+
+  .thefails-phone-bottom {
+    width: 65%;
+    max-width: 430px !important;
+    left: 30%;
+    top: 20%;
+    z-index: 10;
+    --thefails-rotate: -18deg;
+    transform: rotate(var(--thefails-rotate));
+  }
+
+  .thefails-icon {
+    position: absolute;
+    height: auto;
+    will-change: transform;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: paused;
+  }
+
+  .thefails-icon-violet-a {
+    left: 85%;
+    top: 15%;
+    width: 10%;
+    max-width: 52px;
+    z-index: 20;
+    opacity: 0.75;
+    animation-name: thefailsFloatUp;
+  }
+
+  .thefails-icon-violet-b {
+    left: 88%;
+    top: 13%;
+    width: 8%;
+    max-width: 46px;
+    z-index: 20;
+    opacity: 0.75;
+    animation-name: thefailsFloatDown;
+  }
+
+  .thefails-icon-pill {
+    left: 14%;
+    bottom: 10%;
+    width: 9%;
+    max-width: 52px;
+    z-index: 20;
+    opacity: 0.6;
+    animation-name: thefailsFloatUp;
+  }
+
+  .thefails-icon-grey {
+    left: -5%;
+    bottom: 15%;
+    width: 12%;
+    max-width: 52px;
+    z-index: 20;
+    opacity: 0.85;
+    animation-name: thefailsFloatDown;
   }
 
   .thefails-phone-top {
@@ -58,22 +157,73 @@ import { Image } from 'astro:assets';
     animation-name: thefailsFloatDown;
   }
 
-  [data-thefails-root][data-thefails-in-view='true'] .thefails-phone {
+  [data-thefails-root][data-thefails-in-view='true'] .thefails-phone,
+  [data-thefails-root][data-thefails-in-view='true'] .thefails-icon {
     animation-play-state: running;
   }
 
   @keyframes thefailsFloatUp {
-    from { transform: translate3d(0, 6px, 0); }
-    to { transform: translate3d(0, -14px, 0); }
+    from { transform: translate3d(0, 6px, 0) rotate(var(--thefails-rotate, 0deg)); }
+    to { transform: translate3d(0, -14px, 0) rotate(var(--thefails-rotate, 0deg)); }
   }
 
   @keyframes thefailsFloatDown {
-    from { transform: translate3d(0, -6px, 0); }
-    to { transform: translate3d(0, 14px, 0); }
+    from { transform: translate3d(0, -6px, 0) rotate(var(--thefails-rotate, 0deg)); }
+    to { transform: translate3d(0, 14px, 0) rotate(var(--thefails-rotate, 0deg)); }
+  }
+
+  @media (max-width: 1279px) {
+    .phone-collage-wrapper {
+      width: min(100%, clamp(460px, 46vw, 620px));
+    }
+
+    .thefails-phone-top {
+      width: 64%;
+      left: 5%;
+      top: 6%;
+    }
+
+    .thefails-phone-bottom {
+      width: 64%;
+      left: 30%;
+      top: 21%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .thefails-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .thefails-text {
+      align-items: center;
+      text-align: center;
+    }
+
+    .phone-collage-wrapper {
+      width: 80%;
+      max-width: 520px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .thefails-phone-top {
+      width: 65%;
+      left: 5%;
+      top: 5%;
+    }
+
+    .thefails-phone-bottom {
+      width: 65%;
+      left: 30%;
+      top: 20%;
+      --thefails-rotate: -18deg;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .thefails-phone {
+    .thefails-phone,
+    .thefails-icon {
       animation: none !important;
       transform: none !important;
     }
@@ -82,21 +232,26 @@ import { Image } from 'astro:assets';
 
 <script is:inline>
   (() => {
-    const sections = document.querySelectorAll('[data-thefails-root]');
+    requestAnimationFrame(() => {
+      const sections = document.querySelectorAll('[data-thefails-root]');
 
-    sections.forEach((section) => {
+      if (!sections.length) {
+        return;
+      }
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            section.setAttribute('data-thefails-in-view', entry.isIntersecting ? 'true' : 'false');
+            entry.target.setAttribute('data-thefails-in-view', entry.isIntersecting ? 'true' : 'false');
           });
         },
         {
-          threshold: 0.35,
+          rootMargin: '0px 0px -10% 0px',
+          threshold: 0.1,
         }
       );
 
-      observer.observe(section);
+      sections.forEach((section) => observer.observe(section));
     });
   })();
 </script>
