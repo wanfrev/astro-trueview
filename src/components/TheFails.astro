@@ -1,6 +1,5 @@
 ---
 import PhoneTop from '../assets/images/phonecaution2.png';
-import PhoneBottom from '../assets/images/phone3.png';
 import VioletBottle from '../assets/icons/violetbottle.png';
 import VioletBottle2 from '../assets/icons/violetbottle2.png';
 import Pill from '../assets/icons/pill.png';
@@ -15,7 +14,7 @@ import { Image } from 'astro:assets';
       <div aria-hidden="true" class="hidden"></div>
 
       <Image src={PhoneTop} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
-      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:430px;width:65%;height:auto;" />
+      <img src="/phone3.png" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
 
       <Image src={VioletBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-a" />
       <Image src={VioletBottle2} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-b" />
@@ -81,20 +80,20 @@ import { Image } from 'astro:assets';
   .thefails-phone-top {
     width: 65%;
     max-width: 430px !important;
-    left: 5%;
-    top: 5%;
+    left: -4%;
+    top: -10%;
     z-index: 30;
     --thefails-rotate: 5deg;
     transform: rotate(var(--thefails-rotate));
   }
 
   .thefails-phone-bottom {
-    width: 65%;
-    max-width: 430px !important;
-    left: 30%;
+    width: 82%;
+    max-width: 540px !important;
+    left: 15%;
     top: 20%;
     z-index: 10;
-    --thefails-rotate: -18deg;
+    --thefails-rotate: 2deg;
     transform: rotate(var(--thefails-rotate));
   }
 
@@ -110,28 +109,28 @@ import { Image } from 'astro:assets';
   }
 
   .thefails-icon-violet-a {
-    left: 85%;
-    top: 15%;
+    left: 70%;
+    top: 2%;
     width: 10%;
-    max-width: 52px;
+    max-width: 70px;
     z-index: 20;
     opacity: 0.75;
     animation-name: thefailsFloatUp;
   }
 
   .thefails-icon-violet-b {
-    left: 88%;
-    top: 13%;
+    left: 79%;
+    top: 10%;
     width: 8%;
-    max-width: 46px;
+    max-width: 55px;
     z-index: 20;
     opacity: 0.75;
     animation-name: thefailsFloatDown;
   }
 
   .thefails-icon-pill {
-    left: 14%;
-    bottom: 10%;
+    left: 1%;
+    bottom: 2%;
     width: 9%;
     max-width: 52px;
     z-index: 20;
@@ -140,10 +139,10 @@ import { Image } from 'astro:assets';
   }
 
   .thefails-icon-grey {
-    left: -5%;
-    bottom: 15%;
+    left: -10%;
+    bottom: 5%;
     width: 12%;
-    max-width: 52px;
+    max-width: 70px;
     z-index: 20;
     opacity: 0.85;
     animation-name: thefailsFloatDown;
@@ -184,9 +183,9 @@ import { Image } from 'astro:assets';
     }
 
     .thefails-phone-bottom {
-      width: 64%;
-      left: 30%;
-      top: 21%;
+      width: 80%;
+      left: 20%;
+      top: 14%;
     }
   }
 
@@ -214,10 +213,10 @@ import { Image } from 'astro:assets';
     }
 
     .thefails-phone-bottom {
-      width: 65%;
-      left: 30%;
-      top: 20%;
-      --thefails-rotate: -18deg;
+      width: 82%;
+      left: 20%;
+      top: 12%;
+      --thefails-rotate: 18deg;
     }
   }
 

@@ -1,4 +1,4 @@
----
+respons---
 import Ellipse2 from '../assets/images/Ellipse2.png';
 import Ellipse3 from '../assets/images/Ellipse3.png';
 import Ellipse4 from '../assets/images/Ellipse4.png';
@@ -27,7 +27,7 @@ import { Image } from 'astro:assets';
 
     --bg-fails-left: -12%;
     --bg-fails-dx: 180px;
-    --bg-fails-dy: -380px;
+    --bg-fails-dy: -470px;
     --bg-fails-w: 1300px;
     --bg-fails-h: auto;
 
@@ -62,8 +62,9 @@ import { Image } from 'astro:assets';
       --bg-hero-dx: -110px;
 
       --bg-fails-w: 1120px;
-      --bg-fails-dx: 120px;
-      --bg-fails-dy: -300px;
+      --bg-fails-left: 50%;
+      --bg-fails-dx: -50%;
+      --bg-fails-dy: -380px;
 
       --bg-lab-w: 760px;
       --bg-lab-dx: 80px;
@@ -89,8 +90,9 @@ import { Image } from 'astro:assets';
       --bg-hero-dy: -120px;
 
       --bg-fails-w: 880px;
-      --bg-fails-dx: 40px;
-      --bg-fails-dy: -180px;
+      --bg-fails-left: 50%;
+      --bg-fails-dx: -50%;
+      --bg-fails-dy: -240px;
 
       --bg-lab-w: 620px;
       --bg-lab-dx: 40px;
@@ -260,7 +262,7 @@ import { Image } from 'astro:assets';
       }
 
       if (fails) {
-        const failsTop = fails.offsetTop + 120;
+        const failsTop = fails.offsetTop + 40;
         doc.style.setProperty('--bg-fails-top', `${failsTop}px`);
       }
 
