@@ -48,7 +48,10 @@
 	}
 
 	.content-shell {
-		@apply mx-auto w-full max-w-[1440px];
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		max-width: 1440px;
 	}
 
 	/* Separación consistente entre secciones que usan .section-shell */
@@ -183,6 +186,14 @@
 		animation: motionFloatSoft 6.4s ease-in-out infinite;
 	}
 
+	.motion-float-side-left {
+		animation: motionFloatSideLeft 7.2s ease-in-out infinite;
+	}
+
+	.motion-float-side-right {
+		animation: motionFloatSideRight 6.8s ease-in-out infinite;
+	}
+
 	.motion-word-glow {
 		background-image: linear-gradient(105deg, #ffffff 0%, #c9d8ff 26%, #ff8f8d 50%, #ffffff 72%);
 		background-size: 220% 100%;
@@ -226,6 +237,26 @@
 		}
 	}
 
+	@keyframes motionFloatSideLeft {
+		0%,
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+		50% {
+			transform: translate3d(-14px, 0, 0);
+		}
+	}
+
+	@keyframes motionFloatSideRight {
+		0%,
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+		50% {
+			transform: translate3d(14px, 0, 0);
+		}
+	}
+
 	@keyframes motionTextSheen {
 		from {
 			background-position: 0% 50%;
@@ -245,6 +276,8 @@
 		}
 
 		.motion-float-soft,
+		.motion-float-side-left,
+		.motion-float-side-right,
 		.motion-word-glow {
 			animation: none !important;
 		}

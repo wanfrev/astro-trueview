@@ -1,40 +1,63 @@
 ---
-import Mockups7 from '../assets/images/Mockups7.png';
-import { Image } from 'astro:assets';
+import Collage1 from '../assets/images/collage1.png';
+import Collage2 from '../assets/images/collage2.png';
+import Collage3 from '../assets/images/collage3.png';
+import Collage4 from '../assets/images/collage4.png';
+import Collage5 from '../assets/images/collage5.png';
 ---
 
-<section data-bg="good-bad-2" class="section-shell py-14 sm:py-16 lg:py-24 relative overflow-hidden">
+<section data-bg="good-bad-2" class="section-shell relative overflow-hidden py-14 sm:py-16 lg:py-24">
 	<div class="content-shell relative">
-		<div class="relative min-h-0 lg:min-h-[760px] xl:min-h-[860px]">
-			<!-- Texto optimizado para móvil; overlay en desktop -->
-			<div data-reveal-group class="relative z-20 flex flex-col gap-3 lg:gap-4 items-start text-left w-full max-w-[760px] lg:max-w-[820px] xl:max-w-[880px] px-1 sm:px-2 lg:px-10 pt-2 sm:pt-4 lg:pt-9">
-				<span class="motion-reveal motion-reveal-impact motion-word-glow motion-word-glow-red text-[#ff5b58] font-black tracking-[-0.02em] text-lg sm:text-xl lg:text-2xl">The Good and the Bad</span>
+		<div class="relative min-h-125 sm:min-h-150 lg:min-h-190 xl:min-h-215">
+			<div data-reveal-group class="relative z-30 flex w-full max-w-190 flex-col items-start gap-3 px-1 pt-2 text-left sm:px-2 sm:pt-4 lg:max-w-205 lg:gap-4 lg:px-10 lg:pt-9 xl:max-w-220">
+				<span class="motion-reveal motion-reveal-impact motion-word-glow motion-word-glow-red text-lg font-black tracking-[-0.02em] text-[#ff5b58] sm:text-xl lg:text-2xl">The Good and the Bad</span>
 
-				<h2 class="motion-reveal motion-reveal-impact motion-reveal-left text-[34px] sm:text-3xl lg:text-[32px] xl:text-[36px] font-bold leading-[1.06] lg:leading-[1.04] tracking-[-0.03em] max-w-[19ch]">
+				<h2 class="motion-reveal motion-reveal-impact motion-reveal-left max-w-[19ch] text-[34px] font-bold leading-[1.06] tracking-[-0.03em] sm:text-3xl lg:text-[32px] lg:leading-[1.04] xl:text-[36px]">
 					Reading lab reports sucks. <br />
 					<span class="text-white">We show you the critical information</span>
 				</h2>
 
-				<p style="--reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-left text-gray-400 text-[15px] sm:text-sm lg:text-[16px] xl:text-[18px] leading-relaxed max-w-[56ch]">
+				<p style="--reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-left max-w-[56ch] text-[15px] leading-relaxed text-gray-400 sm:text-sm lg:text-[16px] xl:text-[18px]">
 					We don’t offer you an opinion, we just show you the science.
 					If a product passes or fails we show you readable lab results.
 					Make healthy decisions, quickly.
 				</p>
 			</div>
 
-			<!-- En móvil se apila debajo del texto con escala controlada; en desktop vuelve a look superpuesto -->
-			<div class="relative z-10 mt-8 sm:mt-10 lg:absolute lg:inset-0 lg:mt-0 w-full flex justify-center lg:justify-end overflow-visible">
-				<Image
-					src={Mockups7}
-					alt="Good and the Bad mockup"
-					format="webp"
-					quality={80}
-					fetchpriority="low"
-					style="--reveal-delay: 160ms;"
-					class="motion-reveal motion-reveal-right motion-float-soft block h-auto w-[165%] sm:w-[145%] md:w-[125%] lg:w-[132%] xl:w-[118%] 2xl:w-[108%] max-w-none -translate-x-[8%] sm:translate-x-0 lg:translate-x-[9%] xl:translate-x-[6%] mt-6 sm:mt-8 lg:mt-0 lg:translate-y-[22%] xl:translate-y-[18%]"
-					loading="lazy"
-					decoding="async"
-				/>
+			<div class="relative z-10 mt-16 h-full w-full lg:absolute lg:inset-0 lg:mt-0 lg:translate-y-[5%]">
+				<div class="relative isolate mx-auto h-full w-full max-w-screen-2xl">
+					<div aria-hidden="true" class="pointer-events-none absolute left-[8%] top-[18%] z-0 h-[58%] w-[52%] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,91,88,0.28)_0%,rgba(255,91,88,0.14)_28%,rgba(255,91,88,0.05)_48%,transparent_74%)] blur-3xl"></div>
+					<div aria-hidden="true" class="pointer-events-none absolute right-[4%] top-[2%] z-0 h-[46%] w-[40%] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.08)_30%,rgba(255,255,255,0.03)_52%,transparent_76%)] blur-3xl"></div>
+					<div class="group motion-reveal motion-reveal-left motion-hover-lift absolute left-[6%] top-[39%] z-20 w-[20%] sm:w-[19%] lg:w-[18%]" style="--reveal-delay: 180ms;">
+						<div class="motion-float-soft" style="animation-delay: 0ms;">
+							<img src={Collage1.src} width={Collage1.width} height={Collage1.height} alt="Zinc Test" loading="eager" fetchpriority="high" decoding="async" class="h-auto w-full rounded-2xl shadow-2xl transition duration-300 ease-out group-hover:scale-105" />
+						</div>
+					</div>
+
+					<div class="group motion-reveal motion-reveal-zoom motion-hover-lift absolute left-[29%] top-[43%] z-10 w-[21%] opacity-90 sm:top-[42%] sm:w-[20%] lg:top-[44%] lg:w-[19%]" style="--reveal-delay: 280ms;">
+						<div class="motion-float-soft" style="animation-delay: 220ms;">
+							<img src={Collage2.src} width={Collage2.width} height={Collage2.height} alt="Protein list" loading="eager" fetchpriority="high" decoding="async" class="h-auto w-full rounded-2xl rotate-6 shadow-xl transition duration-300 ease-out group-hover:scale-105" />
+						</div>
+					</div>
+
+					<div class="group motion-reveal motion-reveal-right motion-hover-lift absolute left-[52%] top-[33%] z-40 w-[21%] sm:w-[20%] lg:top-[38%] lg:w-[20%]" style="--reveal-delay: 380ms;">
+						<div class="motion-float-soft" style="animation-delay: 420ms;">
+							<img src={Collage3.src} width={Collage3.width} height={Collage3.height} alt="Mold failure" loading="eager" fetchpriority="high" decoding="async" class="h-auto w-full rounded-2xl shadow-2xl shadow-red-900/20 transition duration-300 ease-out group-hover:scale-105" />
+						</div>
+					</div>
+
+					<div class="group motion-reveal motion-reveal-left motion-hover-lift absolute right-[6%] top-[14%] z-20 w-[20%] sm:w-[19%] lg:top-[15%] lg:w-[18%]" style="--reveal-delay: 500ms;">
+						<div class="motion-float-soft" style="animation-delay: 120ms;">
+							<img src={Collage5.src} width={Collage5.width} height={Collage5.height} alt="ACV Gummies" loading="lazy" decoding="async" class="h-auto w-full rounded-2xl shadow-2xl transition duration-300 ease-out group-hover:scale-105" />
+						</div>
+					</div>
+
+					<div class="group motion-reveal motion-reveal-zoom motion-hover-lift absolute right-[5%] top-[3%] z-50 w-[23%] sm:w-[21%] lg:w-[19%]" style="--reveal-delay: 620ms;">
+						<div class="motion-float-soft" style="animation-delay: 320ms;">
+							<img src={Collage4.src} width={Collage4.width} height={Collage4.height} alt="Lead levels" loading="lazy" decoding="async" class="h-auto w-full rounded-xl shadow-2xl transition duration-300 ease-out group-hover:scale-105" />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
