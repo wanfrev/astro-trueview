@@ -1,5 +1,6 @@
 ---
 import PhoneTop from '../assets/images/phonecaution2.png';
+import PhoneBottom from '../assets/images/phone3.png';
 import VioletBottle from '../assets/icons/violetbottle.png';
 import VioletBottle2 from '../assets/icons/violetbottle2.png';
 import Pill from '../assets/icons/pill.png';
@@ -14,7 +15,7 @@ import { Image } from 'astro:assets';
       <div aria-hidden="true" class="hidden"></div>
 
       <Image src={PhoneTop} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
-      <img src="/phone3.png" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
+      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
 
       <Image src={VioletBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-a" />
       <Image src={VioletBottle2} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-b" />
@@ -93,7 +94,7 @@ import { Image } from 'astro:assets';
     left: 15%;
     top: 20%;
     z-index: 10;
-    --thefails-rotate: 2deg;
+    --thefails-rotate: 0deg;
     transform: rotate(var(--thefails-rotate));
   }
 
@@ -186,6 +187,7 @@ import { Image } from 'astro:assets';
       width: 80%;
       left: 20%;
       top: 14%;
+      --thefails-rotate: 0deg;
     }
   }
 
@@ -216,7 +218,7 @@ import { Image } from 'astro:assets';
       width: 82%;
       left: 20%;
       top: 12%;
-      --thefails-rotate: 18deg;
+      --thefails-rotate: 0deg;
     }
   }
 
