@@ -8,8 +8,8 @@ import Collage5 from '../assets/images/collage5.png';
 
 <section data-bg="good-bad-2" class="section-shell relative overflow-hidden py-14 sm:py-16 lg:py-24">
 	<div class="content-shell relative">
-		<div class="relative min-h-125 sm:min-h-150 lg:min-h-190 xl:min-h-215">
-			<div data-reveal-group class="relative z-30 flex w-full max-w-190 flex-col items-start gap-3 px-1 pt-2 text-left sm:px-2 sm:pt-4 lg:max-w-205 lg:gap-4 lg:px-10 lg:pt-9 xl:max-w-220">
+		<div class="goodbad-layout">
+			<div data-reveal-group class="goodbad-copy">
 				<span class="motion-reveal motion-reveal-impact motion-word-glow motion-word-glow-red text-lg font-black tracking-[-0.02em] text-[#ff5b58] sm:text-xl lg:text-2xl">The Good and the Bad</span>
 
 				<h2 class="motion-reveal motion-reveal-impact motion-reveal-left max-w-[19ch] text-[34px] font-bold leading-[1.06] tracking-[-0.03em] sm:text-3xl lg:text-[32px] lg:leading-[1.04] xl:text-[36px]">
@@ -24,37 +24,38 @@ import Collage5 from '../assets/images/collage5.png';
 				</p>
 			</div>
 
-			<div class="relative z-10 mt-16 h-full w-full lg:absolute lg:inset-0 lg:mt-0 lg:translate-y-[5%]">
-				<div class="relative isolate mx-auto h-full w-full max-w-screen-2xl">
-					<div aria-hidden="true" class="pointer-events-none absolute left-[8%] top-[18%] z-0 h-[58%] w-[52%] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,91,88,0.28)_0%,rgba(255,91,88,0.14)_28%,rgba(255,91,88,0.05)_48%,transparent_74%)] blur-3xl"></div>
-					<div aria-hidden="true" class="pointer-events-none absolute right-[4%] top-[2%] z-0 h-[46%] w-[40%] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.08)_30%,rgba(255,255,255,0.03)_52%,transparent_76%)] blur-3xl"></div>
-					<div class="group motion-reveal motion-reveal-left motion-hover-lift absolute left-[6%] top-[39%] z-20 w-[20%] sm:w-[19%] lg:w-[18%]" style="--reveal-delay: 180ms;">
-						<div class="motion-float-soft" style="animation-delay: 0ms;">
-							<img src={Collage1.src} width={Collage1.width} height={Collage1.height} alt="Zinc Test" loading="eager" fetchpriority="high" decoding="async" class="h-auto w-full rounded-2xl shadow-2xl transition duration-300 ease-out group-hover:scale-105" />
+			<div class="goodbad-visual-layer" aria-hidden="true">
+				<div class="goodbad-visual-stage">
+					<div aria-hidden="true" class="goodbad-glow goodbad-glow--red"></div>
+					<div aria-hidden="true" class="goodbad-glow goodbad-glow--white"></div>
+
+					<div class="goodbad-item goodbad-item--1 motion-reveal motion-reveal-left motion-hover-lift">
+						<div class="motion-float-soft goodbad-float goodbad-float--1">
+							<img src={Collage1.src} width={Collage1.width} height={Collage1.height} alt="Zinc Test" loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--1" />
 						</div>
 					</div>
 
-					<div class="group motion-reveal motion-reveal-zoom motion-hover-lift absolute left-[29%] top-[43%] z-10 w-[21%] opacity-90 sm:top-[42%] sm:w-[20%] lg:top-[44%] lg:w-[19%]" style="--reveal-delay: 280ms;">
-						<div class="motion-float-soft" style="animation-delay: 220ms;">
-							<img src={Collage2.src} width={Collage2.width} height={Collage2.height} alt="Protein list" loading="eager" fetchpriority="high" decoding="async" class="h-auto w-full rounded-2xl rotate-6 shadow-xl transition duration-300 ease-out group-hover:scale-105" />
+					<div class="goodbad-item goodbad-item--2 motion-reveal motion-reveal-zoom motion-hover-lift">
+						<div class="motion-float-soft goodbad-float goodbad-float--2">
+							<img src={Collage2.src} width={Collage2.width} height={Collage2.height} alt="Protein list" loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--2" />
 						</div>
 					</div>
 
-					<div class="group motion-reveal motion-reveal-right motion-hover-lift absolute left-[52%] top-[33%] z-40 w-[21%] sm:w-[20%] lg:top-[38%] lg:w-[20%]" style="--reveal-delay: 380ms;">
-						<div class="motion-float-soft" style="animation-delay: 420ms;">
-							<img src={Collage3.src} width={Collage3.width} height={Collage3.height} alt="Mold failure" loading="eager" fetchpriority="high" decoding="async" class="h-auto w-full rounded-2xl shadow-2xl shadow-red-900/20 transition duration-300 ease-out group-hover:scale-105" />
+					<div class="goodbad-item goodbad-item--3 motion-reveal motion-reveal-right motion-hover-lift">
+						<div class="motion-float-soft goodbad-float goodbad-float--3">
+							<img src={Collage3.src} width={Collage3.width} height={Collage3.height} alt="Mold failure" loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--3" />
 						</div>
 					</div>
 
-					<div class="group motion-reveal motion-reveal-left motion-hover-lift absolute right-[6%] top-[14%] z-20 w-[20%] sm:w-[19%] lg:top-[15%] lg:w-[18%]" style="--reveal-delay: 500ms;">
-						<div class="motion-float-soft" style="animation-delay: 120ms;">
-							<img src={Collage5.src} width={Collage5.width} height={Collage5.height} alt="ACV Gummies" loading="lazy" decoding="async" class="h-auto w-full rounded-2xl shadow-2xl transition duration-300 ease-out group-hover:scale-105" />
+					<div class="goodbad-item goodbad-item--4 motion-reveal motion-reveal-left motion-hover-lift">
+						<div class="motion-float-soft goodbad-float goodbad-float--4">
+							<img src={Collage5.src} width={Collage5.width} height={Collage5.height} alt="ACV Gummies" loading="lazy" decoding="async" class="goodbad-image goodbad-image--4" />
 						</div>
 					</div>
 
-					<div class="group motion-reveal motion-reveal-zoom motion-hover-lift absolute right-[5%] top-[3%] z-50 w-[23%] sm:w-[21%] lg:w-[19%]" style="--reveal-delay: 620ms;">
-						<div class="motion-float-soft" style="animation-delay: 320ms;">
-							<img src={Collage4.src} width={Collage4.width} height={Collage4.height} alt="Lead levels" loading="lazy" decoding="async" class="h-auto w-full rounded-xl shadow-2xl transition duration-300 ease-out group-hover:scale-105" />
+					<div class="goodbad-item goodbad-item--5 motion-reveal motion-reveal-zoom motion-hover-lift">
+						<div class="motion-float-soft goodbad-float goodbad-float--5">
+							<img src={Collage4.src} width={Collage4.width} height={Collage4.height} alt="Lead levels" loading="lazy" decoding="async" class="goodbad-image goodbad-image--5" />
 						</div>
 					</div>
 				</div>
@@ -62,3 +63,205 @@ import Collage5 from '../assets/images/collage5.png';
 		</div>
 	</div>
 </section>
+
+<style>
+	.goodbad-layout {
+		position: relative;
+		width: 100%;
+		min-height: clamp(31.25rem, 55vw, 53.75rem);
+		isolation: isolate;
+	}
+
+	.goodbad-copy {
+		position: relative;
+		z-index: 30;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: clamp(0.75rem, 1vw, 1rem);
+		width: min(100%, 55rem);
+		padding-inline: clamp(0.25rem, 1.5vw, 2.5rem);
+		padding-top: clamp(0.5rem, 1.5vw, 2.25rem);
+		text-align: left;
+	}
+
+	.goodbad-visual-layer {
+		position: absolute;
+		inset: 0;
+		z-index: 10;
+		display: flex;
+		justify-content: center;
+		transform: translateY(5%);
+	}
+
+	.goodbad-visual-stage {
+		position: relative;
+		width: 100%;
+		max-width: 1536px;
+		aspect-ratio: 1536 / 860;
+		overflow: visible;
+	}
+
+	.goodbad-glow {
+		position: absolute;
+		pointer-events: none;
+		z-index: 0;
+		border-radius: 9999px;
+		filter: blur(64px);
+	}
+
+	.goodbad-glow--red {
+		left: 8%;
+		top: 18%;
+		height: 58%;
+		width: 52%;
+		background: radial-gradient(circle at center, rgba(255, 91, 88, 0.28) 0%, rgba(255, 91, 88, 0.14) 28%, rgba(255, 91, 88, 0.05) 48%, transparent 74%);
+	}
+
+	.goodbad-glow--white {
+		right: 4%;
+		top: 2%;
+		height: 46%;
+		width: 40%;
+		background: radial-gradient(circle at center, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 30%, rgba(255, 255, 255, 0.03) 52%, transparent 76%);
+	}
+
+	.goodbad-item {
+		position: absolute;
+		z-index: 10;
+		will-change: transform;
+	}
+
+	.goodbad-item--1 {
+		left: 6%;
+		top: 39%;
+		width: 20%;
+		z-index: 20;
+		--reveal-delay: 180ms;
+	}
+
+	.goodbad-item--2 {
+		left: 29%;
+		top: 43%;
+		width: 21%;
+		opacity: 0.9;
+		z-index: 10;
+		--reveal-delay: 280ms;
+	}
+
+	.goodbad-item--3 {
+		left: 52%;
+		top: 33%;
+		width: 21%;
+		z-index: 40;
+		--reveal-delay: 380ms;
+	}
+
+	.goodbad-item--4 {
+		right: 6%;
+		top: 14%;
+		width: 20%;
+		z-index: 20;
+		--reveal-delay: 500ms;
+	}
+
+	.goodbad-item--5 {
+		right: 5%;
+		top: 3%;
+		width: 23%;
+		z-index: 50;
+		--reveal-delay: 620ms;
+	}
+
+	.goodbad-float {
+		animation-timing-function: ease-in-out;
+	}
+
+	.goodbad-float--1 {
+		animation-delay: 0ms;
+	}
+
+	.goodbad-float--2 {
+		animation-delay: 220ms;
+	}
+
+	.goodbad-float--3 {
+		animation-delay: 420ms;
+	}
+
+	.goodbad-float--4 {
+		animation-delay: 120ms;
+	}
+
+	.goodbad-float--5 {
+		animation-delay: 320ms;
+	}
+
+	.goodbad-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: transform 300ms ease-out, filter 300ms ease-out;
+		transform: rotate(var(--goodbad-rotate, 0deg));
+	}
+
+	.goodbad-item:hover .goodbad-image {
+		transform: rotate(var(--goodbad-rotate, 0deg)) scale(1.05);
+	}
+
+	.goodbad-image--1 {
+		--goodbad-rotate: 0deg;
+		border-radius: 1rem;
+		box-shadow: 0 32px 72px rgba(0, 0, 0, 0.44);
+	}
+
+	.goodbad-image--2 {
+		--goodbad-rotate: 6deg;
+		border-radius: 1rem;
+		box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+	}
+
+	.goodbad-image--3 {
+		--goodbad-rotate: 0deg;
+		border-radius: 1rem;
+		box-shadow: 0 32px 72px rgba(127, 29, 29, 0.2), 0 32px 72px rgba(0, 0, 0, 0.44);
+	}
+
+	.goodbad-image--4 {
+		--goodbad-rotate: 0deg;
+		border-radius: 1rem;
+		box-shadow: 0 32px 72px rgba(0, 0, 0, 0.44);
+	}
+
+	.goodbad-image--5 {
+		--goodbad-rotate: 0deg;
+		border-radius: 0.75rem;
+		box-shadow: 0 32px 72px rgba(0, 0, 0, 0.44);
+	}
+
+	@media (max-width: 1024px) {
+		.goodbad-layout {
+			min-height: 0;
+		}
+
+		.goodbad-copy {
+			width: min(100%, 44rem);
+			margin-inline: auto;
+			align-items: center;
+			text-align: center;
+			padding-inline: 0;
+			padding-top: 0;
+		}
+
+		.goodbad-visual-layer {
+			position: static;
+			margin-top: 3rem;
+			transform: none;
+		}
+
+		.goodbad-visual-stage {
+			width: min(100%, 62rem);
+			margin-inline: auto;
+		}
+	}
+</style>
