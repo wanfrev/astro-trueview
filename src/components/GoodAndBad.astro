@@ -4,6 +4,10 @@ import Collage2 from '../assets/images/collage2.png';
 import Collage3 from '../assets/images/collage3.png';
 import Collage4 from '../assets/images/collage4.png';
 import Collage5 from '../assets/images/collage5.png';
+import { Image } from 'astro:assets';
+
+const goodbadSizes = '(max-width: 480px) 84vw, (max-width: 640px) 72vw, (max-width: 1279px) 42vw, 21vw';
+const goodbadWideSizes = '(max-width: 480px) 100vw, (max-width: 640px) 100vw, (max-width: 1279px) 84vw, 23vw';
 ---
 
 <section data-bg="good-bad-2" class="section-shell relative overflow-hidden py-14 sm:py-16 lg:py-24">
@@ -31,31 +35,31 @@ import Collage5 from '../assets/images/collage5.png';
 
 					<div class="goodbad-item goodbad-item--1 motion-reveal motion-reveal-left motion-hover-lift">
 						<div class="motion-float-soft goodbad-float goodbad-float--1">
-							<img src={Collage1.src} width={Collage1.width} height={Collage1.height} alt="Zinc Test" loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--1" />
+							<Image src={Collage1} alt="Zinc Test" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={74} loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--1" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--2 motion-reveal motion-reveal-zoom motion-hover-lift">
 						<div class="motion-float-soft goodbad-float goodbad-float--2">
-							<img src={Collage2.src} width={Collage2.width} height={Collage2.height} alt="Protein list" loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--2" />
+							<Image src={Collage2} alt="Protein list" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={74} loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--2" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--3 motion-reveal motion-reveal-right motion-hover-lift">
 						<div class="motion-float-soft goodbad-float goodbad-float--3">
-							<img src={Collage3.src} width={Collage3.width} height={Collage3.height} alt="Mold failure" loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--3" />
+							<Image src={Collage3} alt="Mold failure" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={74} loading="eager" fetchpriority="high" decoding="async" class="goodbad-image goodbad-image--3" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--4 motion-reveal motion-reveal-left motion-hover-lift">
 						<div class="motion-float-soft goodbad-float goodbad-float--4">
-							<img src={Collage5.src} width={Collage5.width} height={Collage5.height} alt="ACV Gummies" loading="lazy" decoding="async" class="goodbad-image goodbad-image--4" />
+							<Image src={Collage5} alt="ACV Gummies" widths={[300, 420, 560, 720, 880]} sizes={goodbadSizes} format="webp" quality={74} loading="eager" decoding="async" class="goodbad-image goodbad-image--4" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--5 motion-reveal motion-reveal-zoom motion-hover-lift">
 						<div class="motion-float-soft goodbad-float goodbad-float--5">
-							<img src={Collage4.src} width={Collage4.width} height={Collage4.height} alt="Lead levels" loading="lazy" decoding="async" class="goodbad-image goodbad-image--5" />
+							<Image src={Collage4} alt="Lead levels" widths={[360, 480, 640, 840, 1024]} sizes={goodbadWideSizes} format="webp" quality={74} loading="eager" decoding="async" class="goodbad-image goodbad-image--5" />
 						</div>
 					</div>
 				</div>
@@ -63,6 +67,44 @@ import Collage5 from '../assets/images/collage5.png';
 		</div>
 	</div>
 </section>
+
+<script is:inline>
+	(() => {
+		document.documentElement.classList.add('goodbad-image-anim-ready');
+
+		const imageSelector = '.goodbad-image';
+
+		const markLoaded = (image) => {
+			image.classList.add('is-loaded');
+		};
+
+		const setupImageReveal = () => {
+			document.querySelectorAll(imageSelector).forEach((image) => {
+				if (image.dataset.loadBound === 'true') {
+					return;
+				}
+
+				image.dataset.loadBound = 'true';
+
+				if (image.complete && image.naturalWidth > 0) {
+					markLoaded(image);
+					return;
+				}
+
+				image.addEventListener('load', () => markLoaded(image), { once: true });
+				image.addEventListener('error', () => markLoaded(image), { once: true });
+			});
+		};
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', setupImageReveal, { once: true });
+		} else {
+			setupImageReveal();
+		}
+
+		document.addEventListener('astro:page-load', setupImageReveal);
+	})();
+</script>
 
 <style>
 	.goodbad-layout {
@@ -137,7 +179,7 @@ import Collage5 from '../assets/images/collage5.png';
 		top: 39%;
 		width: 20%;
 		z-index: 20;
-		--reveal-delay: 180ms;
+		--reveal-delay: 120ms;
 	}
 
 	.goodbad-item--2 {
@@ -146,7 +188,7 @@ import Collage5 from '../assets/images/collage5.png';
 		width: 21%;
 		opacity: 0.9;
 		z-index: 10;
-		--reveal-delay: 280ms;
+		--reveal-delay: 180ms;
 	}
 
 	.goodbad-item--3 {
@@ -154,7 +196,7 @@ import Collage5 from '../assets/images/collage5.png';
 		top: 33%;
 		width: 21%;
 		z-index: 40;
-		--reveal-delay: 380ms;
+		--reveal-delay: 240ms;
 	}
 
 	.goodbad-item--4 {
@@ -162,7 +204,7 @@ import Collage5 from '../assets/images/collage5.png';
 		top: 14%;
 		width: 20%;
 		z-index: 20;
-		--reveal-delay: 500ms;
+		--reveal-delay: 300ms;
 	}
 
 	.goodbad-item--5 {
@@ -170,7 +212,7 @@ import Collage5 from '../assets/images/collage5.png';
 		top: 3%;
 		width: 23%;
 		z-index: 50;
-		--reveal-delay: 620ms;
+		--reveal-delay: 360ms;
 	}
 
 	.goodbad-float {
@@ -201,12 +243,26 @@ import Collage5 from '../assets/images/collage5.png';
 		display: block;
 		width: 100%;
 		height: auto;
-		transition: transform 300ms ease-out, filter 300ms ease-out;
+		opacity: 1;
+		filter: blur(0px);
 		transform: rotate(var(--goodbad-rotate, 0deg));
+		transition: opacity 440ms ease-out, transform 620ms cubic-bezier(0.16, 1, 0.3, 1), filter 620ms ease-out;
 	}
 
-	.goodbad-item:hover .goodbad-image {
-		transform: rotate(var(--goodbad-rotate, 0deg)) scale(1.05);
+	html.goodbad-image-anim-ready .goodbad-image {
+		opacity: 0;
+		filter: blur(10px);
+		transform: translate3d(0, 18px, 0) scale(0.97) rotate(var(--goodbad-rotate, 0deg));
+	}
+
+	html.goodbad-image-anim-ready .goodbad-image.is-loaded {
+		opacity: 1;
+		filter: blur(0px);
+		transform: translate3d(0, 0, 0) scale(1) rotate(var(--goodbad-rotate, 0deg));
+	}
+
+	html.goodbad-image-anim-ready .goodbad-item:hover .goodbad-image.is-loaded {
+		transform: translate3d(0, 0, 0) scale(1.05) rotate(var(--goodbad-rotate, 0deg));
 	}
 
 	.goodbad-image--1 {
@@ -237,6 +293,17 @@ import Collage5 from '../assets/images/collage5.png';
 		--goodbad-rotate: 0deg;
 		border-radius: 0.75rem;
 		box-shadow: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.goodbad-image,
+		.goodbad-item:hover .goodbad-image,
+		.goodbad-item:hover .goodbad-image.is-loaded {
+			opacity: 1;
+			filter: none;
+			transform: rotate(var(--goodbad-rotate, 0deg));
+			transition: none;
+		}
 	}
 
 	@media (max-width: 1279px) {

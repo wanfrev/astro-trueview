@@ -119,13 +119,30 @@ const featureCards = [
     }
   }
 
-  @keyframes featureImageFloat {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0);
+  @keyframes featureImageReveal {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0) scale(0.9);
+      filter: blur(10px);
     }
-    50% {
-      transform: translate3d(0, -10px, 0);
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes featureImageShine {
+    0% {
+      opacity: 0;
+      transform: translateX(-135%);
+    }
+    20% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(135%);
     }
   }
 
@@ -157,7 +174,7 @@ const featureCards = [
       transform: translate3d(0, 0, 0) scale(1);
     }
     45% {
-      transform: translate3d(0, -10px, 0) scale(1.015);
+      transform: translate3d(0, -14px, 0) scale(1.02);
     }
     100% {
       transform: translate3d(0, 0, 0) scale(1);
@@ -166,32 +183,26 @@ const featureCards = [
 
   @keyframes featureContentIn {
     0% {
-      opacity: 0;
-      transform: translate3d(0, 22px, 0) scale(0.98);
+      transform: translate3d(0, 24px, 0) scale(0.975);
     }
     56% {
-      opacity: 1;
-      transform: translate3d(0, -3px, 0) scale(1.01);
+      transform: translate3d(0, -4px, 0) scale(1.012);
     }
     100% {
-      opacity: 1;
       transform: translate3d(0, 0, 0);
     }
   }
 
   @keyframes featurePhoneIn {
     0% {
-      opacity: 0;
-      transform: translate3d(0, 36px, 0) scale(0.92) rotate(-0.9deg);
+      transform: translate3d(0, 44px, 0) scale(0.9) rotate(-1.2deg);
       filter: drop-shadow(0 0 0 rgb(56 189 248 / 0));
     }
     58% {
-      opacity: 1;
-      transform: translate3d(0, -5px, 0) scale(1.03) rotate(0.4deg);
+      transform: translate3d(0, -7px, 0) scale(1.035) rotate(0.5deg);
       filter: drop-shadow(0 10px 18px rgb(56 189 248 / 0.2));
     }
     100% {
-      opacity: 1;
       transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
       filter: drop-shadow(0 6px 14px rgb(56 189 248 / 0.14));
     }
@@ -205,22 +216,48 @@ const featureCards = [
   }
 
   .features-anim.is-visible .features-title {
-    animation: featureFadeUp 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation: featureFadeUp 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 
   .features-anim.is-visible .feature-chip {
-    animation: featureFadeUp 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    animation-delay: calc(120ms + (var(--i) * 90ms));
+    animation: featureFadeUp 1000ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(180ms + (var(--i) * 120ms));
   }
 
   .features-anim.is-visible .feature-card {
-    animation: featureFadeUp 800ms cubic-bezier(0.16, 0.84, 0.32, 1) both;
-    animation-delay: calc(220ms + (var(--i) * 110ms));
+    animation: featureFadeUp 1250ms cubic-bezier(0.16, 0.84, 0.32, 1) both;
+    animation-delay: calc(320ms + (var(--i) * 150ms));
+  }
+
+  .feature-image-wrap {
+    position: relative;
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.9);
+    filter: blur(10px);
+  }
+
+  .feature-image-wrap::after {
+    content: '';
+    position: absolute;
+    top: 4%;
+    bottom: 8%;
+    left: -30%;
+    width: 24%;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.35), rgb(255 255 255 / 0));
+    transform: translateX(-135%);
+    will-change: transform, opacity;
   }
 
   .features-anim.is-visible .feature-image-wrap {
-    animation: featureImageFloat 6s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 280ms);
+    animation: featureImageReveal 1500ms cubic-bezier(0.16, 0.9, 0.24, 1) both;
+    animation-delay: calc(520ms + (var(--i) * 160ms));
+  }
+
+  .features-anim.is-visible .feature-image-wrap::after {
+    animation: featureImageShine 1700ms ease-out both;
+    animation-delay: calc(1380ms + (var(--i) * 160ms));
   }
 
   .feature-btn[aria-pressed='true'] {
@@ -256,23 +293,23 @@ const featureCards = [
   }
 
   .feature-btn.is-clicking {
-    animation: featureButtonPop 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation: featureButtonPop 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .feature-btn.is-clicking::after {
-    animation: featureButtonRipple 420ms ease-out;
+    animation: featureButtonRipple 700ms ease-out;
   }
 
   .feature-card.is-nudging {
-    animation: featureCardNudge 480ms cubic-bezier(0.2, 0.85, 0.22, 1);
+    animation: featureCardNudge 760ms cubic-bezier(0.2, 0.85, 0.22, 1);
   }
 
   .feature-card.is-activating .feature-content {
-    animation: featureContentIn 540ms cubic-bezier(0.18, 0.9, 0.24, 1) both;
+    animation: featureContentIn 880ms cubic-bezier(0.18, 0.9, 0.24, 1) both;
   }
 
   .feature-card.is-activating .feature-phone {
-    animation: featurePhoneIn 660ms cubic-bezier(0.15, 0.92, 0.24, 1) both;
+    animation: featurePhoneIn 1100ms cubic-bezier(0.15, 0.92, 0.24, 1) both;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -286,6 +323,14 @@ const featureCards = [
 
     .feature-image-wrap {
       animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+
+    .feature-image-wrap::after {
+      animation: none !important;
+      opacity: 0 !important;
     }
 
     .feature-btn.is-clicking,
@@ -304,6 +349,10 @@ const featureCards = [
     const container = document.getElementById('features-container');
     const buttons = document.querySelectorAll('.feature-btn');
     const cards = document.querySelectorAll('.feature-card');
+    const autoCycleDelay = 2600;
+    const autoCycleStartDelay = 1400;
+    let autoCycleTimer = null;
+    let currentFeatureIndex = 0;
 
     const getClampedScrollLeft = (targetElement) => {
       if (!container || !targetElement) return 0;
@@ -336,7 +385,28 @@ const featureCards = [
       });
     };
 
-    const triggerClickAnimation = (button, targetElement) => {
+    const getButtonByIndex = (index) => document.querySelector(`.feature-btn[data-target="feature-${index}"]`);
+
+    const activateFeature = (targetId, sourceButton = null, animateButton = false) => {
+      const targetElement = scrollToCard(targetId);
+      const button = sourceButton || document.querySelector(`.feature-btn[data-target="${targetId}"]`);
+
+      if (button) {
+        setActiveButton(button);
+        if (animateButton) {
+          triggerClickAnimation(button);
+        }
+      }
+
+      const targetIndex = Number.parseInt(String(targetId).split('-')[1] || '0', 10);
+      if (Number.isFinite(targetIndex)) {
+        currentFeatureIndex = targetIndex;
+      }
+
+      return targetElement;
+    };
+
+    const triggerClickAnimation = (button) => {
       if (button) {
         button.classList.remove('is-clicking');
         void button.offsetWidth;
@@ -344,26 +414,28 @@ const featureCards = [
 
         window.setTimeout(() => {
           button.classList.remove('is-clicking');
-        }, 420);
-      }
-
-      if (targetElement) {
-        targetElement.classList.remove('is-nudging');
-        void targetElement.offsetWidth;
-        targetElement.classList.add('is-nudging');
-
-        targetElement.classList.remove('is-activating');
-        void targetElement.offsetWidth;
-        targetElement.classList.add('is-activating');
-
-        window.setTimeout(() => {
-          targetElement.classList.remove('is-nudging');
-        }, 500);
-
-        window.setTimeout(() => {
-          targetElement.classList.remove('is-activating');
         }, 740);
       }
+    };
+
+    const clearAutoCycle = () => {
+      if (autoCycleTimer) {
+        window.clearTimeout(autoCycleTimer);
+        autoCycleTimer = null;
+      }
+    };
+
+    const scheduleAutoCycle = () => {
+      clearAutoCycle();
+
+      autoCycleTimer = window.setTimeout(() => {
+        const nextIndex = (currentFeatureIndex + 1) % cards.length;
+        const nextId = `feature-${nextIndex}`;
+        const nextButton = getButtonByIndex(nextIndex);
+
+        activateFeature(nextId, nextButton, true);
+        scheduleAutoCycle();
+      }, currentFeatureIndex === 0 ? autoCycleStartDelay : autoCycleDelay);
     };
 
     if (section) {
@@ -390,14 +462,16 @@ const featureCards = [
 
     if (initialTargetId) {
       // Ejecutamos varias veces para cubrir hidratación y carga de imágenes en móvil.
-      window.requestAnimationFrame(() => scrollToCard(initialTargetId, 'auto'));
+      window.requestAnimationFrame(() => activateFeature(initialTargetId, initialActiveButton, false));
       window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => scrollToCard(initialTargetId, 'auto'));
+        window.requestAnimationFrame(() => activateFeature(initialTargetId, initialActiveButton, false));
       });
 
       window.addEventListener('load', () => {
-        scrollToCard(initialTargetId, 'auto');
+        activateFeature(initialTargetId, initialActiveButton, false);
       });
+
+      scheduleAutoCycle();
     }
 
     let resizeTimer;
@@ -405,18 +479,21 @@ const featureCards = [
       if (!initialTargetId) return;
       window.clearTimeout(resizeTimer);
       resizeTimer = window.setTimeout(() => {
-        scrollToCard(initialTargetId, 'auto');
+        activateFeature(initialTargetId, initialActiveButton, false);
       }, 140);
     });
 
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         const targetId = button.getAttribute('data-target');
-        const targetElement = scrollToCard(targetId);
+        if (!targetId) return;
 
-        if (container && targetElement) {
-          setActiveButton(button);
-          triggerClickAnimation(button, targetElement);
+        clearAutoCycle();
+        activateFeature(targetId, button, true);
+        scheduleAutoCycle();
+
+        if (container) {
+          return;
         }
       });
     });
@@ -427,13 +504,13 @@ const featureCards = [
         if (!targetId) return;
 
         const relatedButton = document.querySelector(`.feature-btn[data-target="${targetId}"]`);
-        const targetElement = scrollToCard(targetId);
+        clearAutoCycle();
+        activateFeature(targetId, relatedButton, true);
+        scheduleAutoCycle();
 
         if (relatedButton) {
-          setActiveButton(relatedButton);
+          return;
         }
-
-        triggerClickAnimation(relatedButton, targetElement || card);
       });
     });
   })();

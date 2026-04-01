@@ -31,8 +31,8 @@ import { Image } from 'astro:assets';
             loading="eager"
             fetchpriority="high"
             decoding="async"
-            style="--reveal-delay: 160ms;"
-            class="motion-reveal motion-reveal-right motion-float-soft gabfirst-phone"
+            style="--reveal-delay: 80ms; --reveal-duration: 1600ms;"
+            class="motion-reveal motion-reveal-right gabfirst-phone"
           />
 
           <div
@@ -112,6 +112,7 @@ import { Image } from 'astro:assets';
     aspect-ratio: 400 / 540;
     margin-inline: auto;
     overflow: visible;
+    z-index: 1;
   }
 
   .gabfirst-stage {
@@ -120,6 +121,28 @@ import { Image } from 'astro:assets';
     width: 100%;
     height: 100%;
     transform-origin: center center;
+  }
+
+  /* Background gradient reveal: appears first */
+  [data-gabfirst-root] {
+    position: relative;
+    overflow: visible;
+  }
+
+  [data-gabfirst-root]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(180deg, rgba(37,99,235,0.06) 0%, rgba(0,0,0,0.55) 100%);
+    transition: opacity 480ms ease;
+  }
+
+  [data-gabfirst-root][data-gabfirst-in-view='true']::before {
+    opacity: 1;
+    transition-delay: 0ms;
   }
 
   .gabfirst-phone {
@@ -135,9 +158,11 @@ import { Image } from 'astro:assets';
   .gabfirst-card {
     position: absolute;
     opacity: 0;
-    transform: translate3d(0, 18px, 0) scale(0.96);
+    --gab-card-enter-x: 0px;
+    --gab-card-enter-y: 10px;
+    transform: translate3d(var(--gab-card-enter-x), var(--gab-card-enter-y), 0) scale(0.96);
     transition-property: opacity, transform;
-    transition-duration: 920ms;
+    transition-duration: 1400ms;
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
     z-index: 20;
@@ -152,7 +177,8 @@ import { Image } from 'astro:assets';
     top: 13.7%;
     width: 30.5%;
     aspect-ratio: 122 / 86;
-    transition-delay: 140ms;
+    --gab-card-enter-x: 56px;
+    transition-delay: 900ms;
   }
 
   .gabfirst-card-2 {
@@ -160,15 +186,17 @@ import { Image } from 'astro:assets';
     top: 60%;
     width: 41.9%;
     aspect-ratio: 168 / 58;
-    transition-delay: 340ms;
+    --gab-card-enter-x: -62px;
+    transition-delay: 1080ms;
   }
 
   .gabfirst-card-3 {
-    left: -%;
+    left: -3%;
     top: 73%;
     width: 36%;
     aspect-ratio: 144 / 104;
-    transition-delay: 540ms;
+    --gab-card-enter-x: -44px;
+    transition-delay: 1260ms;
   }
 
   .gabfirst-card-4 {
@@ -176,7 +204,8 @@ import { Image } from 'astro:assets';
     top: 35%;
     width: 44.5%;
     aspect-ratio: 178 / 58;
-    transition-delay: 740ms;
+    --gab-card-enter-x: 66px;
+    transition-delay: 1440ms;
   }
 
   .gabfirst-card > div {
