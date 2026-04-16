@@ -2,7 +2,7 @@
 import Group from '../assets/images/group1.png';
 import { Image } from 'astro:assets';
 
-const labVisualSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 48vw, 38vw';
+const labVisualSizes = '(max-width: 768px) 92vw, (max-width: 1280px) 52vw, 620px';
 ---
 
 <section data-bg="lab" class="section-shell py-18 lg:py-24 xl:py-28">
@@ -27,8 +27,8 @@ const labVisualSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 48vw, 38vw'
             src={Group}
             alt="Ilustración de resultados de laboratorio de productos"
             format="webp"
-            quality={72}
-            widths={[420, 620, 860, 1100]}
+            quality={100}
+            widths={[640, 900, 1200, 1600]}
             sizes={labVisualSizes}
             loading="lazy"
             decoding="async"
@@ -54,8 +54,8 @@ const labVisualSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 48vw, 38vw'
           src={Group}
           alt="Ilustración de resultados de laboratorio de productos"
           format="webp"
-          quality={72}
-          widths={[420, 620, 860, 1100]}
+          quality={100}
+          widths={[640, 900, 1200, 1600]}
           sizes={labVisualSizes}
           loading="lazy"
           decoding="async"

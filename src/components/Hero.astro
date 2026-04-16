@@ -9,7 +9,7 @@ import { Image } from "astro:assets";
 
 // Usamos un único SVG con todas las marcas
 const topBrandLogos = Brands;
-const heroPhoneSizes = '(max-width: 768px) 74vw, (max-width: 1280px) 42vw, 34vw';
+const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw';
 ---
 
 <section
@@ -80,8 +80,8 @@ const heroPhoneSizes = '(max-width: 768px) 74vw, (max-width: 1280px) 42vw, 34vw'
               loading="eager"
               fetchpriority="high"
               format="webp"
-              quality={76}
-              widths={[360, 520, 700, 900]}
+              quality={100}
+              widths={[520, 760, 1040, 1320, 1680]}
               sizes={heroPhoneSizes}
               decoding="async"
               class="hero-phone-image"
