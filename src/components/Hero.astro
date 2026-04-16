@@ -257,7 +257,6 @@ const topBrandLogos = Brands;
     width: 19.4%;
     aspect-ratio: 33.5 / 17;
     transform: translate3d(0, calc(var(--hero-card-1-y) + var(--hero-reveal-offset, 28px)), 0);
-    animation: hero-card-bob-1 2.4s ease-in-out infinite;
   }
 
   .hero-card-layer[data-hero-card="2"] {
@@ -267,7 +266,6 @@ const topBrandLogos = Brands;
     width: 23.5%;
     aspect-ratio: 39 / 29.5;
     transform: translate3d(0, calc(var(--hero-card-2-y) + var(--hero-reveal-offset, 28px)), 0);
-    animation: hero-card-bob-2 2.8s ease-in-out infinite;
   }
 
   .hero-card-layer[data-hero-card="3"] {
@@ -276,34 +274,6 @@ const topBrandLogos = Brands;
     width: 30%;
     aspect-ratio: 55 / 17.5;
     transform: translate3d(0, calc(var(--hero-card-3-y) + var(--hero-reveal-offset, 28px)), 0);
-    animation: hero-card-bob-3 2.2s ease-in-out infinite;
-  }
-
-  @keyframes hero-card-bob-1 {
-    0%, 100% {
-      transform: translate3d(-1px, calc(var(--hero-card-1-y) + var(--hero-reveal-offset, 28px) + 1px), 0);
-    }
-    50% {
-      transform: translate3d(3px, calc(var(--hero-card-1-y) + var(--hero-reveal-offset, 28px) - 4px), 0);
-    }
-  }
-
-  @keyframes hero-card-bob-2 {
-    0%, 100% {
-      transform: translate3d(1px, calc(var(--hero-card-2-y) + var(--hero-reveal-offset, 28px) + 2px), 0);
-    }
-    50% {
-      transform: translate3d(-3px, calc(var(--hero-card-2-y) + var(--hero-reveal-offset, 28px) - 3px), 0);
-    }
-  }
-
-  @keyframes hero-card-bob-3 {
-    0%, 100% {
-      transform: translate3d(1px, calc(var(--hero-card-3-y) + var(--hero-reveal-offset, 28px) + 1px), 0);
-    }
-    50% {
-      transform: translate3d(-2px, calc(var(--hero-card-3-y) + var(--hero-reveal-offset, 28px) - 3px), 0);
-    }
   }
 
   .hero-over-limit-card-inner,
