@@ -1,6 +1,8 @@
 ---
 import ZincPhone from '../assets/images/zinc.png';
 import { Image } from 'astro:assets';
+
+const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44vw, 32vw';
 ---
 
 <section data-bg="good-bad" data-gabfirst-root data-gabfirst-in-view="false" class="section-shell pt-32 pb-24 lg:pt-40 lg:pb-32">
@@ -28,8 +30,11 @@ import { Image } from 'astro:assets';
           <Image
             src={ZincPhone}
             alt="Nature's Bounty Zinc 50mg lab result"
-            loading="eager"
-            fetchpriority="high"
+            loading="lazy"
+            format="webp"
+            quality={74}
+            widths={[320, 480, 640, 860]}
+            sizes={goodBadFirstPhoneSizes}
             decoding="async"
             style="--reveal-delay: 80ms; --reveal-duration: 1600ms;"
             class="motion-reveal motion-reveal-right gabfirst-phone"

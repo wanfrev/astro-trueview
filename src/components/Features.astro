@@ -42,6 +42,8 @@ const featureCards = [
     widthClass: 'w-[88vw] sm:w-[84vw] lg:w-[82vw] 2xl:w-[1050px]'
   }
 ];
+
+const featureCardSizes = '(max-width: 640px) 88vw, (max-width: 1024px) 84vw, (max-width: 1536px) 62vw, 52vw';
 ---
 
 <section id="features-section" data-bg="features" class="section-shell py-16 sm:py-20 lg:py-28 xl:py-32 bg-[#050505]/40 text-white overflow-hidden relative features-anim">
@@ -91,6 +93,10 @@ const featureCards = [
             <Image 
               src={card.image} 
               alt={card.title} 
+              format="webp"
+              quality={72}
+              widths={[480, 720, 960, 1280, 1600]}
+              sizes={featureCardSizes}
               loading="lazy"
               decoding="async"
               class="feature-image feature-phone w-full h-full object-contain object-bottom transition-transform duration-700 ease-out group-hover:scale-[1.05]" 

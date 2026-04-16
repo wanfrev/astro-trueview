@@ -1,5 +1,8 @@
 ---
-import Group from '../assets/images/group.png';
+import Group from '../assets/images/group1.png';
+import { Image } from 'astro:assets';
+
+const labVisualSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 48vw, 38vw';
 ---
 
 <section data-bg="lab" class="section-shell py-18 lg:py-24 xl:py-28">
@@ -20,11 +23,15 @@ import Group from '../assets/images/group.png';
 
       <div class="mt-8 flex justify-center xl:hidden">
         <div class="labtesting-visual labtesting-visual-mobile">
-          <img
-            src={Group.src}
-            width={Group.width}
-            height={Group.height}
+          <Image
+            src={Group}
             alt="Ilustración de resultados de laboratorio de productos"
+            format="webp"
+            quality={72}
+            widths={[420, 620, 860, 1100]}
+            sizes={labVisualSizes}
+            loading="lazy"
+            decoding="async"
             style="--reveal-delay: 140ms;"
             class="motion-reveal motion-reveal-right motion-float-soft labtesting-visual-image relative z-10 drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)]"
           />
@@ -43,11 +50,15 @@ import Group from '../assets/images/group.png';
 
     <div class="order-2 hidden items-center justify-center xl:flex">
       <div class="labtesting-visual">
-        <img
-          src={Group.src}
-          width={Group.width}
-          height={Group.height}
+        <Image
+          src={Group}
           alt="Ilustración de resultados de laboratorio de productos"
+          format="webp"
+          quality={72}
+          widths={[420, 620, 860, 1100]}
+          sizes={labVisualSizes}
+          loading="lazy"
+          decoding="async"
           style="--reveal-delay: 140ms;"
           class="motion-reveal motion-reveal-right motion-float-soft labtesting-visual-image relative z-10 drop-shadow-[0_20px_45px_rgba(0,0,0,0.38)] xl:drop-shadow-[0_28px_70px_rgba(0,0,0,0.45)]"
         />

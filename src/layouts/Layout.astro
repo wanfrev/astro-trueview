@@ -1,9 +1,7 @@
 ---
 import '../styles/global.css';
 import Background from '../components/Background.astro';
-import HeroGlow from '../assets/images/Ellipse2.png';
 import HeroPhone from '../assets/images/phonecaution1.png';
-import HeroUnion from '../assets/icons/Union.svg';
 
 interface Props {
 	title?: string;
@@ -17,9 +15,7 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="preload" as="image" href={HeroGlow.src} fetchpriority="high" />
 		<link rel="preload" as="image" href={HeroPhone.src} fetchpriority="high" />
-		<link rel="preload" as="image" href={HeroUnion.src} fetchpriority="high" />
 		<title>{title}</title>
 	</head>
 	<body class="selection:bg-trueview-blue/30">

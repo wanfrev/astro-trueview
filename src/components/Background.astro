@@ -1,4 +1,4 @@
-respons---
+---
 import Ellipse2 from '../assets/images/Ellipse2.png';
 import Ellipse3 from '../assets/images/Ellipse3.png';
 import Ellipse4 from '../assets/images/Ellipse4.png';
@@ -6,6 +6,13 @@ import Ellipse5 from '../assets/images/backg5.webp';
 import Ellipse6 from '../assets/images/Ellipse6.png';
 import Ellipse7 from '../assets/images/Ellipse7.png';
 import { Image } from 'astro:assets';
+
+const bgHeroSizes = '(max-width: 768px) 980px, (max-width: 1280px) 1320px, 1500px';
+const bgFailsSizes = '(max-width: 768px) 880px, (max-width: 1280px) 1120px, 1300px';
+const bgLabSizes = '(max-width: 768px) 620px, (max-width: 1280px) 760px, 900px';
+const bgGoodBadSizes = '(max-width: 768px) 980px, (max-width: 1280px) 1220px, 1480px';
+const bgGoodBad2Sizes = '(max-width: 768px) 620px, (max-width: 1280px) 760px, 900px';
+const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1340px';
 ---
 
 <style is:inline>
@@ -165,6 +172,10 @@ import { Image } from 'astro:assets';
     id="bg-hero"
     loading="eager"
     fetchpriority="high"
+    format="webp"
+    quality={52}
+    widths={[640, 960, 1280, 1600]}
+    sizes={bgHeroSizes}
     decoding="async"
     class="bg-ellipse bg-ellipse-1 absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
     style="top: calc(var(--bg-hero-top, 96px) + var(--bg-hero-dy, 0px)); left: calc(var(--bg-hero-left, 6%) + var(--bg-hero-dx, 0px)); width: var(--bg-hero-w, 1200px); height: var(--bg-hero-h, auto);"
@@ -175,7 +186,11 @@ import { Image } from 'astro:assets';
     src={Ellipse3}
     alt=""
     id="bg-fails"
-    loading="eager"
+    loading="lazy"
+    format="webp"
+    quality={52}
+    widths={[640, 960, 1280, 1440]}
+    sizes={bgFailsSizes}
     decoding="async"
     class="bg-ellipse bg-ellipse-2 absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
     style="top: calc(var(--bg-fails-top, 1500px) + var(--bg-fails-dy, 0px)); left: calc(var(--bg-fails-left, -12%) + var(--bg-fails-dx, 0px)); width: var(--bg-fails-w, 980px); height: var(--bg-fails-h, auto);"
@@ -186,7 +201,11 @@ import { Image } from 'astro:assets';
     src={Ellipse4}
     alt=""
     id="bg-lab"
-    loading="eager"
+    loading="lazy"
+    format="webp"
+    quality={50}
+    widths={[480, 720, 960, 1200]}
+    sizes={bgLabSizes}
     decoding="async"
     class="bg-ellipse bg-ellipse-3 absolute max-w-none mix-blend-screen opacity-95 blur-[8px]"
     style="top: calc(var(--bg-lab-top, 2250px) + var(--bg-lab-dy, 0px)); right: calc(var(--bg-lab-right, -12%) + var(--bg-lab-dx, 0px)); width: var(--bg-lab-w, 980px); height: var(--bg-lab-h, auto);"
@@ -197,7 +216,11 @@ import { Image } from 'astro:assets';
     src={Ellipse5}
     alt=""
     id="bg-good-bad"
-    loading="eager"
+    loading="lazy"
+    format="webp"
+    quality={50}
+    widths={[640, 960, 1280, 1536]}
+    sizes={bgGoodBadSizes}
     decoding="async"
     class="bg-ellipse bg-ellipse-4 absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
     style="top: calc(var(--bg-good-bad-top, 2900px) + var(--bg-good-bad-dy, 0px)); right: calc(var(--bg-good-bad-right, -10%) + var(--bg-good-bad-dx, 0px)); width: var(--bg-good-bad-w, 920px); height: var(--bg-good-bad-h, auto);"
@@ -208,8 +231,11 @@ import { Image } from 'astro:assets';
     src={Ellipse6}
     alt=""
     id="bg-good-bad-2"
-    loading="eager"
-    fetchpriority="high"
+    loading="lazy"
+    format="webp"
+    quality={50}
+    widths={[480, 720, 960, 1200]}
+    sizes={bgGoodBad2Sizes}
     decoding="async"
     class="bg-ellipse bg-ellipse-5 absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
     style="top: calc(var(--bg-good-bad-2-top, 3600px) + var(--bg-good-bad-2-dy, 0px)); left: calc(var(--bg-good-bad-2-left, -8%) + var(--bg-good-bad-2-dx, 0px)); width: var(--bg-good-bad-2-w, 980px); height: var(--bg-good-bad-2-h, auto);"
@@ -220,7 +246,11 @@ import { Image } from 'astro:assets';
     src={Ellipse7}
     alt=""
     id="bg-wait-more"
-    loading="eager"
+    loading="lazy"
+    format="webp"
+    quality={50}
+    widths={[640, 960, 1280, 1536]}
+    sizes={bgWaitMoreSizes}
     decoding="async"
     class="bg-ellipse bg-ellipse-6 absolute max-w-none mix-blend-screen opacity-95"
     style="top: calc(var(--bg-wait-more-top, 4300px) + var(--bg-wait-more-dy, 0px)); right: calc(var(--bg-wait-more-right, -16%) + var(--bg-wait-more-dx, 0px)); width: var(--bg-wait-more-w, 940px); height: var(--bg-wait-more-h, auto);"

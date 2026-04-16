@@ -1,6 +1,6 @@
 ---
 import Union from "../assets/icons/Union.svg";
-import Phone from "../assets/images/phonecaution1.png";
+import Phone from "../assets/images/phonecaution11.png";
 import Brands from "../assets/icons/brands.svg";
 import { Image } from "astro:assets";
 
@@ -9,6 +9,7 @@ import { Image } from "astro:assets";
 
 // Usamos un único SVG con todas las marcas
 const topBrandLogos = Brands;
+const heroPhoneSizes = '(max-width: 768px) 74vw, (max-width: 1280px) 42vw, 34vw';
 ---
 
 <section
@@ -67,7 +68,6 @@ const topBrandLogos = Brands;
           alt=""
           aria-hidden="true"
           loading="eager"
-          fetchpriority="high"
           decoding="async"
           class="hero-union-shape"
         />
@@ -79,6 +79,10 @@ const topBrandLogos = Brands;
               alt="phone caution"
               loading="eager"
               fetchpriority="high"
+              format="webp"
+              quality={76}
+              widths={[360, 520, 700, 900]}
+              sizes={heroPhoneSizes}
               decoding="async"
               class="hero-phone-image"
             />
@@ -103,7 +107,7 @@ const topBrandLogos = Brands;
               <Image
                 src={topBrandLogos}
                 alt="Brands"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 class="hero-brands-logo"
               />

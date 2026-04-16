@@ -6,6 +6,9 @@ import VioletBottle2 from '../assets/icons/violetbottle2.png';
 import Pill from '../assets/icons/pill.png';
 import GreyBottle from '../assets/icons/greybottle.png';
 import { Image } from 'astro:assets';
+
+const failsPhoneSizes = '(max-width: 1024px) 82vw, 34vw';
+const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
 ---
 
 <section data-bg="fails" data-thefails-root data-thefails-in-view="false" class="section-shell py-14 md:py-20 overflow-hidden">
@@ -14,14 +17,14 @@ import { Image } from 'astro:assets';
       <div class="phone-collage-wrapper">
       <div aria-hidden="true" class="hidden"></div>
 
-      <Image src={PhoneTop} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
-      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
+      <Image src={PhoneTop} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[320, 480, 640, 860]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
+      <Image src={PhoneBottom} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[360, 520, 760, 980]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
 
-      <Image src={VioletBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-a" />
-      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-violet-b" />
+      <Image src={VioletBottle} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-a" />
+      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-b" />
 
-      <Image src={Pill} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-pill" />
-      <Image src={GreyBottle} alt="" aria-hidden="true" loading="eager" decoding="async" class="thefails-icon thefails-icon-grey" />
+      <Image src={Pill} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-pill" />
+      <Image src={GreyBottle} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-grey" />
       </div>
     </div>
 
