@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Background from '../components/Background.astro';
 import HeroPhone from '../assets/images/phonecaution1.png';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title?: string;
@@ -15,6 +16,7 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<ClientRouter />
 		<link rel="preload" as="image" href={HeroPhone.src} fetchpriority="high" />
 		<title>{title}</title>
 	</head>

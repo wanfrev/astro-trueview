@@ -46,6 +46,12 @@ import { Image } from 'astro:assets';
 
 <script is:inline>
   (() => {
+    if (window.__trueviewNavbarInitialized) {
+      return;
+    }
+
+    window.__trueviewNavbarInitialized = true;
+
     const navbar = document.getElementById('site-navbar');
     const menuButton = document.getElementById('mobile-menu-toggle');
     const mobilePanel = document.getElementById('mobile-menu-panel');
