@@ -331,12 +331,13 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 0.35rem;
+    justify-content: space-evenly;
+    gap: 0.2rem;
     border-radius: clamp(14px, 2.2vw, 18px);
-    padding: 0.72rem 0.72rem 0.45rem;
+    padding: 0.8rem 0.8rem 0.55rem;
     align-items: flex-start;
     transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: hidden;
   }
 
   .hero-brands-card:hover .hero-brands-card-inner {
@@ -346,6 +347,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   .hero-brands-card-copy {
     flex: 0 0 auto;
     min-width: 0;
+    width: 100%;
   }
 
   .hero-brands-title {
@@ -368,10 +370,11 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     max-width: 100%;
     white-space: normal;
     overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .hero-brands-logo-slot {
-    margin-top: auto;
+    margin-top: 0;
     width: 100%;
     display: flex;
     align-items: center;
@@ -675,20 +678,20 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-brands-card-inner {
-      padding: 0.62rem 0.6rem 0.38rem;
+      padding: 0.62rem 0.6rem 0.48rem;
       border-radius: 18px;
     }
 
     .hero-brands-title {
-      font-size: clamp(1rem, 3.4vw, 1.32rem);
+      font-size: clamp(0.92rem, 3vw, 1.18rem);
     }
 
     .hero-brands-label {
-      font-size: clamp(0.38rem, 1.2vw, 0.56rem);
+      font-size: clamp(0.3rem, 0.95vw, 0.48rem);
     }
 
     .hero-brands-logo {
-      max-width: 74%;
+      max-width: 100%;
     }
 
     .hero-lead-card-inner {
@@ -769,7 +772,21 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-brands-card-inner {
-      padding: 0.5rem 0.44rem 0.3rem;
+      padding: 0.5rem 0.44rem 0.38rem;
+    }
+
+    .hero-brands-title {
+      font-size: clamp(0.86rem, 3.2vw, 1.08rem);
+    }
+
+    .hero-brands-label {
+      font-size: clamp(0.26rem, 0.9vw, 0.42rem);
+      letter-spacing: 0.1em;
+      line-height: 1.05;
+    }
+
+    .hero-brands-logo {
+      max-width: 100%;
     }
 
     .hero-lead-card-inner {
