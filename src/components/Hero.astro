@@ -39,7 +39,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         id="hero-title"
         class="hero-reveal hero-reveal-copy-1 mx-auto max-w-[22ch] text-3xl sm:text-4xl lg:text-[46px] xl:text-[56px] 2xl:text-[62px] font-bold leading-[0.98] lg:leading-[0.95] tracking-[-0.03em] text-white lg:mx-0"
       >
-        The only marketplace where every product is lab tested
+        The only marketplace where every product are lab tested
       </h1>
 
       <p
@@ -52,7 +52,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         Make healthy decisions, quickly.
       </p>
 
-      <div class="mt-8 lg:mt-12 flex justify-center lg:justify-start">
+      <div class="mt-8 lg:mt-12 flex justify-center xl:justify-start">
         <button
           class="hero-reveal hero-reveal-copy-3 w-48 h-15 bg-[#2563eb] hover:brightness-105 rounded-full font-bold text-base text-white flex items-center justify-center transition-all shadow-[0_15px_40px_rgba(37,99,235,0.45)] border border-white/10 leading-none hover:scale-105 active:scale-95"
         >
@@ -115,7 +115,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         </div>
 
         <div data-hero-card="3" class="hero-card-layer hero-reveal hero-reveal-card-3 hero-lead-card">
-          <div class="hero-lead-card-inner">
+          <div class="hero-lead-card-inner hero-card-float-target">
             <div class="hero-lead-copy">
               <div class="hero-lead-badge">
                 <svg class="hero-lead-badge-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
@@ -161,6 +161,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     --hero-copy-y: 0px;
     --hero-copy-opacity: 1;
     --hero-media-y: 0px;
+    --hero-mobile-shift: 0px;
     --hero-card-1-y: 0px;
     --hero-card-2-y: 0px;
     --hero-card-3-y: 0px;
@@ -237,7 +238,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     top: 0;
     width: 74%;
     height: 100%;
-    transform: translate3d(0, calc(var(--hero-media-y) + var(--hero-reveal-offset, 28px)), 0);
+    transform: translate3d(var(--hero-mobile-shift), calc(var(--hero-media-y) + var(--hero-reveal-offset, 28px)), 0);
     will-change: transform;
   }
 
@@ -263,9 +264,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     will-change: transform;
   }
 
-  .hero-phone-layer:hover .hero-phone-image {
-    transform: scale(1.32);
-  }
 
   .hero-card-layer {
     position: absolute;
@@ -273,12 +271,25 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     will-change: transform;
   }
 
+  .hero-card-float-target {
+    animation-name: heroCardFloat;
+    animation-duration: 4.2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .hero-lead-card .hero-card-float-target { animation-delay: -0.5s; animation-duration: 3.8s; }
+  .hero-over-limit-card-inner { animation-delay: -0.2s; }
+  .hero-brands-card-inner { animation-delay: -0.9s; animation-duration: 4.6s; }
+  .hero-caution-card-inner { animation-delay: -1.2s; animation-duration: 4.8s; }
+
   .hero-card-layer[data-hero-card="1"] {
     left: 13%;
     top: 4.25%;
     width: 19.4%;
     aspect-ratio: 33.5 / 17;
-    transform: translate3d(0, calc(var(--hero-card-1-y) + var(--hero-reveal-offset, 28px)), 0);
+    transform: translate3d(var(--hero-mobile-shift), calc(var(--hero-card-1-y) + var(--hero-reveal-offset, 28px)), 0);
   }
 
   .hero-card-layer[data-hero-card="2"] {
@@ -287,7 +298,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     top: 12%;
     width: 23.5%;
     aspect-ratio: 39 / 29.5;
-    transform: translate3d(0, calc(var(--hero-card-2-y) + var(--hero-reveal-offset, 28px)), 0);
+    transform: translate3d(var(--hero-mobile-shift), calc(var(--hero-card-2-y) + var(--hero-reveal-offset, 28px)), 0);
   }
 
   .hero-card-layer[data-hero-card="3"] {
@@ -295,7 +306,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     bottom: 12%;
     width: 30%;
     aspect-ratio: 55 / 17.5;
-    transform: translate3d(0, calc(var(--hero-card-3-y) + var(--hero-reveal-offset, 28px)), 0);
+    transform: translate3d(var(--hero-mobile-shift), calc(var(--hero-card-3-y) + var(--hero-reveal-offset, 28px)), 0);
   }
 
   .hero-card-layer[data-hero-card="4"] {
@@ -303,7 +314,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     top: var(--hero-card-4-top);
     width: var(--hero-card-4-width);
     aspect-ratio: 46 / 10;
-    transform: translate3d(0, calc(var(--hero-card-4-y) + var(--hero-reveal-offset, 28px)), 0) rotate(var(--hero-card-4-rot, 0deg));
+    transform: translate3d(var(--hero-mobile-shift), calc(var(--hero-card-4-y) + var(--hero-reveal-offset, 28px)), 0) rotate(var(--hero-card-4-rot, 0deg));
   }
 
   .hero-over-limit-card-inner,
@@ -331,9 +342,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .hero-over-limit-card:hover .hero-over-limit-card-inner {
-    transform: translate3d(0, -0.5rem, 0) scale(1.04);
-  }
 
   .hero-over-limit-value {
     color: var(--hero-card-text);
@@ -368,9 +376,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     overflow: hidden;
   }
 
-  .hero-brands-card:hover .hero-brands-card-inner {
-    transform: translate3d(0, -0.5rem, 0) scale(1.04);
-  }
 
   .hero-brands-card-copy {
     flex: 0 0 auto;
@@ -430,9 +435,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     overflow: hidden;
   }
 
-  .hero-lead-card:hover .hero-lead-card-inner {
-    transform: translate3d(0, -0.5rem, 0) scale(1.04);
-  }
 
   .hero-lead-copy {
     flex: 1 1 auto;
@@ -562,9 +564,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     min-width: 0; /* permite que los hijos flexibles se encojan sin overflow */
   }
 
-  .hero-caution-card:hover .hero-caution-card-inner {
-    transform: translate3d(0, -0.5rem, 0) scale(1.04);
-  }
 
   .hero-caution-icon-circle {
     background: #ff5b58;
@@ -618,7 +617,17 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     --hero-reveal-offset: 0px;
   }
 
+  @keyframes heroCardFloat {
+    0% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -11px, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+
   @media (max-width: 1024px) {
+    .hero-root {
+      --hero-mobile-shift: 16px;
+    }
+
     .hero-layout {
       grid-template-columns: 1fr;
       justify-items: center;
@@ -646,7 +655,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-phone-layer {
-      left: 12%;
+      left: 20%;
       width: 52%;
     }
 
@@ -658,7 +667,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
 
     .hero-card-layer[data-hero-card="2"] {
       right: auto;
-      left: 55%;
+      left: 48%;
       top: 12%;
       width: 25%;
     }
@@ -706,7 +715,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
 
     .hero-card-layer[data-hero-card="2"] {
       top: 12%;
-      left: 55%;
+      left: 50%;
       right: auto;
     }
 
@@ -718,6 +727,10 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   }
 
   @media (max-width: 640px) {
+    .hero-root {
+      --hero-mobile-shift: 12px;
+    }
+
     .phone-collage-wrapper {
       max-width: 400px;
     }
@@ -853,6 +866,10 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   }
 
   @media (max-width: 480px) {
+    .hero-root {
+      --hero-mobile-shift: 10px;
+    }
+
     .phone-collage-wrapper {
       max-width: 350px;
     }
@@ -929,6 +946,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     .hero-card-layer[data-hero-card="2"],
     .hero-card-layer[data-hero-card="3"],
     .hero-card-layer[data-hero-card="4"] {
+      animation: none !important;
+      transform: none !important;
+      margin-top: 0 !important;
+    }
+
+    .hero-card-float-target {
       animation: none !important;
       transform: none !important;
     }

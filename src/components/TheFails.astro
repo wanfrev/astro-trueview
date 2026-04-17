@@ -197,6 +197,21 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     pointer-events: none;
     transition: all 0.4s ease;
+    margin-top: 0;
+    animation-name: thefailsCardFloat;
+    animation-duration: 4.1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .card-summary { animation-delay: -0.3s; }
+  .card-caution { animation-delay: -1.0s; animation-duration: 4.6s; }
+  .card-zinc { animation-delay: -0.6s; animation-duration: 3.7s; }
+
+  @keyframes thefailsCardFloat {
+    0% { margin-top: 0; }
+    50% { margin-top: -10px; }
+    100% { margin-top: 0; }
   }
 
   /* --- CARD 1: SUMMARY --- */
@@ -554,6 +569,11 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     .thefails-icon {
       animation: none !important;
       transform: none !important;
+    }
+
+    .floating-card {
+      animation: none !important;
+      margin-top: 0 !important;
     }
   }
 </style>

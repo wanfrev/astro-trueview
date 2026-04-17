@@ -8,8 +8,8 @@ const waitPhonesSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 64vw, 52vw
 ---
 
 <section data-bg="wait-more" class="section-shell pt-16 pb-6 md:py-28 overflow-hidden">
-  <div class="max-w-[1700px] mx-auto grid md:grid-cols-[1fr_1.2fr] gap-12 items-center">
-    <div data-reveal-group class="relative z-20 max-w-155 text-center md:text-left">
+  <div class="max-w-[1700px] mx-auto grid md:grid-cols-[minmax(0,1.45fr)_minmax(0,0.95fr)] gap-12 md:gap-6 items-center">
+    <div data-reveal-group class="relative z-20 w-full max-w-none text-center md:text-left md:pr-0">
       <span class="motion-reveal inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-gray-200" style="font-size: var(--wait-badge-size);">
         <Image
           src={LogoSmall}
@@ -28,7 +28,7 @@ const waitPhonesSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 64vw, 52vw
         themselves, <span class="motion-word-glow motion-word-glow-red">so we do!</span>
       </h2>
 
-      <p style="font-size: var(--wait-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-6 md:mt-8 text-gray-400 text-base sm:text-lg md:text-xl leading-[1.55] max-w-130 mx-auto md:mx-0">
+      <p style="font-size: clamp(1.25rem, 0.95vw + 0.9rem, 2rem); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-6 md:mt-8 text-gray-400 leading-[1.22] max-w-none mx-auto md:mx-0">
         Reading lab reports shouldn’t turn into a full-time job.
         We translate complex data into Pass/Fails-covering accuracy, heavy metals,
         and microbes - just verify into your fingertips.

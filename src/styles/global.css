@@ -41,7 +41,7 @@
 	body {
 		background-color: #000000;
 		color: #ffffff;
-		font-family: Inter, system-ui, sans-serif;
+		font-family: 'Outfit', Inter, system-ui, sans-serif;
 		width: 100%;
 		max-width: 100%;
 		overflow-x: clip;
