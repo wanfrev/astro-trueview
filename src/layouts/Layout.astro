@@ -97,4 +97,22 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 	</body>
 </html>
 
-
+<style is:global>
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: -100;
+		pointer-events: none;
+		
+		background-image: url('/Union.svg');
+		background-repeat: space;
+		background-size: 64px 64px;
+		background-position: center;
+		
+		opacity: 0.038;
+		
+		will-change: transform;
+		transform: translateZ(0);
+	}
+</style>
