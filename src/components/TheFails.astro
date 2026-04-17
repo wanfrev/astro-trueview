@@ -410,32 +410,69 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     /* ADAPTACIÓN MÓVIL DEL GLASSMORPHISM */
     .floating-card {
       transform: none !important;
-      backdrop-filter: blur(10px) saturate(130%);
-      -webkit-backdrop-filter: blur(10px) saturate(130%);
+      backdrop-filter: blur(14px) saturate(135%);
+      -webkit-backdrop-filter: blur(14px) saturate(135%);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .card-summary {
       top: 50%;
       left: 5%;
-      padding: 4px 36px;
-      min-width: 170px;
+      padding: 3px 20px;
+      min-width: 120px;
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .card-caution {
       left: -4%;
       top: 35%;
-      padding: 8px 12px;
+      padding: 4px 8px;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.12);
     }
+
+    .icon-warning-circle {
+      width: 14px;
+      height: 14px;
+    }
+    .icon-warning-circle svg { width: 8px; height: 8px; }
 
     .card-zinc {
       right: 1%;
       bottom: 1%;
-      padding: 8px;
-      min-width: 200px;
+      padding: 4px;
+      min-width: 140px;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .zinc-status-badge {
+      padding: 6px;
+      min-width: 48px;
+      border-radius: 8px;
+    }
+    .zinc-status-badge .percentage {
+      font-size: 0.75rem;
+    }
+
+    .zinc-title {
+      font-size: 0.6rem;
+    }
+    .zinc-val strong {
+      font-size: 0.65rem;
+    }
+    .zinc-val .unit {
+      font-size: 0.45rem;
+    }
+    .icon-x-light {
+      width: 12px;
+      height: 12px;
+      font-size: 6px;
     }
 
     .card-summary .count {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
 
     .card-summary .summary-text,
@@ -443,7 +480,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     .zinc-label,
     .zinc-val,
     .zinc-status-badge .status-label {
-      font-size: 0.62rem;
+      font-size: 0.5rem;
     }
   }
 
@@ -464,7 +501,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
       transform: none !important;
     }
 
-    .card-zinc { min-width: 220px; }
+    .card-zinc { min-width: 140px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
