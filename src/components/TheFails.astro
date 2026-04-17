@@ -20,6 +20,37 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
       <Image src={PhoneTop} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[320, 480, 640, 860]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
       <Image src={PhoneBottom} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[360, 520, 760, 980]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
 
+      <div class="floating-card card-summary" aria-hidden="true">
+        <span class="count">4</span>
+        <p class="summary-text">Contaminants detected</p>
+      </div>
+
+      <div class="floating-card card-caution" aria-hidden="true">
+        <div class="icon-warning-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <p class="caution-text"><strong>Caution:</strong> Exceeds Proposition 65 Heavy Metals</p>
+      </div>
+
+      <div class="floating-card card-zinc" aria-hidden="true">
+        <div class="zinc-content">
+          <div class="icon-x-light">✕</div>
+          <div class="zinc-text">
+            <h3 class="zinc-title">Zinc Nature</h3>
+            <span class="zinc-label">Claim: 50 (mg/serving)</span>
+            <p class="zinc-val"><strong>5.684</strong> <br><span class="unit">mcg/serving Detected</span></p>
+          </div>
+        </div>
+        <div class="zinc-status-badge">
+          <span class="percentage">6.82%</span>
+          <span class="status-label">over limit</span>
+        </div>
+      </div>
+
       <Image src={VioletBottle} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-a" />
       <Image src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-b" />
 
@@ -88,7 +119,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   .thefails-phone-bottom {
     width: 82%;
     max-width: 540px !important;
-    left: 27%;
+    left: 17%;
     top: 20%;
     z-index: 10;
     --thefails-rotate: 0deg;
@@ -144,6 +175,169 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     z-index: 20;
     opacity: 0.85;
     animation-name: thefailsFloatDown;
+  }
+
+  /* --- BASE DE LAS TARJETAS (GLASSMORPHISM) --- */
+  .floating-card {
+    position: absolute;
+    z-index: 50;
+    /* Fondo con gradiente sutil y mucha transparencia */
+    background: rgba(255, 255, 255, 0.18); 
+    backdrop-filter: blur(14px) saturate(135%);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+    /* Borde blanco semi-transparente para el look de cristal */
+    border: none;
+    border-radius: 8px;
+    /* Sombra exterior más difusa y brillo interior sutil */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  /* --- CARD 1: SUMMARY --- */
+  .card-summary {
+    top: 42%;
+    left: 30%;
+    padding: 2px 60px;
+    text-align: center;
+    transform: rotate(5deg);
+    min-width: 200px;
+    width: max-content;
+  }
+  .card-summary .count {
+    color: #ff5b58;
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.1;
+    display: block;
+  }
+  .card-summary .summary-text {
+    color: #ff5b58;
+    margin: 1px 0 0;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  /* --- CARD 2: CAUTION --- */
+  .card-caution {
+    top: 33%;
+    left: 13%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    transform: rotate(5deg);
+    white-space: nowrap;
+  }
+  .icon-warning-circle {
+    background: #ff5b58;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .icon-warning-circle svg { width: 12px; height: 12px; }
+  .caution-text {
+    color: #ff5b58;
+    margin: 0;
+    font-size: 0.65rem;
+    font-weight: 500;
+  }
+
+  /* --- CARD 3: ZINC DETAIL --- */
+  .card-zinc {
+    bottom: 12%;
+    right: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px;
+    min-width: 180px;
+    transform: rotate(-2deg);
+    background: rgba(255, 255, 255, 0.15); /* Cristal puro */
+    overflow: hidden;
+  }
+  .zinc-content {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 4px;
+  }
+  .icon-x-light {
+    background: #fff0f0;
+    color: #ff5b58;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .zinc-title {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .zinc-label {
+    font-size: 0.55rem;
+    color: #1a1a1a;
+    display: block;
+    margin: 2px 0;
+  }
+  .zinc-val {
+    margin: 3px 0 0 0;
+    color: #ff5b58;
+    font-size: 0.65rem;
+    line-height: 1.1;
+  }
+  .zinc-val strong {
+    font-size: 0.85rem;
+    font-weight: 900;
+  }
+  .zinc-val .unit {
+    color: #1a1a1a;
+    font-size: 0.55rem;
+    font-weight: 600;
+  }
+
+  /* --- BADGE DEL ZINC --- */
+  .zinc-status-badge {
+    background-color: rgba(255, 91, 88, 0.15);
+    color: #ff5b58;
+    padding: 10px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    min-width: 64px;
+    box-shadow: none;
+  }
+  .zinc-status-badge .percentage {
+    font-weight: 900;
+    font-size: 0.95rem;
+    display: block;
+    line-height: 1;
+  }
+  .zinc-status-badge .status-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: none;
+    margin-top: 3px;
+    letter-spacing: 0;
   }
 
   [data-thefails-root][data-thefails-in-view='true'] .thefails-icon {
@@ -208,6 +402,45 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
       top: 20%;
       --thefails-rotate: 0deg;
     }
+
+    /* ADAPTACIÓN MÓVIL DEL GLASSMORPHISM */
+    .floating-card {
+      transform: none !important;
+      backdrop-filter: blur(10px) saturate(130%);
+      -webkit-backdrop-filter: blur(10px) saturate(130%);
+    }
+
+    .card-summary {
+      top: 50%;
+      left: 5%;
+      padding: 4px 36px;
+      min-width: 170px;
+    }
+
+    .card-caution {
+      left: -4%;
+      top: 35%;
+      padding: 8px 12px;
+    }
+
+    .card-zinc {
+      right: 1%;
+      bottom: 1%;
+      padding: 8px;
+      min-width: 200px;
+    }
+
+    .card-summary .count {
+      font-size: 1rem;
+    }
+
+    .card-summary .summary-text,
+    .caution-text,
+    .zinc-label,
+    .zinc-val,
+    .zinc-status-badge .status-label {
+      font-size: 0.62rem;
+    }
   }
 
   @media (min-width: 768px) and (max-width: 1279px) {
@@ -222,6 +455,12 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
       left: 22%;
       top: 24%;
     }
+
+    .floating-card {
+      transform: none !important;
+    }
+
+    .card-zinc { min-width: 220px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
