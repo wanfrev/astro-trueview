@@ -162,9 +162,47 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
       transform: none !important;
     }
   }
+
+  .bg-union-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .bg-union-mark {
+    position: absolute;
+    width: var(--union-size, 300px);
+    aspect-ratio: 677 / 427;
+    background-image: url('/Union.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: var(--union-opacity, 0.08);
+    transform: translate(-50%, -50%) rotate(var(--union-rotate, 0deg));
+    filter: brightness(0) invert(1);
+    will-change: transform;
+  }
+
+  @media (max-width: 1023px) {
+    .bg-union-mark {
+      width: calc(var(--union-size, 300px) * 0.62);
+      opacity: calc(var(--union-opacity, 0.08) * 0.85);
+    }
+  }
 </style>
 
 <div aria-hidden="true" class="absolute inset-x-0 top-0 -z-10 pointer-events-none overflow-hidden" style="height: var(--bg-canvas-height, 3000px)">
+  <div class="bg-union-field">
+    <span class="bg-union-mark" style="left: 12%; top: 8%; --union-size: 390px; --union-opacity: 0.07; --union-rotate: -12deg;"></span>
+    <span class="bg-union-mark" style="left: 78%; top: 15%; --union-size: 340px; --union-opacity: 0.06; --union-rotate: 8deg;"></span>
+    <span class="bg-union-mark" style="left: 34%; top: 28%; --union-size: 430px; --union-opacity: 0.075; --union-rotate: -6deg;"></span>
+    <span class="bg-union-mark" style="left: 84%; top: 38%; --union-size: 360px; --union-opacity: 0.065; --union-rotate: 14deg;"></span>
+    <span class="bg-union-mark" style="left: 16%; top: 52%; --union-size: 420px; --union-opacity: 0.075; --union-rotate: -9deg;"></span>
+    <span class="bg-union-mark" style="left: 66%; top: 63%; --union-size: 370px; --union-opacity: 0.07; --union-rotate: 11deg;"></span>
+    <span class="bg-union-mark" style="left: 28%; top: 79%; --union-size: 350px; --union-opacity: 0.06; --union-rotate: 7deg;"></span>
+    <span class="bg-union-mark" style="left: 82%; top: 90%; --union-size: 410px; --union-opacity: 0.07; --union-rotate: -10deg;"></span>
+  </div>
+
   <!-- Degradado de Hero -->
   <Image
     src={Ellipse2}
