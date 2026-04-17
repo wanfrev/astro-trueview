@@ -38,11 +38,15 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
 
       <div class="floating-card card-zinc" aria-hidden="true">
         <div class="zinc-content">
-          <div class="icon-x-light">✕</div>
+          <div class="icon-x-light">
+            <svg class="icon-x-light-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </div>
           <div class="zinc-text">
             <h3 class="zinc-title">Zinc Nature</h3>
             <span class="zinc-label">Claim: 50 (mg/serving)</span>
-            <p class="zinc-val"><strong>5.684</strong> <br><span class="unit">mcg/serving Detected</span></p>
+            <p class="zinc-val"><strong>5.684</strong> <span class="unit">mcg/serving Detected</span></p>
           </div>
         </div>
         <div class="zinc-status-badge">
@@ -197,7 +201,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
 
   /* --- CARD 1: SUMMARY --- */
   .card-summary {
-    top: 42%;
+    top: 41%;
     left: 30%;
     padding: 2px 60px;
     text-align: center;
@@ -257,91 +261,127 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   /* --- CARD 3: ZINC DETAIL --- */
   .card-zinc {
     bottom: 12%;
-    right: 18%;
+    right: 20%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px;
-    min-width: 180px;
+    gap: 10px;
+    padding: 8px 8px 8px 14px;
+    min-width: 220px;
     transform: rotate(-2deg);
-    background: rgba(255, 255, 255, 0.15); /* Cristal puro */
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
   .zinc-content {
+    flex: 1 1 auto;
     display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    padding: 4px;
+    align-items: center;
+    gap: 0.42rem;
+    min-width: 0;
+    overflow: hidden;
   }
   .icon-x-light {
-    background: #fff0f0;
-    color: #ff5b58;
-    width: 16px;
-    height: 16px;
+    flex: 0 0 auto;
+    background: #f879795a;
+    color: #e85a5a;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 8px;
-    font-weight: bold;
-    flex-shrink: 0;
+    align-self: flex-start;
     margin-top: 2px;
+  }
+  .icon-x-light-svg {
+    width: 15px;
+    height: 15px;
+  }
+  .zinc-text {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
   .zinc-title {
     margin: 0;
-    font-size: 0.75rem;
-    color: #1a1a1a;
-    font-weight: 700;
+    color: #000000;
+    font-size: clamp(0.58rem, 0.9vw, 0.92rem);
+    font-weight: 600;
     line-height: 1.1;
+    white-space: nowrap;
   }
   .zinc-label {
-    font-size: 0.55rem;
-    color: #1a1a1a;
+    color: #101010;
+    font-size: clamp(0.38rem, 0.52vw, 0.64rem);
+    line-height: 1.1;
+    opacity: 0.7;
     display: block;
-    margin: 2px 0;
+    margin-top: 0.12rem;
+    white-space: nowrap;
   }
   .zinc-val {
-    margin: 3px 0 0 0;
-    color: #ff5b58;
-    font-size: 0.65rem;
-    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.06rem;
+    margin: 0.1rem 0 0;
+    min-width: 0;
+    overflow: hidden;
   }
   .zinc-val strong {
-    font-size: 0.85rem;
-    font-weight: 900;
+    color: #ff6b6b;
+    font-size: clamp(0.64rem, 0.9vw, 1rem);
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
   }
   .zinc-val .unit {
-    color: #1a1a1a;
-    font-size: 0.55rem;
-    font-weight: 600;
+    color: #282828;
+    font-size: clamp(0.38rem, 0.52vw, 0.68rem);
+    line-height: 1;
+    white-space: nowrap;
   }
 
   /* --- BADGE DEL ZINC --- */
   .zinc-status-badge {
-    background-color: rgba(255, 91, 88, 0.15);
-    color: #ff5b58;
-    padding: 10px 10px;
-    text-align: center;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    color: #e85a5a;
+    height: 100%;
+    min-height: 44px;
+    width: 38%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    min-width: 64px;
+    text-align: center;
+    border-radius: 10px;
     box-shadow: none;
+    overflow: hidden;
   }
   .zinc-status-badge .percentage {
-    font-weight: 900;
-    font-size: 0.95rem;
+    color: #e85a5a;
+    font-weight: 700;
+    font-size: clamp(0.64rem, 0.9vw, 0.98rem);
     display: block;
     line-height: 1;
+    white-space: nowrap;
   }
   .zinc-status-badge .status-label {
-    font-size: 0.55rem;
-    font-weight: 700;
-    text-transform: none;
-    margin-top: 3px;
-    letter-spacing: 0;
+    margin-top: 2px;
+    color: #e85a5a;
+    font-size: clamp(0.32rem, 0.52vw, 0.48rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    opacity: 0.9;
+    white-space: nowrap;
   }
 
   [data-thefails-root][data-thefails-in-view='true'] .thefails-icon {
@@ -441,34 +481,41 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     .card-zinc {
       right: 1%;
       bottom: 1%;
-      padding: 4px;
-      min-width: 140px;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.22);
+      padding: 0.3rem 0.28rem 0.3rem 0.34rem;
+      min-width: 162px;
+      gap: 0.32rem;
+      border-radius: 15px;
     }
 
     .zinc-status-badge {
-      padding: 6px;
-      min-width: 48px;
-      border-radius: 8px;
+      width: 40%;
+      padding: 0.22rem 0.26rem;
     }
     .zinc-status-badge .percentage {
-      font-size: 0.75rem;
+      font-size: clamp(0.72rem, 2.2vw, 0.92rem);
     }
 
     .zinc-title {
-      font-size: 0.6rem;
+      font-size: clamp(0.72rem, 2.2vw, 0.9rem);
     }
+    .zinc-label {
+      font-size: clamp(0.36rem, 1.02vw, 0.52rem);
+    }
+
     .zinc-val strong {
-      font-size: 0.65rem;
+      font-size: clamp(0.72rem, 2.2vw, 0.9rem);
     }
+
     .zinc-val .unit {
-      font-size: 0.45rem;
+      font-size: clamp(0.36rem, 1.02vw, 0.52rem);
     }
     .icon-x-light {
-      width: 12px;
-      height: 12px;
-      font-size: 6px;
+      width: 1.55rem;
+      height: 1.55rem;
+    }
+    .icon-x-light-svg {
+      width: 0.9rem;
+      height: 0.9rem;
     }
 
     .card-summary .count {
@@ -477,8 +524,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
 
     .card-summary .summary-text,
     .caution-text,
-    .zinc-label,
-    .zinc-val,
     .zinc-status-badge .status-label {
       font-size: 0.5rem;
     }

@@ -44,7 +44,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
             class="gabfirst-card gabfirst-card-1"
             aria-label="Heavy Metals Passed"
           >
-            <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex flex-col items-center justify-center px-3 sm:px-4">
+            <div class="gabfirst-card-surface h-full w-full rounded-[20px] flex flex-col items-center justify-center px-3 sm:px-4">
               <div class="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-[#11a821] flex items-center justify-center">
                 <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M5 13l4 4L19 7" />
@@ -60,13 +60,13 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
             class="gabfirst-card gabfirst-card-2"
             aria-label="Microbiological 7/7 Passed"
           >
-            <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex items-center px-3 sm:px-5">
+            <div class="gabfirst-card-surface h-full w-full rounded-[20px] flex items-center px-3 sm:px-5">
               <div class="h-5 w-5 sm:h-7 sm:w-7 rounded-full bg-[#bde7c4] flex items-center justify-center shrink-0">
                 <svg class="h-3 w-3 sm:h-4 sm:w-4 text-[#11a821]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p class="ml-2 sm:ml-3 text-[#11a821] text-[10px] sm:text-[12px] lg:text-[12px] font-medium leading-tight tracking-[-0.01em] whitespace-normal wrap-break-word">
+              <p class="ml-2 sm:ml-3 text-[#11a821] text-[9px] sm:text-[9px] lg:text-[9px] font-medium leading-tight tracking-[-0.01em] whitespace-normal wrap-break-word">
                 Microbiological 7/7 Passed
               </p>
             </div>
@@ -76,7 +76,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
             class="gabfirst-card gabfirst-card-3"
             aria-label="Potency Claim"
           >
-            <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex flex-col items-center justify-center px-3 sm:px-4">
+            <div class="gabfirst-card-surface h-full w-full rounded-[20px] flex flex-col items-center justify-center px-3 sm:px-4">
               <div class="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-[#11a821] flex items-center justify-center">
                 <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M5 13l4 4L19 7" />
@@ -92,13 +92,13 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
             class="gabfirst-card gabfirst-card-4"
             aria-label="Contaminants Detected: 0"
           >
-            <div class="h-full w-full rounded-[20px] bg-[#d1d5db] flex items-center px-3 sm:px-5">
+            <div class="gabfirst-card-surface h-full w-full rounded-[20px] flex items-center px-3 sm:px-5">
               <div class="h-5 w-5 sm:h-7 sm:w-7 rounded-full bg-[#bde7c4] flex items-center justify-center shrink-0">
                 <svg class="h-3 w-3 sm:h-4 sm:w-4 text-[#11a821]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p class="ml-2 sm:ml-3 text-[#11a821] text-[10px] sm:text-[12px] lg:text-[12px] font-medium leading-tight tracking-[-0.01em] whitespace-normal wrap-break-word">
+              <p class="ml-2 sm:ml-3 text-[#11a821] text-[9px] sm:text-[9px] lg:text-[9px] font-medium leading-tight tracking-[-0.01em] whitespace-normal wrap-break-word">
                 Contaminants Detected: 0
               </p>
             </div>
@@ -154,16 +154,24 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
     z-index: 20;
-    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     overflow: hidden;
-    background: #d1d5db;
+    background: transparent;
+  }
+
+  .gabfirst-card-surface {
+    background: rgba(255, 255, 255, 0.519);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   }
 
   .gabfirst-card-1 {
     right: 1%;
     top: 13.7%;
-    width: 30.5%;
+    width: 32%;
     aspect-ratio: 122 / 86;
     --gab-card-enter-x: 56px;
     transition-delay: 900ms;
@@ -172,7 +180,8 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
   .gabfirst-card-2 {
     left: -5%;
     top: 60%;
-    width: 41.9%;
+    width: 50%;
+    height: 10%;
     aspect-ratio: 168 / 58;
     --gab-card-enter-x: -62px;
     transition-delay: 1080ms;
@@ -188,9 +197,10 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
   }
 
   .gabfirst-card-4 {
-    right: -5%;
-    top: 35%;
-    width: 44.5%;
+    right: -15%;
+    top: 32%;
+    width: 48%;
+    height: 10%;
     aspect-ratio: 178 / 58;
     --gab-card-enter-x: 66px;
     transition-delay: 1440ms;
@@ -200,7 +210,6 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
     height: 100%;
     width: 100%;
     border-radius: inherit;
-    background: transparent;
     overflow: hidden;
   }
 
@@ -235,6 +244,44 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
   @media (max-width: 1023px) {
     .gabfirst-visual {
       max-width: 450px;
+    }
+
+    .gabfirst-phone {
+      left: 13%;
+      width: 79%;
+    }
+
+    .gabfirst-card-4 {
+      right: -2%;
+      width: 44%;
+    }
+
+    .gabfirst-card-2 {
+      top: 56%;
+    }
+
+    .gabfirst-card-3 {
+      top: 69%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .gabfirst-phone {
+      left: 14%;
+      width: 76%;
+    }
+
+    .gabfirst-card-4 {
+      right: -5%;
+      width: 42%;
+    }
+
+    .gabfirst-card-2 {
+      top: 52%;
+    }
+
+    .gabfirst-card-3 {
+      top: 64%;
     }
   }
 

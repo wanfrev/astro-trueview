@@ -1,6 +1,7 @@
 ---
 import Phones from '../assets/images/phones.png';
 import Stars from '../assets/images/stars.png';
+import LogoSmall from '../assets/images/logosmall.png';
 import { Image } from 'astro:assets';
 
 const waitPhonesSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 64vw, 52vw';
@@ -10,7 +11,14 @@ const waitPhonesSizes = '(max-width: 768px) 88vw, (max-width: 1280px) 64vw, 52vw
   <div class="max-w-[1700px] mx-auto grid md:grid-cols-[1fr_1.2fr] gap-12 items-center">
     <div data-reveal-group class="relative z-20 max-w-155 text-center md:text-left">
       <span class="motion-reveal inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-gray-200" style="font-size: var(--wait-badge-size);">
-        <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#2563eb]"></span>
+        <Image
+          src={LogoSmall}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          class="h-2.5 w-2.5"
+        />
         #1 trusted source for lab-tested supplements
       </span>
 

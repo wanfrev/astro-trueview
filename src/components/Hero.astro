@@ -1,6 +1,6 @@
 ---
 import Union from "../assets/icons/Union.svg";
-import Phone from "../assets/images/phonecaution11.png";
+import Phone from "../assets/images/phonecaution1.png";
 import Brands from "../assets/icons/brands.svg";
 import { Image } from "astro:assets";
 
@@ -138,6 +138,19 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
             </div>
           </div>
         </div>
+
+        <div data-hero-card="4" class="hero-card-layer hero-reveal hero-reveal-card-4 hero-caution-card" aria-hidden="true">
+          <div class="hero-caution-card-inner">
+            <div class="hero-caution-icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <p class="hero-caution-text"><strong>Caution:</strong> Exceeds Proposition 65 Heavy Metals</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -151,6 +164,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     --hero-card-1-y: 0px;
     --hero-card-2-y: 0px;
     --hero-card-3-y: 0px;
+    --hero-card-4-y: 0px;
+    --hero-card-4-rot: 7deg;
+    /* control manual de posición/anchura para la caution card */
+    --hero-card-4-left: 19%;
+    --hero-card-4-top: 36%;
+    --hero-card-4-width: 40%;
     --glass-bg: rgba(255, 255, 255, 0.12);
     --glass-border: rgba(255, 255, 255, 0.2);
     --text-white: #ffffff;
@@ -279,9 +298,18 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     transform: translate3d(0, calc(var(--hero-card-3-y) + var(--hero-reveal-offset, 28px)), 0);
   }
 
+  .hero-card-layer[data-hero-card="4"] {
+    left: var(--hero-card-4-left);
+    top: var(--hero-card-4-top);
+    width: var(--hero-card-4-width);
+    aspect-ratio: 46 / 10;
+    transform: translate3d(0, calc(var(--hero-card-4-y) + var(--hero-reveal-offset, 28px)), 0) rotate(var(--hero-card-4-rot, 0deg));
+  }
+
   .hero-over-limit-card-inner,
   .hero-brands-card-inner,
-  .hero-lead-card-inner {
+  .hero-lead-card-inner,
+  .hero-caution-card-inner {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -520,6 +548,53 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     white-space: nowrap;
   }
 
+  .hero-caution-card-inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: clamp(10px, 1.4vw, 14px);
+    padding: 10px 14px;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    min-width: 0; /* permite que los hijos flexibles se encojan sin overflow */
+  }
+
+  .hero-caution-card:hover .hero-caution-card-inner {
+    transform: translate3d(0, -0.5rem, 0) scale(1.04);
+  }
+
+  .hero-caution-icon-circle {
+    background: #ff5b58;
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hero-caution-icon-circle svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hero-caution-text {
+    color: #ff5b58;
+    margin: 0;
+    font-size: clamp(0.5rem, 0.7vw, 0.65rem);
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: normal; /* permitir salto de línea */
+    overflow-wrap: anywhere; /* romper palabras largas si es necesario */
+    flex: 1 1 auto; /* ocupar el espacio restante y permitir encoger */
+    min-width: 0; /* esencial para el comportamiento de flexbox */
+  }
+
   .hero-reveal {
     --hero-reveal-offset: 28px;
     opacity: 0;
@@ -536,6 +611,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   .hero-reveal-card-1 { transition-delay: 200ms; }
   .hero-reveal-card-2 { transition-delay: 260ms; }
   .hero-reveal-card-3 { transition-delay: 320ms; }
+  .hero-reveal-card-4 { transition-delay: 360ms; }
 
   .hero-root[data-hero-in-view="true"] .hero-reveal {
     opacity: 1;
@@ -593,6 +669,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
       width: 32%;
     }
 
+    .hero-card-layer[data-hero-card="4"] {
+      left: 21%;
+      top: 36%;
+      width: 34%;
+    }
+
     .hero-lead-card-inner {
       gap: 0.32rem;
       padding: 0.24rem 0.22rem 0.24rem 0.26rem;
@@ -627,6 +709,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
       left: 55%;
       right: auto;
     }
+
+    .hero-card-layer[data-hero-card="4"] {
+      left: 21%;
+      top: 36%;
+      width: 34%;
+    }
   }
 
   @media (max-width: 640px) {
@@ -660,6 +748,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
       left: 0%;
       bottom: 10%;
       width: 46%;
+    }
+
+    .hero-card-layer[data-hero-card="4"] {
+      left: 27.5%;
+      top: 37%;
+      width: 30%;
     }
 
     .hero-over-limit-card-inner {
@@ -736,6 +830,26 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     .hero-lead-ratio-label {
       font-size: clamp(0.3rem, 0.92vw, 0.46rem);
     }
+
+    .hero-caution-card-inner {
+      gap: 0.28rem;
+      padding: 0.34rem 0.42rem;
+      border-radius: 12px;
+    }
+
+    .hero-caution-icon-circle {
+      width: 14px;
+      height: 14px;
+    }
+
+    .hero-caution-icon-circle svg {
+      width: 8px;
+      height: 8px;
+    }
+
+    .hero-caution-text {
+      font-size: clamp(0.34rem, 1vw, 0.5rem);
+    }
   }
 
   @media (max-width: 480px) {
@@ -765,6 +879,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
       left: 0%;
       bottom: 9%;
       width: 45%;
+    }
+
+    .hero-card-layer[data-hero-card="4"] {
+      left: 32%;
+      top: 37%;
+      width: 27%;
     }
 
     .hero-over-limit-card-inner {
@@ -807,7 +927,8 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     .hero-phone-layer,
     .hero-card-layer[data-hero-card="1"],
     .hero-card-layer[data-hero-card="2"],
-    .hero-card-layer[data-hero-card="3"] {
+    .hero-card-layer[data-hero-card="3"],
+    .hero-card-layer[data-hero-card="4"] {
       animation: none !important;
       transform: none !important;
     }
@@ -857,6 +978,8 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         hero.style.setProperty("--hero-card-1-y", "0px");
         hero.style.setProperty("--hero-card-2-y", "0px");
         hero.style.setProperty("--hero-card-3-y", "0px");
+        hero.style.setProperty("--hero-card-4-y", "0px");
+        hero.style.setProperty("--hero-card-4-rot", "8deg");
         return;
       }
 
@@ -886,6 +1009,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
           const card1Y = -progress * (isDesktop ? 25 : 14);
           const card2Y = -progress * (isDesktop ? 34 : 18);
           const card3Y = -progress * (isDesktop ? 19 : 12);
+          const card4Y = -progress * (isDesktop ? 28 : 16);
 
           hero.style.setProperty("--hero-copy-y", `${copyY.toFixed(2)}px`);
           hero.style.setProperty("--hero-copy-opacity", copyOpacity.toFixed(3));
@@ -893,6 +1017,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
           hero.style.setProperty("--hero-card-1-y", `${Math.round(card1Y)}px`);
           hero.style.setProperty("--hero-card-2-y", `${Math.round(card2Y)}px`);
           hero.style.setProperty("--hero-card-3-y", `${Math.round(card3Y)}px`);
+          hero.style.setProperty("--hero-card-4-y", `${Math.round(card4Y)}px`);
         });
       };
 

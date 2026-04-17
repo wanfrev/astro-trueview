@@ -29,28 +29,30 @@ const cards = [
 
     <div class="stats-cards-shell">
       <div data-reveal-group class="stats-cards">
-        {cards.map((card, index) => (
-          <div class={`motion-reveal motion-reveal-zoom motion-hover-lift stats-card ${index < 2 ? 'stats-card--up' : 'stats-card--down'} bg-[#24252a] rounded-2xl p-5 sm:p-6 flex flex-col justify-between card shadow-[0_16px_36px_rgba(0,0,0,0.28)] xl:shadow-[0_26px_52px_rgba(0,0,0,0.38)]`}>
-            
-            <div class="flex justify-between items-start">
-              <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">
-                <span class="text-[#e74c4e] text-3xl lg:text-[38px] xl:text-[42px] font-bold tracking-tight leading-none">{card.percentage}</span>
-                <span class="text-[#e74c4e] text-sm lg:text-base font-medium leading-none">Failed</span>
-              </div>
-              
-              <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 border border-white/5 flex items-center justify-center shrink-0 rounded-tl-sm rounded-br-sm rounded-tr-2xl rounded-bl-2xl">
-                <Image src={card.icon} alt={`${card.name} icon`} class="w-6 h-6 md:w-8 md:h-8" />
-              </div>
-            </div>
+        {cards.map((card, index) => {
+          const cardDirection = index < 2 ? 'stats-card--up' : 'stats-card--down';
 
-            <div class="mt-1">
-              <h3 class="text-white text-base md:text-lg font-small tracking-wide">
-                {card.name}
-              </h3>
+          return (
+            <div class={`motion-reveal motion-reveal-zoom motion-hover-lift stats-card glass-element ${cardDirection} p-5 sm:p-6 flex flex-col justify-between card shadow-[0_16px_36px_rgba(0,0,0,0.28)] xl:shadow-[0_26px_52px_rgba(0,0,0,0.38)]`}>
+              <div class="flex justify-between items-start">
+                <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">
+                  <span class="text-[#e74c4e] text-3xl lg:text-[38px] xl:text-[42px] font-bold tracking-tight leading-none">{card.percentage}</span>
+                  <span class="text-[#e74c4e] text-sm lg:text-base font-medium leading-none">Failed</span>
+                </div>
+
+                <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 border border-white/5 flex items-center justify-center shrink-0 rounded-tl-sm rounded-br-sm rounded-tr-2xl rounded-bl-2xl">
+                  <Image src={card.icon} alt={`${card.name} icon`} class="w-6 h-6 md:w-8 md:h-8" />
+                </div>
+              </div>
+
+              <div class="mt-1">
+                <h3 class="text-white text-base md:text-lg font-small tracking-wide">
+                  {card.name}
+                </h3>
+              </div>
             </div>
-            
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   </div>
@@ -60,6 +62,15 @@ const cards = [
   .stats-card {
     transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease;
     will-change: transform;
+  }
+
+  .glass-element {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   }
 
   .stats-layout {
