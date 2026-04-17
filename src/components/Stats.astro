@@ -3,6 +3,7 @@ import NaturalIcon from '../assets/icons/natural.svg';
 import PillIcon from '../assets/icons/Pill.svg';
 import PlantIcon from '../assets/icons/plant.svg';
 import PoisonIcon from '../assets/icons/poison.svg';
+import BlueDecor from '../assets/images/bluedecor.webp';
 import { Image } from 'astro:assets';
 
 const cards = [
@@ -19,6 +20,15 @@ const cards = [
     <div class="absolute left-[45%] top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-purple-900/16 blur-[120px] lg:h-105 lg:w-105 lg:blur-[160px]"></div>
     <div class="absolute right-[10%] top-[18%] h-60 w-60 rounded-full bg-blue-900/10 blur-[110px] lg:h-80 lg:w-80 lg:blur-[150px]"></div>
   </div>
+
+  <Image
+    src={BlueDecor}
+    alt=""
+    aria-hidden="true"
+    loading="lazy"
+    decoding="async"
+    class="pointer-events-none select-none absolute right-0 top-1/2 z-10 w-[min(32vw,460px)] -translate-y-1/2 translate-x-1/2 opacity-60 mix-blend-screen lg:w-[min(26vw,380px)] xl:w-[min(22vw,320px)]"
+  />
 
   <div class="stats-layout content-shell">
     <h2 class="stats-heading motion-reveal motion-reveal-left max-w-[23ch] text-3xl sm:text-4xl lg:text-[44px] xl:text-[52px] font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] text-center lg:text-left">
