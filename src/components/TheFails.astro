@@ -71,12 +71,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     position: absolute;
     height: auto;
     transform-origin: center center;
-    will-change: transform;
-    animation-duration: 1.8s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-play-state: paused;
     transition: width 260ms ease, left 260ms ease, top 260ms ease;
     max-width: 100%;
   }
@@ -152,15 +146,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     animation-name: thefailsFloatDown;
   }
 
-  .thefails-phone-top {
-    animation-name: thefailsFloatUp;
-  }
-
-  .thefails-phone-bottom {
-    animation-name: thefailsFloatDown;
-  }
-
-  [data-thefails-root][data-thefails-in-view='true'] .thefails-phone,
   [data-thefails-root][data-thefails-in-view='true'] .thefails-icon {
     animation-play-state: running;
   }
