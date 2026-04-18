@@ -170,7 +170,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     /* control manual de posición/anchura para la caution card */
     --hero-card-4-left: 19%;
     --hero-card-4-top: 36%;
-    --hero-card-4-width: 40%;
+    --hero-card-4-width: 42%;
     --glass-bg: rgba(255, 255, 255, 0.12);
     --glass-border: rgba(255, 255, 255, 0.2);
     --text-white: #ffffff;
@@ -682,9 +682,16 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-card-layer[data-hero-card="4"] {
-      left: 21%;
+      left: 15%;
       top: 36%;
-      width: 34%;
+      width: max-content;
+      max-width: 56%;
+      aspect-ratio: auto;
+    }
+
+    .hero-caution-text {
+      white-space: nowrap;
+      font-size: clamp(0.44rem, 0.9vw, 0.58rem);
     }
 
     .hero-lead-card-inner {
@@ -723,9 +730,11 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-card-layer[data-hero-card="4"] {
-      left: 21%;
+      left: 19%;
       top: 36%;
-      width: 34%;
+      width: max-content;
+      max-width: 56%;
+      aspect-ratio: auto;
     }
   }
 
@@ -767,9 +776,11 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-card-layer[data-hero-card="4"] {
-      left: 27.5%;
+      left: 15%;
       top: 37%;
-      width: 30%;
+      width: max-content;
+      max-width: 60%;
+      aspect-ratio: auto;
     }
 
     .hero-over-limit-card-inner {
@@ -849,7 +860,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
 
     .hero-caution-card-inner {
       gap: 0.28rem;
-      padding: 0.34rem 0.42rem;
+      padding: 0.24rem 0.3rem;
       border-radius: 12px;
     }
 
@@ -864,7 +875,9 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-caution-text {
-      font-size: clamp(0.34rem, 1vw, 0.5rem);
+      white-space: nowrap;
+      font-size: clamp(0.34rem, 1.28vw, 0.48rem);
+      line-height: 1.05;
     }
   }
 
@@ -902,9 +915,17 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     }
 
     .hero-card-layer[data-hero-card="4"] {
-      left: 32%;
+      left: 15%;
       top: 37%;
-      width: 27%;
+      width: max-content;
+      max-width: 66%;
+      aspect-ratio: auto;
+    }
+
+    .hero-caution-text {
+      white-space: nowrap;
+      font-size: clamp(0.31rem, 1.55vw, 0.42rem);
+      line-height: 1.05;
     }
 
     .hero-over-limit-card-inner {

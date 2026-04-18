@@ -22,7 +22,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
 
       <h2 style="font-size: var(--goodandbad-h2-size);" class="motion-reveal motion-reveal-impact motion-reveal-left text-3xl sm:text-4xl lg:text-[48px] xl:text-[56px] font-bold leading-tight">
         Reading lab reports sucks. <br />
-        <span class="text-white/90">We show you the critical information.</span>
+        <span class="text-white/90">We show you the critical <br>information.</span>
       </h2>
 
       <p style="font-size: var(--goodandbad-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-impact motion-reveal-left mt-6 lg:mt-8 max-w-lg text-base sm:text-lg lg:text-xl leading-relaxed text-gray-400 mx-auto lg:mx-0">
@@ -283,53 +283,124 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
 
   @media (max-width: 1023px) {
     .gabfirst-visual {
-      max-width: 450px;
+      max-width: 430px;
+    }
+
+    .gabfirst-stage {
+      transform: scale(0.96);
+      transform-origin: center center;
     }
 
     .gabfirst-phone {
-      left: 13%;
-      width: 79%;
+      left: 14%;
+      width: 77%;
     }
 
     .gabfirst-card-1 {
-      right: 1%;
+      right: 2%;
+      top: 15%;
+      width: 30%;
     }
 
     .gabfirst-card-4 {
-      right: -2%;
-      width: 52%;
+      right: 0%;
+      top: 33%;
+      width: max-content;
+      max-width: 56%;
+      aspect-ratio: auto;
     }
 
     .gabfirst-card-2 {
-      left: -7%;
-      width: 60%;
-      top: 56%;
+      left: -4%;
+      width: max-content;
+      max-width: 60%;
+      top: 57%;
+      aspect-ratio: auto;
     }
 
     .gabfirst-card-3 {
-      top: 69%;
+      left: -4%;
+      top: 70%;
+      width: 35%;
     }
   }
 
   @media (max-width: 640px) {
+    .gabfirst-visual {
+      max-width: 370px;
+    }
+
+    .gabfirst-stage {
+      transform: scale(0.94);
+    }
+
     .gabfirst-phone {
-      left: 14%;
-      width: 76%;
+      left: 16%;
+      width: 74%;
+    }
+
+    .gabfirst-card-1 {
+      right: 3%;
+      top: 16%;
+      width: 32%;
     }
 
     .gabfirst-card-4 {
-      right: -9%;
-      width: 58%;
+      right: 0%;
+      top: 36%;
+      width: max-content;
+      max-width: 64%;
+      aspect-ratio: auto;
     }
 
     .gabfirst-card-2 {
-      left: -10%;
-      width: 62%;
-      top: 52%;
+      left: -2%;
+      width: max-content;
+      max-width: 68%;
+      top: 56%;
+      aspect-ratio: auto;
     }
 
     .gabfirst-card-3 {
-      top: 64%;
+      left: -2%;
+      top: 72%;
+      width: 39%;
+    }
+
+    .gabfirst-card-row {
+      min-height: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gabfirst-visual {
+      max-width: 335px;
+    }
+
+    .gabfirst-stage {
+      transform: scale(0.92);
+    }
+
+    .gabfirst-card-1 {
+      width: 34%;
+    }
+
+    .gabfirst-card-2 {
+      width: max-content;
+      max-width: 72%;
+      left: -1%;
+      aspect-ratio: auto;
+    }
+
+    .gabfirst-card-3 {
+      width: 41%;
+      top: 72%;
+    }
+
+    .gabfirst-card-4 {
+      width: max-content;
+      max-width: 69%;
+      aspect-ratio: auto;
     }
   }
 
