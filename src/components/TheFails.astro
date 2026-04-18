@@ -212,7 +212,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     animation-duration: 4.6s;
   }
   .card-zinc {
-    animation-name: thefailsCardFloatStrong;
+    animation-name: thefailsCardFloatBottomStrong;
     animation-delay: -0.6s;
     animation-duration: 3.5s;
   }
@@ -227,6 +227,12 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     0% { margin-top: 0; }
     50% { margin-top: -11px; }
     100% { margin-top: 0; }
+  }
+
+  @keyframes thefailsCardFloatBottomStrong {
+    0% { margin-bottom: 0; }
+    50% { margin-bottom: 11px; }
+    100% { margin-bottom: 0; }
   }
 
   /* --- CARD 1: SUMMARY --- */
@@ -372,7 +378,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   /* --- BADGE DEL ZINC --- */
   .zinc-status-badge {
     flex: 0 0 auto;
-    background-color: #ffffff;
+    background-color: #ffe3e2;
     color: #e85a5a;
     height: 100%;
     min-height: 44px;
