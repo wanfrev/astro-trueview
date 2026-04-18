@@ -271,7 +271,10 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     will-change: transform;
   }
 
-  .hero-card-float-target {
+  .hero-card-float-target,
+  .hero-over-limit-card-inner,
+  .hero-brands-card-inner,
+  .hero-caution-card-inner {
     animation-name: heroCardFloat;
     animation-duration: 4.2s;
     animation-timing-function: ease-in-out;
@@ -280,7 +283,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   }
 
   .hero-lead-card .hero-card-float-target { animation-delay: -0.5s; animation-duration: 3.8s; }
-  .hero-over-limit-card-inner { animation-delay: -0.2s; }
+  .hero-over-limit-card-inner { animation-delay: -0.2s; animation-duration: 3.9s; }
   .hero-brands-card-inner { animation-delay: -0.9s; animation-duration: 4.6s; }
   .hero-caution-card-inner { animation-delay: -1.2s; animation-duration: 4.8s; }
 
@@ -322,8 +325,8 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   .hero-lead-card-inner,
   .hero-caution-card-inner {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     color: var(--text-white);
