@@ -46,7 +46,13 @@ const cards = [
             <div class={`motion-reveal motion-reveal-zoom motion-hover-lift stats-card glass-element ${cardDirection} p-5 sm:p-6 flex flex-col justify-between card shadow-[0_16px_36px_rgba(0,0,0,0.28)] xl:shadow-[0_26px_52px_rgba(0,0,0,0.38)]`}>
               <div class="flex justify-between items-start">
                 <div class="flex items-baseline gap-1.5 sm:gap-2 pt-1 sm:pt-2">
-                  <span class="text-[#e74c4e] text-3xl lg:text-[38px] xl:text-[42px] font-bold tracking-tight leading-none">{card.percentage}</span>
+                  <span
+                    class="stat-percentage text-[#e74c4e] text-3xl lg:text-[38px] xl:text-[42px] font-bold tracking-tight leading-none"
+                    data-percentage={card.percentage}
+                    aria-label={`${card.percentage} failed`}
+                  >
+                    0%
+                  </span>
                   <span class="text-[#e74c4e] text-sm lg:text-base font-medium leading-none">Failed</span>
                 </div>
 
@@ -67,6 +73,58 @@ const cards = [
     </div>
   </div>
 </section>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animatePercentage = (el) => {
+    const rawValue = el.dataset.percentage || '0%';
+    const target = Number.parseInt(rawValue.replace('%', ''), 10);
+    if (Number.isNaN(target)) {
+      el.textContent = rawValue;
+      return;
+    }
+
+    if (prefersReducedMotion) {
+      el.textContent = `${target}%`;
+      return;
+    }
+
+    const duration = 3500; // Duración aumentada a 3.5 segundos para que sea más lento
+    let startTimestamp = null;
+
+    const tick = (now) => {
+      if (!startTimestamp) startTimestamp = now;
+      const progress = Math.min((now - startTimestamp) / duration, 1);
+      // Función "easeOutQuart" para un movimiento lento y sedoso (reduce velocidad más suavemente)
+      const eased = progress === 1 ? 1 : 1 - Math.pow(1 - progress, 4);
+      const current = Math.round(eased * target);
+      el.textContent = `${current}%`;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        if (el.dataset.animated === 'true') return;
+        el.dataset.animated = 'true';
+        animatePercentage(el);
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  document.querySelectorAll('.stat-percentage').forEach((el) => observer.observe(el));
+</script>
 
 <style>
   .stats-card {
