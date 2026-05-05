@@ -89,14 +89,14 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         </div>
 
         <div data-hero-card="1" class="hero-card-layer hero-reveal hero-reveal-card-1 hero-over-limit-card">
-          <div class="hero-over-limit-card-inner">
+          <div class="hero-over-limit-card-inner motion-float">
             <span class="hero-over-limit-value">239.00%</span>
             <span class="hero-over-limit-label">OVER LIMIT</span>
           </div>
         </div>
 
         <div data-hero-card="2" class="hero-card-layer hero-reveal hero-reveal-card-2 hero-brands-card">
-          <div class="hero-brands-card-inner">
+          <div class="hero-brands-card-inner motion-float">
             <div class="hero-brands-card-copy">
               <h3 class="hero-brands-title">100+</h3>
               <p class="hero-brands-label">HUNDREDS OF TOP BRANDS</p>
@@ -115,7 +115,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         </div>
 
         <div data-hero-card="3" class="hero-card-layer hero-reveal hero-reveal-card-3 hero-lead-card">
-          <div class="hero-lead-card-inner hero-card-float-target">
+          <div class="hero-lead-card-inner hero-card-float-target motion-float">
             <div class="hero-lead-copy">
               <div class="hero-lead-badge">
                 <svg class="hero-lead-badge-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
@@ -140,7 +140,7 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         </div>
 
         <div data-hero-card="4" class="hero-card-layer hero-reveal hero-reveal-card-4 hero-caution-card" aria-hidden="true">
-          <div class="hero-caution-card-inner">
+          <div class="hero-caution-card-inner motion-float">
             <div class="hero-caution-icon-circle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -189,7 +189,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   .hero-copy {
     transform: translate3d(0, var(--hero-copy-y), 0);
     opacity: var(--hero-copy-opacity);
-    will-change: transform, opacity;
     text-align: center;
   }
 
@@ -239,7 +238,6 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     width: 74%;
     height: 100%;
     transform: translate3d(var(--hero-mobile-shift), calc(var(--hero-media-y) + var(--hero-reveal-offset, 28px)), 0);
-    will-change: transform;
   }
 
   .hero-phone-frame {
@@ -261,14 +259,12 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     transition: transform 720ms cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
     transform: scale(1.25);
-    will-change: transform;
   }
 
 
   .hero-card-layer {
     position: absolute;
     transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform;
   }
 
   .hero-card-float-target,
@@ -279,6 +275,19 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
     animation-duration: 4.2s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
+  }
+
+  .hero-root.is-parallax-active .hero-copy {
+    will-change: transform, opacity;
+  }
+
+  .hero-root.is-parallax-active .hero-phone-layer,
+  .hero-root.is-parallax-active .hero-phone-image,
+  .hero-root.is-parallax-active .hero-card-layer,
+  .hero-root.is-parallax-active .hero-card-float-target,
+  .hero-root.is-parallax-active .hero-over-limit-card-inner,
+  .hero-root.is-parallax-active .hero-brands-card-inner,
+  .hero-root.is-parallax-active .hero-caution-card-inner {
     will-change: transform;
   }
 
@@ -997,9 +1006,22 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
   (() => {
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
     const heroes = document.querySelectorAll("[data-hero-root]");
+    const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const parallaxQuery = window.matchMedia("(min-width: 1280px)");
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+
+    const applyStaticState = (hero) => {
+      hero.style.setProperty("--hero-copy-y", "0px");
+      hero.style.setProperty("--hero-copy-opacity", "1");
+      hero.style.setProperty("--hero-media-y", "0px");
+      hero.style.setProperty("--hero-card-1-y", "0px");
+      hero.style.setProperty("--hero-card-2-y", "0px");
+      hero.style.setProperty("--hero-card-3-y", "0px");
+      hero.style.setProperty("--hero-card-4-y", "0px");
+      hero.style.setProperty("--hero-card-4-rot", "8deg");
+    };
 
     heroes.forEach((hero) => {
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       hero.setAttribute("data-hero-in-view", "false");
 
       const revealObserver = new IntersectionObserver(
@@ -1016,21 +1038,65 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
 
       revealObserver.observe(hero);
 
-      const parallaxEnabled = window.matchMedia("(min-width: 1280px)").matches;
+      let rafId = 0;
+      let metricRafId = 0;
+      let isListening = false;
+      let isInRange = false;
+      const heroMetrics = { top: 0, height: 0 };
 
-      if (prefersReducedMotion || !parallaxEnabled) {
-        hero.style.setProperty("--hero-copy-y", "0px");
-        hero.style.setProperty("--hero-copy-opacity", "1");
-        hero.style.setProperty("--hero-media-y", "0px");
-        hero.style.setProperty("--hero-card-1-y", "0px");
-        hero.style.setProperty("--hero-card-2-y", "0px");
-        hero.style.setProperty("--hero-card-3-y", "0px");
-        hero.style.setProperty("--hero-card-4-y", "0px");
-        hero.style.setProperty("--hero-card-4-rot", "8deg");
-        return;
+      const updateHeroMetrics = () => {
+        const rect = hero.getBoundingClientRect();
+        heroMetrics.top = rect.top + (window.scrollY || window.pageYOffset);
+        heroMetrics.height = rect.height;
+      };
+
+      const scheduleMetricUpdate = () => {
+        if (metricRafId) {
+          return;
+        }
+
+        metricRafId = window.requestAnimationFrame(() => {
+          metricRafId = 0;
+          updateHeroMetrics();
+          if (isListening) {
+            onScroll();
+          }
+        });
+      };
+
+      if ('ResizeObserver' in window) {
+        const resizeObserver = new ResizeObserver(() => scheduleMetricUpdate());
+        resizeObserver.observe(hero);
       }
 
-      let rafId = 0;
+      const updateParallax = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const isDesktop = desktopQuery.matches;
+
+        const scrolledPastTop = Math.max(0, scrollY - heroMetrics.top);
+        const travelDistance = heroMetrics.height * (isDesktop ? 0.72 : 0.55);
+        const progress = clamp(scrolledPastTop / Math.max(travelDistance, 1), 0, 1);
+
+        const copyDistance = isDesktop ? 124 : 70;
+        const mediaDistance = isDesktop ? 46 : 26;
+        const copyY = -progress * copyDistance;
+        const mediaY = -progress * mediaDistance;
+        const copyOpacity = clamp(1 - progress * (isDesktop ? 1.28 : 0.95), 0, 1);
+
+        const card1Y = -progress * (isDesktop ? 25 : 14);
+        const card2Y = -progress * (isDesktop ? 34 : 18);
+        const card3Y = -progress * (isDesktop ? 19 : 12);
+        const card4Y = -progress * (isDesktop ? 28 : 16);
+
+        hero.style.setProperty("--hero-copy-y", `${copyY.toFixed(2)}px`);
+        hero.style.setProperty("--hero-copy-opacity", copyOpacity.toFixed(3));
+        hero.style.setProperty("--hero-media-y", `${Math.round(mediaY)}px`);
+        hero.style.setProperty("--hero-card-1-y", `${Math.round(card1Y)}px`);
+        hero.style.setProperty("--hero-card-2-y", `${Math.round(card2Y)}px`);
+        hero.style.setProperty("--hero-card-3-y", `${Math.round(card3Y)}px`);
+        hero.style.setProperty("--hero-card-4-y", `${Math.round(card4Y)}px`);
+      };
+
       const onScroll = () => {
         if (rafId !== 0) {
           return;
@@ -1039,38 +1105,61 @@ const heroPhoneSizes = '(max-width: 768px) 78vw, (max-width: 1280px) 46vw, 36vw'
         rafId = window.requestAnimationFrame(() => {
           rafId = 0;
 
-          const rect = hero.getBoundingClientRect();
-          const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
-          // Start parallax only after the hero begins leaving the top of the viewport.
-          const scrolledPastTop = Math.max(0, -rect.top);
-          const travelDistance = rect.height * (isDesktop ? 0.72 : 0.55);
-          const progress = clamp(scrolledPastTop / Math.max(travelDistance, 1), 0, 1);
-
-          const copyDistance = isDesktop ? 124 : 70;
-          const mediaDistance = isDesktop ? 46 : 26;
-          const copyY = -progress * copyDistance;
-          const mediaY = -progress * mediaDistance;
-          const copyOpacity = clamp(1 - progress * (isDesktop ? 1.28 : 0.95), 0, 1);
-
-          const card1Y = -progress * (isDesktop ? 25 : 14);
-          const card2Y = -progress * (isDesktop ? 34 : 18);
-          const card3Y = -progress * (isDesktop ? 19 : 12);
-          const card4Y = -progress * (isDesktop ? 28 : 16);
-
-          hero.style.setProperty("--hero-copy-y", `${copyY.toFixed(2)}px`);
-          hero.style.setProperty("--hero-copy-opacity", copyOpacity.toFixed(3));
-          hero.style.setProperty("--hero-media-y", `${Math.round(mediaY)}px`);
-          hero.style.setProperty("--hero-card-1-y", `${Math.round(card1Y)}px`);
-          hero.style.setProperty("--hero-card-2-y", `${Math.round(card2Y)}px`);
-          hero.style.setProperty("--hero-card-3-y", `${Math.round(card3Y)}px`);
-          hero.style.setProperty("--hero-card-4-y", `${Math.round(card4Y)}px`);
+          if (reduceMotionQuery.matches || !parallaxQuery.matches) {
+            applyStaticState(hero);
+            return;
+          }
+          updateParallax();
         });
       };
 
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("resize", onScroll);
+      const attachListeners = () => {
+        if (isListening) return;
+        isListening = true;
+        updateHeroMetrics();
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", scheduleMetricUpdate, { passive: true });
+        window.addEventListener("orientationchange", scheduleMetricUpdate, { passive: true });
+      };
+
+      const detachListeners = () => {
+        if (!isListening) return;
+        isListening = false;
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", scheduleMetricUpdate);
+        window.removeEventListener("orientationchange", scheduleMetricUpdate);
+      };
+
+      const handleParallaxState = () => {
+        const shouldAnimate = isInRange && !reduceMotionQuery.matches && parallaxQuery.matches;
+        hero.classList.toggle('is-parallax-active', shouldAnimate);
+
+        if (!shouldAnimate) {
+          detachListeners();
+          applyStaticState(hero);
+          return;
+        }
+
+        attachListeners();
+      };
+
+      const parallaxObserver = new IntersectionObserver(
+        ([entry]) => {
+          isInRange = entry.isIntersecting;
+          handleParallaxState();
+        },
+        {
+          rootMargin: "200px 0px",
+          threshold: 0,
+        }
+      );
+
+      parallaxObserver.observe(hero);
+      handleParallaxState();
+
+      reduceMotionQuery.addEventListener("change", handleParallaxState);
+      parallaxQuery.addEventListener("change", handleParallaxState);
     });
   })();
 </script>

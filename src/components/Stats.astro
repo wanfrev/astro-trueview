@@ -21,14 +21,18 @@ const cards = [
     <div class="absolute right-[10%] top-[18%] h-60 w-60 rounded-full bg-blue-900/10 blur-[110px] lg:h-80 lg:w-80 lg:blur-[150px]"></div>
   </div>
 
-  <Image
-    src={BlueDecor}
-    alt=""
+  <div
     aria-hidden="true"
-    loading="lazy"
-    decoding="async"
     class="pointer-events-none select-none absolute right-0 top-1/2 z-10 w-[min(32vw,460px)] -translate-y-1/2 translate-x-1/2 opacity-60 mix-blend-screen lg:w-[min(26vw,380px)] xl:w-[min(22vw,320px)]"
-  />
+  >
+    <Image
+      src={BlueDecor}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      class="motion-float motion-float-soft w-full h-auto"
+    />
+  </div>
 
   <div class="stats-layout content-shell">
     <h2 class="stats-heading motion-reveal motion-reveal-left max-w-[23ch] text-3xl sm:text-4xl lg:text-[44px] xl:text-[52px] font-bold leading-[1.08] lg:leading-[1.06] tracking-[-0.03em] text-center lg:text-left">
@@ -75,61 +79,103 @@ const cards = [
 </section>
 
 <script>
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const animatePercentage = (el) => {
-    const rawValue = el.dataset.percentage || '0%';
-    const target = Number.parseInt(rawValue.replace('%', ''), 10);
-    if (Number.isNaN(target)) {
-      el.textContent = rawValue;
-      return;
-    }
-
-    if (prefersReducedMotion) {
-      el.textContent = `${target}%`;
-      return;
-    }
-
-    const duration = 3500; // Duración aumentada a 3.5 segundos para que sea más lento
-    let startTimestamp = null;
-
-    const tick = (now) => {
-      if (!startTimestamp) startTimestamp = now;
-      const progress = Math.min((now - startTimestamp) / duration, 1);
-      // Función "easeOutQuart" para un movimiento lento y sedoso (reduce velocidad más suavemente)
-      const eased = progress === 1 ? 1 : 1 - Math.pow(1 - progress, 4);
-      const current = Math.round(eased * target);
-      el.textContent = `${current}%`;
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
+  (() => {
+    const defer = (callback, timeout = 220) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => callback(), { timeout });
+      } else {
+        window.setTimeout(callback, 0);
       }
     };
 
-    requestAnimationFrame(tick);
-  };
+    defer(() => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
+      const animatePercentage = (el) => {
+        const rawValue = el.dataset.percentage || '0%';
+        const target = Number.parseInt(rawValue.replace('%', ''), 10);
+        if (Number.isNaN(target)) {
+          el.textContent = rawValue;
+          return;
+        }
 
-        const el = entry.target;
-        if (el.dataset.animated === 'true') return;
+        if (prefersReducedMotion) {
+          el.textContent = `${target}%`;
+          return;
+        }
+
+        const duration = 1500; // Duracion reducida para evitar saltos y que los numeros avancen fluido por cada frame
+        let startTimestamp = null;
+        let lastValue = -1;
+
+        const tick = (now) => {
+          if (!startTimestamp) startTimestamp = now;
+          const progress = Math.min((now - startTimestamp) / duration, 1);
+          // Funcion "easeOutQuart" para un movimiento lento y sedoso (reduce velocidad mas suavemente)
+          const eased = progress === 1 ? 1 : 1 - Math.pow(1 - progress, 4);
+          const current = Math.round(eased * target);
+          if (current !== lastValue) {
+            lastValue = current;
+            el.textContent = `${current}%`;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          }
+        };
+
+        requestAnimationFrame(tick);
+      };
+
+      const cards = Array.from(document.querySelectorAll('.stats-card.motion-reveal'));
+      const pendingCards = new Set(cards);
+      let observer = null;
+
+      const triggerCounter = (card) => {
+        const el = card.querySelector('.stat-percentage');
+        if (!el || el.dataset.animated === 'true') return;
         el.dataset.animated = 'true';
         animatePercentage(el);
-      });
-    },
-    { threshold: 0.35 }
-  );
+        pendingCards.delete(card);
+        if (observer && pendingCards.size === 0) {
+          observer.disconnect();
+          observer = null;
+        }
+      };
 
-  document.querySelectorAll('.stat-percentage').forEach((el) => observer.observe(el));
+      if (prefersReducedMotion) {
+        cards.forEach((card) => {
+          const el = card.querySelector('.stat-percentage');
+          if (!el) return;
+          el.textContent = el.dataset.percentage || '0%';
+        });
+      } else if (cards.length) {
+        cards.forEach((card) => {
+          if (card.classList.contains('is-inview')) {
+            triggerCounter(card);
+          }
+        });
+
+        observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type !== 'attributes') return;
+            const target = mutation.target;
+            if (!(target instanceof HTMLElement)) return;
+            if (target.classList.contains('is-inview')) {
+              triggerCounter(target);
+            }
+          });
+        });
+
+        cards.forEach((card) => observer.observe(card, { attributes: true, attributeFilter: ['class'] }));
+      }
+    }, 220);
+  })();
 </script>
 
 <style>
   .stats-card {
     transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease;
-    will-change: transform;
   }
 
   .glass-element {

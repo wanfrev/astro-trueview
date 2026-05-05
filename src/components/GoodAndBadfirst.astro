@@ -49,7 +49,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
           />
 
           <div
-            class="gabfirst-card gabfirst-card-1"
+            class="gabfirst-card motion-float gabfirst-card-1"
             aria-label="Heavy Metals Passed"
           >
             <div class="gabfirst-card-surface h-full w-full rounded-[20px] flex flex-col items-center justify-center px-3 sm:px-4">
@@ -65,7 +65,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
           </div>
 
           <div
-            class="gabfirst-card gabfirst-card-2"
+            class="gabfirst-card motion-float gabfirst-card-2"
             aria-label="Microbiological 7/7 Passed"
           >
             <div class="gabfirst-card-surface gabfirst-card-row h-full w-full rounded-[20px] flex items-center px-3 sm:px-4">
@@ -81,7 +81,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
           </div>
 
           <div
-            class="gabfirst-card gabfirst-card-3"
+            class="gabfirst-card motion-float gabfirst-card-3"
             aria-label="Potency Claim"
           >
             <div class="gabfirst-card-surface h-full w-full rounded-[20px] flex flex-col items-center justify-center px-3 sm:px-4">
@@ -97,7 +97,7 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
           </div>
 
           <div
-            class="gabfirst-card gabfirst-card-4"
+            class="gabfirst-card motion-float gabfirst-card-4"
             aria-label="Contaminants Detected: 0"
           >
             <div class="gabfirst-card-surface gabfirst-card-row h-full w-full rounded-[20px] flex items-center px-3 sm:px-4">
@@ -160,7 +160,6 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
     transition-property: opacity, transform;
     transition-duration: 1400ms;
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
     z-index: 20;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     border-radius: 12px;
@@ -415,24 +414,55 @@ const goodBadFirstPhoneSizes = '(max-width: 768px) 82vw, (max-width: 1280px) 44v
 
 <script is:inline>
   (() => {
-    const sections = document.querySelectorAll('[data-gabfirst-root]');
+    const defer = (callback, timeout = 220) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => callback(), { timeout });
+      } else {
+        window.setTimeout(callback, 0);
+      }
+    };
 
-    sections.forEach((section) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              section.setAttribute('data-gabfirst-in-view', 'true');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.3,
-        }
-      );
+    defer(() => {
+      const sections = document.querySelectorAll('[data-gabfirst-root]');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      observer.observe(section);
-    });
+    const armCards = (section) => {
+      section.querySelectorAll('.gabfirst-card').forEach((card) => {
+        card.style.willChange = 'opacity, transform';
+
+        const onTransitionEnd = (event) => {
+          if (event.target !== card) {
+            return;
+          }
+
+          card.style.removeProperty('will-change');
+          card.removeEventListener('transitionend', onTransitionEnd);
+        };
+
+        card.addEventListener('transitionend', onTransitionEnd);
+      });
+    };
+
+      sections.forEach((section) => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if (!prefersReducedMotion) {
+                  armCards(section);
+                }
+                section.setAttribute('data-gabfirst-in-view', 'true');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.3,
+          }
+        );
+
+        observer.observe(section);
+      });
+    }, 220);
   })();
 </script>

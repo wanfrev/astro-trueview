@@ -253,7 +253,6 @@ const featureCardSizes = '(max-width: 640px) 88vw, (max-width: 1024px) 84vw, (ma
     opacity: 0;
     background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.35), rgb(255 255 255 / 0));
     transform: translateX(-135%);
-    will-change: transform, opacity;
   }
 
   .features-anim.is-visible .feature-image-wrap {
@@ -359,6 +358,9 @@ const featureCardSizes = '(max-width: 640px) 88vw, (max-width: 1024px) 84vw, (ma
     const autoCycleStartDelay = 1400;
     let autoCycleTimer = null;
     let currentFeatureIndex = 0;
+    let isSectionVisible = false;
+    let initialActiveButton = null;
+    let initialTargetId = null;
 
     const getClampedScrollLeft = (targetElement) => {
       if (!container || !targetElement) return 0;
@@ -434,7 +436,14 @@ const featureCardSizes = '(max-width: 640px) 88vw, (max-width: 1024px) 84vw, (ma
     const scheduleAutoCycle = () => {
       clearAutoCycle();
 
+      if (!isSectionVisible || !cards.length || !initialTargetId) {
+        return;
+      }
+
       autoCycleTimer = window.setTimeout(() => {
+        if (!isSectionVisible) {
+          return;
+        }
         const nextIndex = (currentFeatureIndex + 1) % cards.length;
         const nextId = `feature-${nextIndex}`;
         const nextButton = getButtonByIndex(nextIndex);
@@ -444,13 +453,21 @@ const featureCardSizes = '(max-width: 640px) 88vw, (max-width: 1024px) 84vw, (ma
       }, currentFeatureIndex === 0 ? autoCycleStartDelay : autoCycleDelay);
     };
 
+    const setSectionVisible = (visible) => {
+      isSectionVisible = visible;
+      if (visible) {
+        section?.classList.add('is-visible');
+        scheduleAutoCycle();
+      } else {
+        clearAutoCycle();
+      }
+    };
+
     if (section) {
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(
           ([entry]) => {
-            if (!entry.isIntersecting) return;
-            section.classList.add('is-visible');
-            observer.disconnect();
+            setSectionVisible(entry.isIntersecting);
           },
           {
             threshold: 0.18,
@@ -460,11 +477,12 @@ const featureCardSizes = '(max-width: 640px) 88vw, (max-width: 1024px) 84vw, (ma
         observer.observe(section);
       } else {
         section.classList.add('is-visible');
+        isSectionVisible = true;
       }
     }
 
-    const initialActiveButton = document.querySelector('.feature-btn[aria-pressed="true"]');
-    const initialTargetId = initialActiveButton?.getAttribute('data-target');
+    initialActiveButton = document.querySelector('.feature-btn[aria-pressed="true"]');
+    initialTargetId = initialActiveButton?.getAttribute('data-target');
 
     if (initialTargetId) {
       // Ejecutamos varias veces para cubrir hidratación y carga de imágenes en móvil.

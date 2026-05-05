@@ -32,31 +32,31 @@ const goodbadWideSizes = '(max-width: 480px) 100vw, (max-width: 640px) 100vw, (m
 					<div aria-hidden="true" class="goodbad-glow goodbad-glow--white"></div>
 
 					<div class="goodbad-item goodbad-item--1 motion-reveal motion-reveal-left motion-hover-lift">
-						<div class="motion-float-soft goodbad-float goodbad-float--1">
+						<div class="motion-float motion-float-soft goodbad-float goodbad-float--1">
 							<Image src={Collage1} alt="Zinc Test" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--1" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--2 motion-reveal motion-reveal-zoom motion-hover-lift">
-						<div class="motion-float-soft goodbad-float goodbad-float--2">
+						<div class="motion-float motion-float-soft goodbad-float goodbad-float--2">
 							<Image src={Collage2} alt="Protein list" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--2" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--3 motion-reveal motion-reveal-right motion-hover-lift">
-						<div class="motion-float-soft goodbad-float goodbad-float--3">
+						<div class="motion-float motion-float-soft goodbad-float goodbad-float--3">
 							<Image src={Collage3} alt="Mold failure" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--3" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--4 motion-reveal motion-reveal-left motion-hover-lift">
-						<div class="motion-float-soft goodbad-float goodbad-float--4">
+						<div class="motion-float motion-float-soft goodbad-float goodbad-float--4">
 							<Image src={Collage5} alt="ACV Gummies" widths={[300, 420, 560, 720, 880]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--4" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--5 motion-reveal motion-reveal-zoom motion-hover-lift">
-						<div class="motion-float-soft goodbad-float goodbad-float--5">
+						<div class="motion-float motion-float-soft goodbad-float goodbad-float--5">
 							<Image src={Collage4} alt="Lead levels" widths={[360, 480, 640, 840, 1024]} sizes={goodbadWideSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--5" />
 						</div>
 					</div>
@@ -68,6 +68,14 @@ const goodbadWideSizes = '(max-width: 480px) 100vw, (max-width: 640px) 100vw, (m
 
 <script is:inline>
 	(() => {
+		const defer = (callback, timeout = 200) => {
+			if ('requestIdleCallback' in window) {
+				window.requestIdleCallback(() => callback(), { timeout });
+			} else {
+				window.setTimeout(callback, 0);
+			}
+		};
+
 		document.documentElement.classList.add('goodbad-image-anim-ready');
 
 		const imageSelector = '.goodbad-image';
@@ -94,13 +102,15 @@ const goodbadWideSizes = '(max-width: 480px) 100vw, (max-width: 640px) 100vw, (m
 			});
 		};
 
+		const scheduleImageReveal = () => defer(setupImageReveal, 220);
+
 		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', setupImageReveal, { once: true });
+			document.addEventListener('DOMContentLoaded', scheduleImageReveal, { once: true });
 		} else {
-			setupImageReveal();
+			scheduleImageReveal();
 		}
 
-		document.addEventListener('astro:page-load', setupImageReveal);
+		document.addEventListener('astro:page-load', scheduleImageReveal);
 	})();
 </script>
 
@@ -169,7 +179,6 @@ const goodbadWideSizes = '(max-width: 480px) 100vw, (max-width: 640px) 100vw, (m
 	.goodbad-item {
 		position: absolute;
 		z-index: 10;
-		will-change: transform;
 	}
 
 	.goodbad-item--1 {

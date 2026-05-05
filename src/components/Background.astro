@@ -125,7 +125,6 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
 
   .bg-ellipse-1,
   .bg-ellipse-3 {
-    will-change: transform;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
@@ -180,7 +179,6 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     opacity: var(--union-opacity, 0.08);
     transform: translate(-50%, -50%) rotate(var(--union-rotate, 0deg));
     filter: brightness(0) invert(1);
-    will-change: transform;
   }
 
   @media (max-width: 1023px) {
@@ -214,7 +212,7 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     widths={[640, 960, 1280, 1600]}
     sizes={bgHeroSizes}
     decoding="async"
-    class="bg-ellipse bg-ellipse-1 absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
+    class="bg-ellipse motion-float bg-ellipse-1 absolute max-w-none mix-blend-screen blur-[36px] opacity-100"
     style="top: calc(var(--bg-hero-top, 96px) + var(--bg-hero-dy, 0px)); left: calc(var(--bg-hero-left, 6%) + var(--bg-hero-dx, 0px)); width: var(--bg-hero-w, 1200px); height: var(--bg-hero-h, auto);"
   />
 
@@ -229,7 +227,7 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     widths={[640, 960, 1280, 1440]}
     sizes={bgFailsSizes}
     decoding="async"
-    class="bg-ellipse bg-ellipse-2 absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
+    class="bg-ellipse motion-float bg-ellipse-2 absolute max-w-none mix-blend-screen blur-[18px] opacity-95"
     style="top: calc(var(--bg-fails-top, 1500px) + var(--bg-fails-dy, 0px)); left: calc(var(--bg-fails-left, -12%) + var(--bg-fails-dx, 0px)); width: var(--bg-fails-w, 980px); height: var(--bg-fails-h, auto);"
   />
 
@@ -244,7 +242,7 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     widths={[480, 720, 960, 1200]}
     sizes={bgLabSizes}
     decoding="async"
-    class="bg-ellipse bg-ellipse-3 absolute max-w-none mix-blend-screen blur-[15px]"
+    class="bg-ellipse motion-float bg-ellipse-3 absolute max-w-none mix-blend-screen blur-[15px]"
     style="top: calc(var(--bg-lab-top, 2250px) + var(--bg-lab-dy, 0px)); right: calc(var(--bg-lab-right, -12%) + var(--bg-lab-dx, 0px)); width: var(--bg-lab-w, 980px); height: var(--bg-lab-h, auto);"
   />
 
@@ -259,7 +257,7 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     widths={[640, 960, 1280, 1536]}
     sizes={bgGoodBadSizes}
     decoding="async"
-    class="bg-ellipse bg-ellipse-4 absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
+    class="bg-ellipse motion-float bg-ellipse-4 absolute max-w-none mix-blend-screen opacity-95 blur-[64px]"
     style="top: calc(var(--bg-good-bad-top, 2900px) + var(--bg-good-bad-dy, 0px)); right: calc(var(--bg-good-bad-right, -10%) + var(--bg-good-bad-dx, 0px)); width: var(--bg-good-bad-w, 920px); height: var(--bg-good-bad-h, auto);"
   />
 
@@ -274,7 +272,7 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     widths={[480, 720, 960, 1200]}
     sizes={bgGoodBad2Sizes}
     decoding="async"
-    class="bg-ellipse bg-ellipse-5 absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
+    class="bg-ellipse motion-float bg-ellipse-5 absolute max-w-none mix-blend-screen opacity-90 blur-[64px]"
     style="top: calc(var(--bg-good-bad-2-top, 3600px) + var(--bg-good-bad-2-dy, 0px)); left: calc(var(--bg-good-bad-2-left, -8%) + var(--bg-good-bad-2-dx, 0px)); width: var(--bg-good-bad-2-w, 980px); height: var(--bg-good-bad-2-h, auto);"
   />
 
@@ -289,14 +287,70 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
     widths={[640, 960, 1280, 1536]}
     sizes={bgWaitMoreSizes}
     decoding="async"
-    class="bg-ellipse bg-ellipse-6 absolute max-w-none mix-blend-screen opacity-95"
+    class="bg-ellipse motion-float bg-ellipse-6 absolute max-w-none mix-blend-screen opacity-95"
     style="top: calc(var(--bg-wait-more-top, 4300px) + var(--bg-wait-more-dy, 0px)); right: calc(var(--bg-wait-more-right, -16%) + var(--bg-wait-more-dx, 0px)); width: var(--bg-wait-more-w, 940px); height: var(--bg-wait-more-h, auto);"
   />
 </div>
 
 <script is:inline>
   (() => {
+    const doc = document.documentElement;
+    const body = document.body;
+    const cache = new Map();
     let rafId = 0;
+    const defer = (callback, timeout = 220) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => callback(), { timeout });
+      } else {
+        window.setTimeout(callback, 0);
+      }
+    };
+
+    const targets = [
+      { selector: 'section[data-bg="hero"]', varName: '--bg-hero-top', offset: 96, element: null },
+      { selector: 'section[data-bg="fails"]', varName: '--bg-fails-top', offset: 40, element: null },
+      { selector: 'section[data-bg="lab"]', varName: '--bg-lab-top', offset: 40, element: null },
+      { selector: 'section[data-bg="good-bad"]', varName: '--bg-good-bad-top', offset: 110, element: null },
+      { selector: 'section[data-bg="good-bad-2"]', varName: '--bg-good-bad-2-top', offset: 20, element: null },
+      { selector: 'section[data-bg="wait-more"]', varName: '--bg-wait-more-top', offset: 120, element: null },
+    ];
+
+    const setVar = (name, value) => {
+      if (cache.get(name) === value) {
+        return;
+      }
+
+      cache.set(name, value);
+      doc.style.setProperty(name, `${value}px`);
+    };
+
+    const updateCanvasHeight = () => {
+      if (!body) {
+        return;
+      }
+
+      const canvasHeight = Math.max(body.scrollHeight, doc.scrollHeight, body.offsetHeight, doc.offsetHeight);
+      setVar('--bg-canvas-height', Math.round(canvasHeight));
+    };
+
+    const updateSectionTops = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      targets.forEach((target) => {
+        if (!target.element) {
+          return;
+        }
+
+        const rect = target.element.getBoundingClientRect();
+        const top = Math.round(rect.top + scrollY + target.offset);
+        setVar(target.varName, top);
+      });
+    };
+
+    const updateBackgroundLayout = () => {
+      updateCanvasHeight();
+      updateSectionTops();
+    };
 
     const scheduleUpdate = () => {
       if (rafId) {
@@ -309,66 +363,70 @@ const bgWaitMoreSizes = '(max-width: 768px) 860px, (max-width: 1280px) 1080px, 1
       });
     };
 
-    function updateBackgroundLayout() {
-      const doc = document.documentElement;
-      const body = document.body;
+    const resolveTargets = () => {
+      targets.forEach((target) => {
+        target.element = document.querySelector(target.selector);
+      });
+    };
 
-      const canvasHeight = Math.max(body.scrollHeight, doc.scrollHeight, body.offsetHeight, doc.offsetHeight);
-      doc.style.setProperty('--bg-canvas-height', `${canvasHeight}px`);
-
-      const hero = document.querySelector('section[data-bg="hero"]');
-      const fails = document.querySelector('section[data-bg="fails"]');
-      const lab = document.querySelector('section[data-bg="lab"]');
-      const goodBad = document.querySelector('section[data-bg="good-bad"]');
-      const goodBad2 = document.querySelector('section[data-bg="good-bad-2"]');
-      const waitMore = document.querySelector('section[data-bg="wait-more"]');
-
-      if (hero) {
-        const heroTop = hero.offsetTop + 96;
-        doc.style.setProperty('--bg-hero-top', `${heroTop}px`);
+    const setupObservers = () => {
+      if (window.__trueviewBgObserver) {
+        window.__trueviewBgObserver.disconnect();
       }
 
-      if (fails) {
-        const failsTop = fails.offsetTop + 40;
-        doc.style.setProperty('--bg-fails-top', `${failsTop}px`);
+      resolveTargets();
+
+      if (!('ResizeObserver' in window)) {
+        return;
       }
 
-      if (lab) {
-        const labTop = lab.offsetTop + 40;
-        doc.style.setProperty('--bg-lab-top', `${labTop}px`);
+      const resizeObserver = new ResizeObserver(() => scheduleUpdate());
+
+      if (body) {
+        resizeObserver.observe(body);
       }
 
-      if (goodBad) {
-        const goodBadTop = goodBad.offsetTop + 110;
-        doc.style.setProperty('--bg-good-bad-top', `${goodBadTop}px`);
+      targets.forEach((target) => {
+        if (target.element) {
+          resizeObserver.observe(target.element);
+        }
+      });
+
+      window.__trueviewBgObserver = resizeObserver;
+    };
+
+    const init = () => {
+      setupObservers();
+      scheduleUpdate();
+
+      if (!window.__trueviewBgListenersBound) {
+        window.__trueviewBgListenersBound = true;
+        window.addEventListener('load', scheduleUpdate, { once: true });
+        window.addEventListener('resize', scheduleUpdate, { passive: true });
+        window.addEventListener('orientationchange', scheduleUpdate, { passive: true });
+        window.addEventListener('pageshow', scheduleUpdate);
       }
 
-      if (goodBad2) {
-        const goodBad2Top = goodBad2.offsetTop + 20;
-        doc.style.setProperty('--bg-good-bad-2-top', `${goodBad2Top}px`);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(scheduleUpdate);
       }
 
-      if (waitMore) {
-        const waitMoreTop = waitMore.offsetTop + 120;
-        doc.style.setProperty('--bg-wait-more-top', `${waitMoreTop}px`);
-      }
-    }
+      window.setTimeout(scheduleUpdate, 350);
+    };
+
+    const scheduleInit = () => defer(init, 240);
 
     if (document.readyState === 'loading') {
-      window.addEventListener('DOMContentLoaded', scheduleUpdate, { once: true });
+      window.addEventListener('DOMContentLoaded', scheduleInit, { once: true });
     } else {
-      scheduleUpdate();
+      scheduleInit();
     }
 
-    window.addEventListener('load', scheduleUpdate, { once: true });
-    window.addEventListener('resize', scheduleUpdate, { passive: true });
-    window.addEventListener('orientationchange', scheduleUpdate, { passive: true });
-    window.addEventListener('pageshow', scheduleUpdate);
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(scheduleUpdate);
-    }
-
-    window.setTimeout(scheduleUpdate, 350);
+    document.addEventListener('astro:page-load', () => {
+      defer(() => {
+        setupObservers();
+        scheduleUpdate();
+      }, 240);
+    });
   })();
 </script>

@@ -20,12 +20,12 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
       <Image src={PhoneTop} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[320, 480, 640, 860]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
       <Image src={PhoneBottom} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[360, 520, 760, 980]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
 
-      <div class="floating-card card-summary" aria-hidden="true">
+      <div class="floating-card motion-float card-summary" aria-hidden="true">
         <span class="count">4</span>
         <p class="summary-text">Contaminants detected</p>
       </div>
 
-      <div class="floating-card card-caution" aria-hidden="true">
+      <div class="floating-card motion-float card-caution" aria-hidden="true">
         <div class="icon-warning-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -36,7 +36,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
         <p class="caution-text"><strong>Caution:</strong> Exceeds Proposition 65 Heavy Metals</p>
       </div>
 
-      <div class="floating-card card-zinc" aria-hidden="true">
+      <div class="floating-card motion-float card-zinc" aria-hidden="true">
         <div class="zinc-content">
           <div class="icon-x-light">
             <svg class="icon-x-light-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
@@ -135,7 +135,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   .thefails-icon {
     position: absolute;
     height: auto;
-    will-change: transform;
     animation-duration: 5s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
@@ -201,7 +200,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     animation-duration: 4.1s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    animation-play-state: running;
+    animation-play-state: paused;
   }
 
   .card-summary {
@@ -417,6 +416,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
 
   [data-thefails-root][data-thefails-in-view='true'] .thefails-icon {
     animation-play-state: running;
+    will-change: transform;
   }
 
   @keyframes thefailsFloatUp {
@@ -718,26 +718,36 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
 
 <script is:inline>
   (() => {
-    requestAnimationFrame(() => {
-      const sections = document.querySelectorAll('[data-thefails-root]');
-
-      if (!sections.length) {
-        return;
+    const defer = (callback, timeout = 220) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => callback(), { timeout });
+      } else {
+        window.setTimeout(callback, 0);
       }
+    };
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            entry.target.setAttribute('data-thefails-in-view', entry.isIntersecting ? 'true' : 'false');
-          });
-        },
-        {
-          rootMargin: '0px 0px -10% 0px',
-          threshold: 0.1,
+    defer(() => {
+      requestAnimationFrame(() => {
+        const sections = document.querySelectorAll('[data-thefails-root]');
+
+        if (!sections.length) {
+          return;
         }
-      );
 
-      sections.forEach((section) => observer.observe(section));
-    });
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entry.target.setAttribute('data-thefails-in-view', entry.isIntersecting ? 'true' : 'false');
+            });
+          },
+          {
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1,
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      });
+    }, 220);
   })();
 </script>

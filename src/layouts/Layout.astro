@@ -28,6 +28,40 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 		<script is:inline>
 			(() => {
 				const revealSelector = '.motion-reveal';
+				const floatSelector = '.motion-float';
+				const revealProps = new Set(['opacity', 'transform', 'filter']);
+				const defer = (callback, timeout = 200) => {
+					if ('requestIdleCallback' in window) {
+						window.requestIdleCallback(() => callback(), { timeout });
+					} else {
+						window.setTimeout(callback, 0);
+					}
+				};
+
+				const armReveal = (element) => {
+					if (element.classList.contains('is-revealing')) {
+						return;
+					}
+
+					element.classList.add('is-revealing');
+
+					const onTransitionEnd = (event) => {
+						if (event.target !== element) {
+							return;
+						}
+						if (!revealProps.has(event.propertyName)) {
+							return;
+						}
+						element.classList.remove('is-revealing');
+						element.removeEventListener('transitionend', onTransitionEnd);
+					};
+
+					element.addEventListener('transitionend', onTransitionEnd);
+				};
+
+				const disarmReveal = (element) => {
+					element.classList.remove('is-revealing');
+				};
 
 				const assignStaggerIndexes = () => {
 					document.querySelectorAll('[data-reveal-group]').forEach((group) => {
@@ -45,6 +79,7 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 
 					if (prefersReducedMotion) {
 						document.querySelectorAll(revealSelector).forEach((element) => {
+							disarmReveal(element);
 							element.classList.add('is-inview');
 						});
 						return;
@@ -61,12 +96,14 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 								const revealOnce = element.getAttribute('data-reveal-once') !== 'false';
 
 								if (entry.isIntersecting) {
+									armReveal(element);
 									element.classList.add('is-inview');
 									if (revealOnce) {
 										observer.unobserve(element);
 									}
 								} else if (!revealOnce) {
 									element.classList.remove('is-inview');
+									disarmReveal(element);
 								}
 							});
 						},
@@ -80,11 +117,55 @@ const { title = 'Trueview | Lab Tested Products' } = Astro.props;
 
 					document.querySelectorAll(revealSelector).forEach((element) => {
 						element.classList.remove('is-inview');
+						disarmReveal(element);
 						observer.observe(element);
 					});
 				};
 
-				const init = () => window.requestAnimationFrame(setupRevealObserver);
+				const setupFloatObserver = () => {
+					const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+					const floatElements = Array.from(document.querySelectorAll(floatSelector));
+
+					if (window.__trueviewFloatObserver) {
+						window.__trueviewFloatObserver.disconnect();
+					}
+
+					if (!floatElements.length) {
+						return;
+					}
+
+					if (prefersReducedMotion) {
+						floatElements.forEach((element) => {
+							element.classList.add('is-float-inview');
+						});
+						return;
+					}
+
+					const observer = new IntersectionObserver(
+						(entries) => {
+							entries.forEach((entry) => {
+								entry.target.classList.toggle('is-float-inview', entry.isIntersecting);
+							});
+						},
+						{
+							threshold: 0.12,
+							rootMargin: '0px 0px -8% 0px',
+						}
+					);
+
+					window.__trueviewFloatObserver = observer;
+
+					floatElements.forEach((element) => {
+						element.classList.remove('is-float-inview');
+						observer.observe(element);
+					});
+				};
+
+				const init = () =>
+					window.requestAnimationFrame(() => {
+						setupRevealObserver();
+						defer(setupFloatObserver, 220);
+					});
 
 				if (document.readyState === 'loading') {
 					document.addEventListener('DOMContentLoaded', init, { once: true });

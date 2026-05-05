@@ -46,100 +46,110 @@ import { Image } from 'astro:assets';
 
 <script is:inline>
   (() => {
-    if (window.__trueviewNavbarInitialized) {
-      return;
-    }
-
-    window.__trueviewNavbarInitialized = true;
-
-    const navbar = document.getElementById('site-navbar');
-    const menuButton = document.getElementById('mobile-menu-toggle');
-    const mobilePanel = document.getElementById('mobile-menu-panel');
-
-    if (!navbar) return;
-
-    const TOP_THRESHOLD = 16;
-
-    const setNavbarVisible = (visible) => {
-      navbar.classList.toggle('-translate-y-full', !visible);
-      navbar.classList.toggle('opacity-0', !visible);
-      navbar.classList.toggle('pointer-events-none', !visible);
+    const defer = (callback, timeout = 140) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => callback(), { timeout });
+      } else {
+        window.setTimeout(callback, 0);
+      }
     };
 
-    let isMenuOpen = false;
-    let ticking = false;
-
-    const syncNavbarVisibility = () => {
-      setNavbarVisible(window.scrollY <= TOP_THRESHOLD || isMenuOpen);
-    };
-
-    const updateNavbar = () => {
-      const nearTop = window.scrollY <= TOP_THRESHOLD;
-
-      if (!nearTop && isMenuOpen) {
-        mobilePanel?.classList.add('hidden');
-        menuButton?.setAttribute('aria-expanded', 'false');
-        menuButton?.setAttribute('aria-label', 'Abrir menu principal');
-        isMenuOpen = false;
+    defer(() => {
+      if (window.__trueviewNavbarInitialized) {
+        return;
       }
 
+      window.__trueviewNavbarInitialized = true;
+
+      const navbar = document.getElementById('site-navbar');
+      const menuButton = document.getElementById('mobile-menu-toggle');
+      const mobilePanel = document.getElementById('mobile-menu-panel');
+
+      if (!navbar) return;
+
+      const TOP_THRESHOLD = 16;
+
+      const setNavbarVisible = (visible) => {
+        navbar.classList.toggle('-translate-y-full', !visible);
+        navbar.classList.toggle('opacity-0', !visible);
+        navbar.classList.toggle('pointer-events-none', !visible);
+      };
+
+      let isMenuOpen = false;
+      let ticking = false;
+
+      const syncNavbarVisibility = () => {
+        setNavbarVisible(window.scrollY <= TOP_THRESHOLD || isMenuOpen);
+      };
+
+      const updateNavbar = () => {
+        const nearTop = window.scrollY <= TOP_THRESHOLD;
+
+        if (!nearTop && isMenuOpen) {
+          mobilePanel?.classList.add('hidden');
+          menuButton?.setAttribute('aria-expanded', 'false');
+          menuButton?.setAttribute('aria-label', 'Abrir menu principal');
+          isMenuOpen = false;
+        }
+
+        syncNavbarVisibility();
+        ticking = false;
+      };
+
       syncNavbarVisibility();
-      ticking = false;
-    };
 
-    syncNavbarVisibility();
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(updateNavbar);
+        },
+        { passive: true },
+      );
 
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(updateNavbar);
-      },
-      { passive: true },
-    );
+      if (menuButton && mobilePanel) {
+        const closeMenu = () => {
+          mobilePanel.classList.add('hidden');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', 'Abrir menu principal');
+          isMenuOpen = false;
+          syncNavbarVisibility();
+        };
 
-    if (menuButton && mobilePanel) {
-      const closeMenu = () => {
-        mobilePanel.classList.add('hidden');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Abrir menu principal');
-        isMenuOpen = false;
-        syncNavbarVisibility();
-      };
+        const openMenu = () => {
+          mobilePanel.classList.remove('hidden');
+          menuButton.setAttribute('aria-expanded', 'true');
+          menuButton.setAttribute('aria-label', 'Cerrar menu principal');
+          isMenuOpen = true;
+          syncNavbarVisibility();
+        };
 
-      const openMenu = () => {
-        mobilePanel.classList.remove('hidden');
-        menuButton.setAttribute('aria-expanded', 'true');
-        menuButton.setAttribute('aria-label', 'Cerrar menu principal');
-        isMenuOpen = true;
-        syncNavbarVisibility();
-      };
+        menuButton.addEventListener('click', () => {
+          const currentlyOpen = menuButton.getAttribute('aria-expanded') === 'true';
+          if (currentlyOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
 
-      menuButton.addEventListener('click', () => {
-        const currentlyOpen = menuButton.getAttribute('aria-expanded') === 'true';
-        if (currentlyOpen) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
+        mobilePanel.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', closeMenu);
+        });
 
-      mobilePanel.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-      });
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeMenu();
+          }
+        });
 
-      window.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeMenu();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-          closeMenu();
-        }
-      });
-    }
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 768) {
+            closeMenu();
+          }
+        });
+      }
+    });
   })();
 </script>
