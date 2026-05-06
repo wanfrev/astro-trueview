@@ -199,15 +199,15 @@
 	}
 
 	.motion-float-soft {
-		animation: motionFloatSoft 6.4s ease-in-out infinite;
+		animation: motionFloatSoft 9s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 	}
 
 	.motion-float-side-left {
-		animation: motionFloatSideLeft 7.2s ease-in-out infinite;
+		animation: motionFloatSideLeft 10.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 	}
 
 	.motion-float-side-right {
-		animation: motionFloatSideRight 6.8s ease-in-out infinite;
+		animation: motionFloatSideRight 10.2s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 	}
 
 	.motion-float {
@@ -267,8 +267,14 @@
 		100% {
 			transform: translate3d(0, 0, 0);
 		}
+		35% {
+			transform: translate3d(0, -6px, 0);
+		}
 		50% {
-			transform: translate3d(0, -12px, 0);
+			transform: translate3d(0, -9px, 0);
+		}
+		65% {
+			transform: translate3d(0, -6px, 0);
 		}
 	}
 
@@ -277,8 +283,14 @@
 		100% {
 			transform: translate3d(0, 0, 0);
 		}
+		35% {
+			transform: translate3d(-7px, 0, 0);
+		}
 		50% {
-			transform: translate3d(-14px, 0, 0);
+			transform: translate3d(-10px, 0, 0);
+		}
+		65% {
+			transform: translate3d(-7px, 0, 0);
 		}
 	}
 
@@ -287,8 +299,14 @@
 		100% {
 			transform: translate3d(0, 0, 0);
 		}
+		35% {
+			transform: translate3d(7px, 0, 0);
+		}
 		50% {
-			transform: translate3d(14px, 0, 0);
+			transform: translate3d(10px, 0, 0);
+		}
+		65% {
+			transform: translate3d(7px, 0, 0);
 		}
 	}
 
