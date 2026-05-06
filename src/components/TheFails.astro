@@ -1,10 +1,8 @@
 ---
 import PhoneTop from '../assets/images/phonecaution2.png';
 import PhoneBottom from '../assets/images/phone3.png';
-import VioletBottle from '../assets/icons/violetbottle.png';
-import VioletBottle2 from '../assets/icons/violetbottle2.png';
-import Pill from '../assets/icons/pill.png';
-import GreyBottle from '../assets/icons/greybottle.png';
+import VioletBottle2 from '../assets/icons/violetbottle2.svg';
+import Pill from '../assets/icons/pill.svg';
 import { Image } from 'astro:assets';
 
 const failsPhoneSizes = '(max-width: 1024px) 82vw, 34vw';
@@ -55,11 +53,9 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
         </div>
       </div>
 
-      <Image src={VioletBottle} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-a" />
-      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-b" />
+      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" format="svg" sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-a" />
 
-      <Image src={Pill} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-pill" />
-      <Image src={GreyBottle} alt="" aria-hidden="true" loading="lazy" format="webp" quality={66} widths={[80, 120, 160]} sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-grey" />
+      <Image src={Pill} alt="" aria-hidden="true" loading="lazy" format="svg" sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-pill" />
       </div>
     </div>
 
@@ -143,10 +139,10 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   }
 
   .thefails-icon-violet-a {
-    left: 75%;
-    top: 2%;
-    width: 10%;
-    max-width: 70px;
+    left: 70%;
+    top: 0%;
+    width: 14%;
+    max-width: 110px;
     z-index: 20;
     opacity: 0.75;
     animation-name: thefailsFloatUp;
@@ -163,10 +159,10 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   }
 
   .thefails-icon-pill {
-    left: 12%;
-    bottom: 2%;
-    width: 9%;
-    max-width: 52px;
+    left: 2%;
+    bottom: 15%;
+    width: 16%;
+    max-width: 120px;
     z-index: 20;
     opacity: 0.6;
     animation-name: thefailsFloatUp;

@@ -2,7 +2,7 @@
 import Group from '../assets/images/group1.png';
 import { Image } from 'astro:assets';
 
-const labVisualSizes = '(max-width: 768px) 92vw, (max-width: 1280px) 52vw, 620px';
+const labVisualSizes = '(max-width: 768px) 92vw, (max-width: 1280px) 60vw, (max-width: 1536px) 760px, 920px';
 ---
 
 <section data-bg="lab" class="section-shell py-18 lg:py-24 xl:py-28">
@@ -15,7 +15,7 @@ const labVisualSizes = '(max-width: 768px) 92vw, (max-width: 1280px) 52vw, 620px
         and <span class="motion-word-glow motion-word-glow-red">microbes</span>
       </h2>
 
-      <p style="font-size: var(--labtesting-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-8 text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[56ch] mx-auto xl:mx-0">
+      <p style="font-size: var(--labtesting-body-size); --reveal-delay: 120ms;" class="motion-reveal motion-reveal-left mt-8 text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[44ch] mx-auto xl:mx-0">
         Unexpected contaminants are more common than they should be. Rigorous testing and strict quality standards ensure safety, purity, and clarity in what you are taking.
       </p>
 
@@ -66,11 +66,23 @@ const labVisualSizes = '(max-width: 768px) 92vw, (max-width: 1280px) 52vw, 620px
 <style>
   .labtesting-visual {
     width: 100%;
-    max-width: 620px;
+    max-width: 740px;
     aspect-ratio: 620 / 520;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (min-width: 1280px) {
+    .labtesting-visual {
+      max-width: 820px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .labtesting-visual {
+      max-width: 920px;
+    }
   }
 
   .labtesting-visual-mobile {
