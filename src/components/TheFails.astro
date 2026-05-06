@@ -1,8 +1,8 @@
 ---
 import PhoneTop from '../assets/images/phonecaution2.png';
 import PhoneBottom from '../assets/images/phone3.png';
-import VioletBottle2 from '../assets/icons/violetbottle2.svg';
-import Pill from '../assets/icons/pill.svg';
+import VioletBottle2 from '../assets/icons/violetbottle2.svg?url';
+import Pill from '../assets/icons/pill.svg?url';
 import { Image } from 'astro:assets';
 
 const failsPhoneSizes = '(max-width: 1024px) 82vw, 34vw';
@@ -18,12 +18,12 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
       <Image src={PhoneTop} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[320, 480, 640, 860]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-top" style="max-width:430px;width:65%;height:auto;" />
       <Image src={PhoneBottom} alt="" aria-hidden="true" loading="lazy" format="webp" quality={74} widths={[360, 520, 760, 980]} sizes={failsPhoneSizes} decoding="async" class="thefails-phone thefails-phone-bottom" style="max-width:540px;width:82%;height:auto;" />
 
-      <div class="floating-card motion-float card-summary" aria-hidden="true">
+      <div class="floating-card motion-float-soft card-summary" aria-hidden="true">
         <span class="count">4</span>
         <p class="summary-text">Contaminants detected</p>
       </div>
 
-      <div class="floating-card motion-float card-caution" aria-hidden="true">
+      <div class="floating-card motion-float-soft card-caution" aria-hidden="true">
         <div class="icon-warning-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -34,7 +34,7 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
         <p class="caution-text"><strong>Caution:</strong> Exceeds Proposition 65 Heavy Metals</p>
       </div>
 
-      <div class="floating-card motion-float card-zinc" aria-hidden="true">
+      <div class="floating-card motion-float-soft card-zinc" aria-hidden="true">
         <div class="zinc-content">
           <div class="icon-x-light">
             <svg class="icon-x-light-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
@@ -53,9 +53,9 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
         </div>
       </div>
 
-      <Image src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" format="svg" sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-violet-a" />
+      <img src={VioletBottle2} alt="" aria-hidden="true" loading="lazy" decoding="async" class="thefails-icon motion-float-soft thefails-icon-violet-a" />
 
-      <Image src={Pill} alt="" aria-hidden="true" loading="lazy" format="svg" sizes={failsIconSizes} decoding="async" class="thefails-icon thefails-icon-pill" />
+      <img src={Pill} alt="" aria-hidden="true" loading="lazy" decoding="async" class="thefails-icon motion-float-soft thefails-icon-pill" />
       </div>
     </div>
 
@@ -131,11 +131,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
   .thefails-icon {
     position: absolute;
     height: auto;
-    animation-duration: 5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-play-state: paused;
   }
 
   .thefails-icon-violet-a {
@@ -145,7 +140,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     max-width: 110px;
     z-index: 20;
     opacity: 0.75;
-    animation-name: thefailsFloatUp;
   }
 
   .thefails-icon-violet-b {
@@ -155,7 +149,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     max-width: 55px;
     z-index: 20;
     opacity: 0.75;
-    animation-name: thefailsFloatDown;
   }
 
   .thefails-icon-pill {
@@ -165,7 +158,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     max-width: 120px;
     z-index: 20;
     opacity: 0.6;
-    animation-name: thefailsFloatUp;
   }
 
   .thefails-icon-grey {
@@ -175,7 +167,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     max-width: 70px;
     z-index: 20;
     opacity: 0.85;
-    animation-name: thefailsFloatDown;
   }
 
   /* --- BASE DE LAS TARJETAS (GLASSMORPHISM) --- */
@@ -192,44 +183,13 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     pointer-events: none;
     transition: all 0.4s ease;
     margin-top: 0;
-    animation-name: thefailsCardFloatSoft;
-    animation-duration: 4.1s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-play-state: paused;
   }
 
   .card-summary {
-    animation-name: thefailsCardFloatSoft;
-    animation-delay: -0.3s;
   }
   .card-caution {
-    animation-name: thefailsCardFloatStrong;
-    animation-delay: -1.0s;
-    animation-duration: 4.6s;
   }
   .card-zinc {
-    animation-name: thefailsCardFloatBottomStrong;
-    animation-delay: -0.6s;
-    animation-duration: 3.5s;
-  }
-
-  @keyframes thefailsCardFloatSoft {
-    0% { margin-top: 0; }
-    50% { margin-top: -8px; }
-    100% { margin-top: 0; }
-  }
-
-  @keyframes thefailsCardFloatStrong {
-    0% { margin-top: 0; }
-    50% { margin-top: -11px; }
-    100% { margin-top: 0; }
-  }
-
-  @keyframes thefailsCardFloatBottomStrong {
-    0% { margin-bottom: 0; }
-    50% { margin-bottom: 11px; }
-    100% { margin-bottom: 0; }
   }
 
   /* --- CARD 1: SUMMARY --- */
@@ -410,20 +370,6 @@ const failsIconSizes = '(max-width: 1024px) 16vw, 7vw';
     white-space: nowrap;
   }
 
-  [data-thefails-root][data-thefails-in-view='true'] .thefails-icon {
-    animation-play-state: running;
-    will-change: transform;
-  }
-
-  @keyframes thefailsFloatUp {
-    from { transform: translate3d(0, 6px, 0) rotate(var(--thefails-rotate, 0deg)); }
-    to { transform: translate3d(0, -14px, 0) rotate(var(--thefails-rotate, 0deg)); }
-  }
-
-  @keyframes thefailsFloatDown {
-    from { transform: translate3d(0, -6px, 0) rotate(var(--thefails-rotate, 0deg)); }
-    to { transform: translate3d(0, 14px, 0) rotate(var(--thefails-rotate, 0deg)); }
-  }
 
   @media (max-width: 1279px) {
     .phone-collage-wrapper {
