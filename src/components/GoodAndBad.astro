@@ -1,9 +1,9 @@
 ---
-import Collage1 from '../assets/images/collage1.png';
-import Collage2 from '../assets/images/collage2.png';
-import Collage3 from '../assets/images/collage3.png';
-import Collage4 from '../assets/images/collage4.png';
-import Collage5 from '../assets/images/collage5.png';
+import Collage1 from '../assets/images/collage1.svg?url';
+import Collage2 from '../assets/images/collage2.svg?url';
+import Collage3 from '../assets/images/collage3.svg?url';
+import Collage4 from '../assets/images/collage4.svg?url';
+import Collage5 from '../assets/images/collage5.svg?url';
 import { Image } from 'astro:assets';
 
 const goodbadSizes = '(max-width: 480px) 84vw, (max-width: 640px) 72vw, (max-width: 1279px) 42vw, 21vw';
@@ -33,31 +33,31 @@ const goodbadWideSizes = '(max-width: 480px) 100vw, (max-width: 640px) 100vw, (m
 
 					<div class="goodbad-item goodbad-item--1 motion-reveal motion-reveal-left motion-hover-lift">
 						<div class="motion-float motion-float-soft goodbad-float goodbad-float--1">
-							<Image src={Collage1} alt="Zinc Test" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--1" />
+							<img src={Collage1} alt="Zinc Test" loading="lazy" decoding="async" class="goodbad-image goodbad-image--1" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--2 motion-reveal motion-reveal-zoom motion-hover-lift">
 						<div class="motion-float motion-float-soft goodbad-float goodbad-float--2">
-							<Image src={Collage2} alt="Protein list" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--2" />
+							<img src={Collage2} alt="Protein list" loading="lazy" decoding="async" class="goodbad-image goodbad-image--2" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--3 motion-reveal motion-reveal-right motion-hover-lift">
 						<div class="motion-float motion-float-soft goodbad-float goodbad-float--3">
-							<Image src={Collage3} alt="Mold failure" widths={[280, 360, 460, 560, 720]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--3" />
+							<img src={Collage3} alt="Mold failure" loading="lazy" decoding="async" class="goodbad-image goodbad-image--3" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--4 motion-reveal motion-reveal-left motion-hover-lift">
 						<div class="motion-float motion-float-soft goodbad-float goodbad-float--4">
-							<Image src={Collage5} alt="ACV Gummies" widths={[300, 420, 560, 720, 880]} sizes={goodbadSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--4" />
+							<img src={Collage5} alt="ACV Gummies" loading="lazy" decoding="async" class="goodbad-image goodbad-image--4" />
 						</div>
 					</div>
 
 					<div class="goodbad-item goodbad-item--5 motion-reveal motion-reveal-zoom motion-hover-lift">
 						<div class="motion-float motion-float-soft goodbad-float goodbad-float--5">
-							<Image src={Collage4} alt="Lead levels" widths={[360, 480, 640, 840, 1024]} sizes={goodbadWideSizes} format="webp" quality={72} loading="lazy" decoding="async" class="goodbad-image goodbad-image--5" />
+							<img src={Collage4} alt="Lead levels" loading="lazy" decoding="async" class="goodbad-image goodbad-image--5" />
 						</div>
 					</div>
 				</div>
